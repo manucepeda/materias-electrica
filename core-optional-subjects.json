@@ -1,4 +1,5 @@
-{
+[
+  {
     "nombre": "Instrumentación industrial",
     "creditos": 8,
     "semestre": 8,
@@ -51,4 +52,5 @@
     "codigo": "FROBA",
     "opcional_perfil": true,
     "prerequisitos": []
-  },
+  }
+]
