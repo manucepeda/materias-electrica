@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Árbol de previas</title>
+  <meta name="description" content="Árbol de previas según perfil" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .tree-container {
+      margin: 30px 0;
+      overflow-x: auto;
+      min-height: 600px;
+      padding: 20px 40px 20px 60px;
+      background-color: #f8fafc;
+      border-radius: 12px;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.03);
+    }
+    
+    .semester-row {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 50px;
+      position: relative;
+      padding-left: 120px; /* Space for the semester label */
+      border-top: 1px dashed #cbd5e1;
+      padding-top: 25px;
+    }
+    
+    .semester-label {
+      position: absolute;
+      left: 0px;
+      top: 25px;
+      font-weight: bold;
+      color: #1e40af;
+      padding: 8px 15px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+      box-shadow: 0 2px 5px rgba(0,51,102,0.08);
+      width: 100px;
+      text-align: center;
+      font-size: 1.05rem;
+    }
+    
+    .subject-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 100px;
+      margin: 0 20px;
+      padding: 10px;
+      background: white;
+      border: 2px solid #2563eb;
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      position: relative;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    
+    .subject-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    }
+    
+    .subject-btn.approved {
+      background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+      color: white;
+      border-color: #2563EB;
+    }
+    
+    .subject-btn.exonerated {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: white;
+      border-color: #059669;
+    }
+    
+    .subject-btn.unavailable {
+      background: #e5e7eb;
+      border-color: #9ca3af;
+      color: #4b5563;
+      cursor: not-allowed;
+    }
+    
+    .subject-btn .credits {
+      font-size: 0.85rem;
+      margin-top: 8px;
+      font-weight: 500;
+    }
+    
+    .subject-btn .code {
+      position: absolute;
+      top: 5px;
+      left: 7px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+    
+    .subject-btn .dictation {
+      position: absolute;
+      top: 5px;
+      right: 7px;
+      font-size: 0.7rem;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background-color: #f3f4f6;
+    }
+    
+    .subject-btn.approved .dictation, 
+    .subject-btn.exonerated .dictation {
+      background-color: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+    
+    .subject-btn .exam-only {
+      position: absolute;
+      bottom: 5px;
+      right: 7px;
+      font-size: 0.7rem;
+      color: #ef4444;
+      font-weight: bold;
+    }
+    
+    .subject-btn.approved .exam-only, 
+    .subject-btn.exonerated .exam-only {
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .controls-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 1rem;
+      width: 100%;
+    }
+    
+    .controls-section:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    
+    .controls-title {
+      width: 100%;
+      font-weight: 600;
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .controls select, .controls button {
+      min-width: 200px;
+      padding: 8px 15px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background-color: white;
+      color: #1e293b;
+      transition: all 0.2s;
+    }
+    
+    .controls select:focus, .controls button:focus {
+      border-color: #2563eb;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+    
+    .controls button {
+      background-color: #f1f5f9;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    
+    .controls button:hover {
+      background-color: #e2e8f0;
+    }
+    
+    .controls button.active {
+      background-color: #2563eb;
+      color: white;
+      border-color: #1e40af;
+    }
+    
+    .status-panel {
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .status-item {
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+      background-color: #f8fafc;
+      padding: 12px;
+      border-radius: 8px;
+      transition: all 0.2s;
+    }
+    
+    .status-item:hover {
+      background-color: #f1f5f9;
+      transform: translateY(-2px);
+    }
+    
+    .status-item .value {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #1e40af;
+      margin-bottom: 5px;
+    }
+    
+    .status-item .label {
+      font-size: 0.95rem;
+      color: #64748b;
+      font-weight: 500;
+    }
+    
+    .legend {
+      background: white;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 25px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+    }
+    
+    .legend-color {
+      width: 20px;
+      height: 20px;
+      border-radius: 4px;
+      margin-right: 8px;
+    }
+    
+    .legend-text {
+      font-size: 0.9rem;
+      color: #334155;
+    }
+    
+    #link-to-list {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: all 0.2s;
+    }
+    
+    #link-to-list:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    @media (max-width: 768px) {
+      .semester-row {
+        padding-left: 80px;
+      }
+      
+      .semester-label {
+        width: 70px;
+        font-size: 0.9rem;
+      }
+      
+      .subject-btn {
+        width: 130px;
+        height: 90px;
+        margin: 0 10px;
+        font-size: 0.85rem;
+      }
+      
+      .status-item {
+        min-width: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>blablalba ingeniería eléctrica</h1>
+    <div class="subtitle">Árbol de previas por perfil</div>
+    <p class="muted" style="margin:0; font-size:1rem;">Grafo interactivo de materias con previaturas</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <div class="controls-section">
+        <div class="controls-title">Perfil y Énfasis</div>
+        <select id="perfil">
+          <option value="">Seleccione Perfil</option>
+          <option value="Telecomunicaciones">Telecomunicaciones</option>
+          <option value="Sistemas Eléctricos de Potencia">Sistemas Eléctricos</option>
+          <option value="Electrónica">Electrónica</option>
+          <option value="Procesamiento de Señales y Aprendizaje Automático">Procesamiento de Señales</option>
+          <option value="Ingeniería Biomédica">Biomédica</option>
+        </select>
+        
+        <select id="emphasis" disabled>
+          <option value="">Seleccione Énfasis (primero seleccione perfil)</option>
+        </select>
+      </div>
+      
+      <div class="controls-section">
+        <div class="controls-title">Filtros de visualización</div>
+        <select id="dictationSemester">
+          <option value="all">Todos los semestres de dictado</option>
+          <option value="1">Solo semestre impar</option>
+          <option value="2">Solo semestre par</option>
+          <option value="both">Ambos semestres</option>
+        </select>
+        
+        <button id="examOnlyFilter">Mostrar materias libres</button>
+        
+        <select id="creditFilter">
+          <option value="all">Todos los créditos</option>
+          <option value="lt5">Menos de 5 créditos</option>
+          <option value="5-10">Entre 5 y 10 créditos</option>
+          <option value="gt10">Más de 10 créditos</option>
+        </select>
+      </div>
+    </div>
+    
+    <div class="status-panel">
+      <div class="status-item">
+        <div class="value" id="approved-count">0</div>
+        <div class="label">Materias Aprobadas</div>
+      </div>
+      <div class="status-item">
+        <div class="value" id="exonerated-count">0</div>
+        <div class="label">Materias Exoneradas</div>
+      </div>
+      <div class="status-item">
+        <div class="value" id="total-credits">0</div>
+        <div class="label">Créditos Totales</div>
+      </div>
+      <div class="status-item">
+        <div class="value" id="available-subjects">0</div>
+        <div class="label">Materias Disponibles</div>
+      </div>
+    </div>
+    
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color" style="background: white; border: 2px solid #2563eb;"></div>
+        <div class="legend-text">No cursada</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);"></div>
+        <div class="legend-text">Aprobada</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: linear-gradient(135deg, #10B981 0%, #059669 100%);"></div>
+        <div class="legend-text">Exonerada</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #e5e7eb; border: 1px solid #9ca3af;"></div>
+        <div class="legend-text">No disponible</div>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color" style="background: #fff; border: 1px dashed #ef4444;"></div>
+        <div class="legend-text">Materia libre</div>
+      </div>
+    </div>
+    
+    <div class="tree-container" id="tree">
+      <!-- Graph will be dynamically rendered here -->
+      <div style="text-align: center; padding: 50px; color: #5a6b7b;">
+        Seleccione un perfil para visualizar el grafo de materias
+      </div>
+    </div>
+    
+    <div style="text-align: center;">
+      <a href="index.html" id="link-to-list">Ver Listado de Materias</a>
+    </div>
+  </main>
+
+  <script src="graph.js"></script>
+</body>
+</html>

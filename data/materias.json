@@ -1,0 +1,577 @@
+[
+  {
+    "nombre": "Cálculo dif. e integral en una variable",
+    "creditos": 13,
+    "semestre": 1,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "GAL 1",
+    "creditos": 9,
+    "semestre": 1,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Física 1",
+    "creditos": 10,
+    "semestre": 1,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Tallerine",
+    "creditos": 10,
+    "semestre": 1,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Matemática inicial",
+    "creditos": 4,
+    "semestre": 1,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Cálculo dif. e integral en varias variables",
+    "creditos": 13,
+    "semestre": 2,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "GAL 2",
+    "creditos": 9,
+    "semestre": 2,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Física 2",
+    "creditos": 10,
+    "semestre": 2,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Programación 1",
+    "creditos": 10,
+    "semestre": 2,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Cálculo Vectorial",
+    "creditos": 10,
+    "semestre": 3,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Probabilidad y Estadística",
+    "creditos": 10,
+    "semestre": 3,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Física 3",
+    "creditos": 10,
+    "semestre": 3,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Mecánica Newtoniana",
+    "creditos": 10,
+    "semestre": 3,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Física Experimental 1",
+    "creditos": 5,
+    "semestre": 3,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Ecuaciones Diferenciales",
+    "creditos": 10,
+    "semestre": 4,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Electromagnetismo",
+    "creditos": 10,
+    "semestre": 4,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Física Experimental 2",
+    "creditos": 5,
+    "semestre": 4,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Teoría de Circuitos",
+    "creditos": 8,
+    "semestre": 4,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Diseño Lógico",
+    "creditos": 12,
+    "semestre": 4,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Funciones de Variable Compleja",
+    "creditos": 5,
+    "semestre": 5,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Señales y Sistemas",
+    "creditos": 11,
+    "semestre": 5,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Intro. A los microprocesadores",
+    "creditos": 11,
+    "semestre": 5,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Programación para Ingeniería Eléctrica",
+    "creditos": 7,
+    "semestre": 5,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Electrónica Fundamental",
+    "creditos": 11,
+    "semestre": 5,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Métodos numéricos",
+    "creditos": 8,
+    "semestre": 6,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Sistemas y Control",
+    "creditos": 12,
+    "semestre": 6,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Taller Fourier",
+    "creditos": 8,
+    "semestre": 6,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Señales aleatorias y Modulación",
+    "creditos": 8,
+    "semestre": 6,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Redes de Datos I",
+    "creditos": 8,
+    "semestre": 6,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Medidas Eléctricas",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Comunicaciones Digitales",
+    "creditos": 11,
+    "semestre": 7,
+    "perfiles": [
+      "Telecomunicaciones"
+    ]
+  },
+  {
+    "nombre": "Antenas y Propagación",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Telecomunicaciones"
+    ]
+  },
+  {
+    "nombre": "Electrotécnica",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Electrónica"
+    ]
+  },
+  {
+    "nombre": "Máquinas Eléctricas",
+    "creditos": 10,
+    "semestre": 6,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Electrónica de Potencia",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Redes Eléctricas",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Taller de Máquinas",
+    "creditos": 4,
+    "semestre": 7,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Transporte de Energía Eléctrica",
+    "creditos": 8,
+    "semestre": 8,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Taller de Electrónica de Potencia",
+    "creditos": 4,
+    "semestre": 8,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Subestaciones de Media Tensión",
+    "creditos": 8,
+    "semestre": 9,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Física de Instalaciones Eléctricas BT y MT",
+    "creditos": 10,
+    "semestre": 10,
+    "perfiles": [
+      "Sistemas Eléctricos de Potencia"
+    ]
+  },
+  {
+    "nombre": "Electrónica Avanzada 1",
+    "creditos": 10,
+    "semestre": 6,
+    "perfiles": [
+      "Electrónica"
+    ]
+  },
+  {
+    "nombre": "Sistemas Embebidos para Tiempo Real",
+    "creditos": 8,
+    "semestre": 7,
+    "perfiles": [
+      "Electrónica"
+    ]
+  },
+  {
+    "nombre": "Electrónica Avanzada 2",
+    "creditos": 8,
+    "semestre": 7,
+    "perfiles": [
+      "Electrónica"
+    ]
+  },
+  {
+    "nombre": "Fundamentos de Aprendizaje Automático",
+    "creditos": 8,
+    "semestre": 6,
+    "perfiles": [
+      "Procesamiento de Señales y Aprendizaje Automático"
+    ]
+  },
+  {
+    "nombre": "Estimación y predicción en series temporales",
+    "creditos": 10,
+    "semestre": 7,
+    "perfiles": [
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Ingeniería Biomédica",
+    "creditos": 8,
+    "semestre": 8,
+    "perfiles": [
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "AMOS",
+    "creditos": 8,
+    "semestre": 8,
+    "perfiles": [
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Pasantía",
+    "creditos": 10,
+    "semestre": 8,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Instalaciones Eléctricas",
+    "creditos": 8,
+    "semestre": 8,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Proyecto",
+    "creditos": 10,
+    "semestre": 9,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Legislación y relaciones industriales",
+    "creditos": 6,
+    "semestre": 10,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Economía",
+    "creditos": 7,
+    "semestre": 10,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  },
+  {
+    "nombre": "Proyecto",
+    "creditos": 25,
+    "semestre": 10,
+    "perfiles": [
+      "Telecomunicaciones",
+      "Sistemas Eléctricos de Potencia",
+      "Electrónica",
+      "Procesamiento de Señales y Aprendizaje Automático",
+      "Ingeniería Biomédica"
+    ]
+  }
+]

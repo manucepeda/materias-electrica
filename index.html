@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Materias de Eléctrica</title>
+  <meta name="description" content="Listado filtrable de materias de Ingeniería Eléctrica" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body { font-family: system-ui, sans-serif; background: #f7f7f7; color: #111; margin: 0; }
+    header { background: #ffef5c; padding: 1.25rem; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    main { max-width: 1024px; margin: 0 auto; padding: 1rem; }
+    .controls { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
+    .controls input, .controls select { padding: .5rem .75rem; border: 1px solid #ccc; border-radius: .375rem; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: .75rem; }
+    @media(min-width: 768px){ .grid { grid-template-columns: 1fr 1fr; } }
+    article { background: #fff; border-radius: .5rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); padding: 1rem; display: flex; flex-direction: column; gap: .5rem; }
+    .tag { display: inline-block; font-size: .75rem; background: #e5e7eb; color: #111; border-radius: .25rem; padding: 0 .35rem; margin-right: .25rem; }
+    a.link { color: #2563eb; text-decoration: underline; font-size: .875rem; }
+    .muted { color: #6b7280; font-size: .875rem; }
+    .perfil-tag { background-color: #dbeafe; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>blablabla ing electrica</h1>
+    <div class="subtitle">Plan de estudios y árbol de previas</div>
+    <p class="muted" style="margin:0; font-size:1rem;">Plan de Estudios, materias y créditos – visualizador filtrable</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <input id="search" type="text" placeholder="Buscar por nombre de materia..." />
+      <select id="semestre">
+        <option value="">Todos los semestres</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <select id="creditos">
+        <option value="">Cualquier crédito</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+        <option value="11">11</option>
+        <option value="12">12</option>
+        <option value="13">13</option>
+        <option value="25">25</option>
+      </select>
+      <select id="perfil">
+        <option value="">Todos los perfiles</option>
+        <option value="Telecomunicaciones">Telecomunicaciones</option>
+        <option value="Sistemas Eléctricos de Potencia">Sistemas Eléctricos</option>
+        <option value="Electrónica">Electrónica</option>
+        <option value="Procesamiento de Señales y Aprendizaje Automático">Procesamiento de Señales</option>
+        <option value="Ingeniería Biomédica">Biomédica</option>
+      </select>
+    </div>
+
+    <div id="count"></div>
+    <div id="grid" class="grid"></div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+      <a href="graph.html" class="link" style="font-size: 1.1rem; padding: 10px;">Ver Grafo de Materias y Prerrequisitos</a>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

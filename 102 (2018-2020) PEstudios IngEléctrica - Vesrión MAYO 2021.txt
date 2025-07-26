@@ -1,0 +1,1642 @@
+
+
+Apéndice 1 – Consideraciones y
+implementación del plan de estudios.
+
+ejemplos
+
+sobre
+
+la
+
+En esta sección se busca presentar algunas posibles implementaciones del plan que no son más que
+ejemplos de otros muchos que se podrían proponer. Los perfiles finales serán analizados y aprobados por
+la Comisión de Carrera.
+
+Perfil Telecomunicaciones
+El ingeniero eléctrico, perfil Telecomunicaciones, habrá profundizado en los principios y técnicas
+asociadas a la transmisión, tratamiento, análisis y recepción de información a través de medios físicos.
+Esta formación comprende el estudio de sistemas de telecomunicaciones involucrando por tanto la
+ingeniería eléctrica, la matemática aplicada y la computación.
+Estos temas son los propios del ejercicio de la ingeniería en el diseño, la especificación, el desarrollo y la
+operación de todo tipo de sistemas de comunicación.
+Dado el amplio alcance del concepto “información”, este perfil es el punto de partida adecuado para
+aquellos estudiantes interesados en profundizar en el diseño e implementación de sistemas de
+comunicación (cableados, radio y ópticos), estudio y despliegue de servicios de comunicación (Internet,
+Celular, WiFi, Internet de las Cosas), así como la evaluación de desempeño de estos sistemas.
+
+Semestre
+
+1
+
+Cr.
+
+2
+
+Cr.
+
+3
+
+Cr.
+
+4
+
+Cr.
+
+5
+
+Cr.
+
+Cr.
+
+1
+
+Cálculo dif. e integral
+en una variable
+
+13
+
+GAL 1
+
+9
+
+Física 1
+
+10
+
+Tallerine
+
+10
+
+Matemática inicial
+
+4
+
+46
+
+2
+
+Cálculo dif. e integral
+en varias variables
+
+13
+
+GAL 2
+
+9
+
+Física 2
+
+10
+
+Programación 1
+
+10
+
+0
+
+0
+
+42
+
+3
+
+Cálculo Vectorial
+
+10
+
+Probabilidad y
+Estadística
+
+10
+
+Física 3
+
+10
+
+Mecánica Newtoniana
+
+5
+
+45
+
+4
+
+Ecuaciones
+Diferenciales
+
+10
+
+Electromagnetismo
+
+10
+
+Física Experimental 2
+
+5
+
+Teoría de Circuitos
+
+8
+
+Diseño Lógico
+
+12
+
+45
+
+5
+
+Funciones de Variable
+Compleja
+
+5
+
+Señales y Sistemas
+
+11
+
+Intro. A los
+microprocesadores
+
+11
+
+Programación para
+Ingeniería Eléctrica
+
+7
+
+Electrónica
+Fundamental
+
+11
+
+45
+
+6
+
+Métodos numéricos
+
+8
+
+Sistemas y Control
+
+12
+
+Taller Fourier
+
+8
+
+Señales aleatorias y
+Modulación
+
+8
+
+Redes de Datos I
+
+8
+
+44
+
+7
+
+Medidas Eléctricas
+
+10
+
+Electrotécnica
+
+10
+
+Comunicaciones
+Digitales
+
+11 Antenas y Propagación 10
+
+Opc. Ingeniería y
+sociedad
+
+0
+
+41+
+
+8
+
+Pasantía
+
+10
+
+Instalaciones Eléctricas
+
+8
+
+Opcional Ing. Industrial
+
+0
+
+Opcional
+Telecomunicaciones
+
+0
+
+Opcional Electrónica
+o Sistemas Digitales
+
+0
+
+18+
+
+9
+
+Proyecto
+
+10
+
+Opcional
+Telecomunicaciones
+
+0
+
+Opcional Computación
+
+0
+
+Opcional Señales
+
+0
+
+Opcional
+Telecomunicaciones
+
+0
+
+10+
+
+10
+
+Proyecto
+
+25
+
+Legislación y relaciones
+industriales
+
+6
+
+Opcional Básica
+
+0
+
+Economía
+
+7
+
+Opcional
+Telecomunicaciones
+
+0
+
+38+
+
+17
+
+10 Física Experimental 1
+
+Algunas opcionales posibles de las distintas áreas sugeridas:
+●
+
+●
+
+●
+●
+●
+●
+●
+
+Señales-Transmisión de la Información: Comunicaciones Inalámbricas, Núcleo de Red, Redes
+de acceso, Propagación en entornos urbanos, Multimedia sobre IP, Taller de
+Telecomunicaciones, Seminario de iniciación a la investigación, Tecnologías de servicios
+audiovisuales, Redes de transporte de alta calidad, etc.
+Señales-Procesamiento de la Información: Estimación y predicción en series temporales,
+Reconocimiento de Patrones, Procesamiento digital de señales de audio, Tratamiento de
+imágenes por computadora, Introducción a la teoría de información, etc.
+Electrónica ó Sistemas digitales: Redes de sensores inalámbricos, Circuitos de radiofrecuencia,
+Sistemas embebidos para tiempo real, etc.
+Computación:
+Introducción a la computación científica, Programación 4, Fundamentos de
+bases de datos, Sistemas operativos, etc.
+Ingeniería Industrial: Costos para ingeniería, Control de calidad, Introducción a la investigación
+de operaciones, Administración general para ingenieros, etc.
+Ingeniería y
+Sociedad: Ciencia, tecnología y sociedad, Taller encararé, Módulos de
+Extensión, etc.
+En el grupo de opcional de telecomunicaciones/señales/computación ó básica: Se podrá elegir
+una unidad curricular de las mencionadas para los grupos de Transmisión de la Información,
+Procesamiento de la Información ó cCmputación; o se podrá elegir una unidad curricular de
+Matemática o Física. De estas últimas se recomienda elegir entre: Matemática discreta 1, Física
+Moderna, Vibraciones y Ondas, Optimización, etc.
+
+Perfil Sistemas Eléctricos de Potencia
+El ingeniero eléctrico, perfil Sistemas Eléctricos de Potencia habrá profundizado en los conceptos
+asociados a la planificación, diseño, protección, operación y mantenimiento de dichos sistemas,
+prestando especial atención a la generación, transmisión y distribución de energía eléctrica. Esta
+formación comprende también el estudio de dispositivos de electrónica de potencia.
+
+18
+
+Semestre
+
+1
+
+Cr.
+
+2
+
+Cr.
+
+3
+
+Cr.
+
+4
+
+Cr.
+
+5
+
+Cr.
+
+Cr.
+
+1
+
+Cálculo dif. e integral
+en una variable
+
+13
+
+GAL 1
+
+9
+
+Física 1
+
+10
+
+Tallerine
+
+10
+
+Matemática inicial
+
+4
+
+46
+
+2
+
+Cálculo dif. e integral
+en varias variables
+
+13
+
+GAL 2
+
+9
+
+Física 2
+
+10
+
+Programación 1
+
+10
+
+0
+
+0
+
+42
+
+3
+
+Cálculo Vectorial
+
+10
+
+Probabilidad y
+Estadística
+
+10
+
+Física 3
+
+10
+
+Mecánica Newtoniana
+
+5
+
+45
+
+4
+
+Ecuaciones
+Diferenciales
+
+10
+
+Electromagnetismo
+
+10
+
+Física Experimental 2
+
+5
+
+Teoría de Circuitos
+
+8
+
+Diseño Lógico
+
+12
+
+45
+
+5
+
+Funciones de Variable
+Compleja
+
+5
+
+Señales y Sistemas
+
+11
+
+Electrotécnica
+
+10
+
+Programación para
+Ingeniería Eléctrica
+
+7
+
+Electrónica
+Fundamental
+
+11
+
+44
+
+6
+
+Métodos numéricos
+
+8
+
+Sistemas y Control
+
+12
+
+Taller Fourier
+
+8
+
+Señales aleatorias y
+Modulación
+
+8
+
+Máquinas Eléctricas
+
+10
+
+46
+
+7
+
+Medidas Eléctricas
+
+10
+
+Intro. A los
+microprocesadores
+
+11
+
+Electrónica de
+Potencia
+
+10
+
+Redes Eléctricas
+
+10
+
+Taller de Máquinas
+
+4
+
+45
+
+8
+
+Pasantía
+
+10
+
+Redes de Datos I
+
+8
+
+Instalaciones
+Eléctricas
+
+8
+
+Transporte de Energía
+Eléctrica
+
+8
+
+Taller de Electrónica
+de Potencia
+
+4
+
+40
+
+9
+
+Proyecto
+
+10
+
+Opcional Ing. Industrial
+
+0
+
+Opcional Perfil
+
+0
+
+Opcional Perfil
+
+0
+
+Subestaciones de
+Media Tensión
+
+8
+
+18+
+
+10
+
+Proyecto
+
+25
+
+Legislación y relaciones
+industriales
+
+6
+
+Opc. Ingeniería y
+sociedad
+
+0
+
+Economía
+
+7
+
+Proy. De
+Instalaciones
+Eléctricas BT y MT
+
+10
+
+48
+
+10 Física Experimental 1
+
+Algunas opcionales posibles de las distintas áreas sugeridas:
+●
+●
+●
+
+Ingeniería Industrial: Costos para ingeniería, Control de calidad, Introducción a la investigación
+de operaciones, Administración general para ingenieros, etc.
+Ingeniería y
+Sociedad: Ciencia, tecnología y sociedad, Taller encararé, Módulos de
+Extensión, etc.
+En el grupo de opcional de perfil: Introducción a los Sistemas de Protección de Sistemas
+Eléctricos de Potencia, Generación de Energía Eléctrica, Estabilidad de Sistemas Eléctricos de
+Potencia, Comportamiento Mecánicos de Materiales, Calidad de Energía, Transitorios
+Electromagnéticos en sistemas eléctricos de potencia, entre otras.
+
+Perfil Electrónica
+El ingeniero eléctrico, perfil Electrónica, habrá profundizado en las técnicas asociadas al diseño y
+especificación de sistemas electrónicos, con especial énfasis en los circuitos que los componen, tanto
+analógicos como digitales. Esta formación se complementará con formación en áreas afines como
+Transmisión de la Información y Computación. Tendrá por lo menos una unidad curricular relativa a las
+áreas de aplicación de los sistemas electrónicos.
+Las áreas temáticas en que se profundiza en este perfil apuntan al ejercicio profesional en el diseño de
+sistemas electrónicos como producto final o embebidos en otros productos y sistemas. Se apunta también
+a la participación en equipos multidisciplinarios en la diversidad de áreas en que se aplican estos sistemas,
+tales como control industrial, telecomunicaciones, aplicaciones biomédicas y agropecuarias.
+La Tabla muestra las unidades curriculares que componen un ejemplo de currículo, así como una
+propuesta de su ordenamiento cronológico.
+
+19
+
+Semestre
+
+1
+
+Cr.
+
+2
+
+Cr.
+
+3
+
+Cr.
+
+4
+
+Cr.
+
+5
+
+Cr.
+
+Cr.
+
+1
+
+Cálculo dif. e integral
+en una variable
+
+13
+
+GAL 1
+
+9
+
+Física 1
+
+10
+
+Tallerine
+
+10
+
+Matemática inicial
+
+4
+
+46
+
+2
+
+Cálculo dif. e integral
+en varias variables
+
+13
+
+GAL 2
+
+9
+
+Física 2
+
+10
+
+Programación 1
+
+10
+
+0
+
+0
+
+42
+
+3
+
+Cálculo Vectorial
+
+10
+
+Probabilidad y
+Estadística
+
+10
+
+Física 3
+
+10
+
+Mecánica Newtoniana
+
+5
+
+45
+
+4
+
+Ecuaciones
+Diferenciales
+
+10
+
+Electromagnetismo
+
+10
+
+Física Experimental 2
+
+5
+
+Teoría de Circuitos
+
+8
+
+Diseño Lógico
+
+12
+
+45
+
+5
+
+Funciones de Variable
+Compleja
+
+5
+
+Señales y Sistemas
+
+11
+
+Intro. A los
+microprocesadores
+
+11
+
+Programación para
+Ingeniería Eléctrica
+
+7
+
+Electrónica
+Fundamental
+
+11
+
+45
+
+6
+
+Métodos numéricos
+
+8
+
+Sistemas y Control
+
+12
+
+Taller Fourier
+
+8
+
+Señales aleatorias y
+Modulación
+
+8
+
+Electrónica Avanzada
+1
+
+10
+
+46
+
+7
+
+Medidas Eléctricas
+
+10
+
+Electrotécnica
+
+10
+
+Opcional Básica
+
+0
+
+Sistemas Embebidos
+para Tiempo Real
+
+8
+
+Electrónica Avanzada
+2
+
+8
+
+36+
+
+8
+
+Pasantía
+
+10
+
+Instalaciones Eléctricas
+
+8
+
+Redes de Datos I
+
+8
+
+Opcional Electrónica o
+Sistemas Digitales
+
+0
+
+Opcional Electrónica
+o Sistemas Digitales
+
+0
+
+26+
+
+9
+
+Proyecto
+
+10
+
+Opcional Ing. Industrial
+
+0
+
+Opcional Electrónica o
+Sistemas Digitales
+
+0
+
+Opcional
+Telecomunicaciones o
+Señales
+
+0
+
+Opc. Ingeniería y
+sociedad
+
+0
+
+10+
+
+10
+
+Proyecto
+
+25
+
+Legislación y relaciones
+industriales
+
+6
+
+Economía
+
+7
+
+Opcional Perfil
+
+0
+
+Opcional Perfil
+
+0
+
+38+
+
+10 Física Experimental 1
+
+Al menos tres de las electivas deben ser de las áreas Electrónica o Sistemas Digitales. Ejemplos: Diseño
+lógico 2, Redes de sensores inalámbricos, Diseño de circuitos integrados, Circuitos de radiofrecuencia,
+Electrónica de potencia, Diseño de sistemas médicos implantables activos.
+Las unidades curriculares indicadas como opcional Perfil pueden elegirse o bien dentro de las electivas de
+Electrónica y Sistemas digitales para perfiles que apunten a una mayor especialización, o bien cursos de
+otras áreas de formación pertinentes a la formación del estudiante apuntando a una formación más
+generalista.
+De las cinco electivas mencionadas, al menos una debe estar relacionada con áreas de aplicación.
+Ejemplos: algunas de las ya mencionadas como Redes de sensores inalámbricos, Diseño de sistemas
+médicos implantables activos, Electrónica de potencia; otras como Introducción a los plcs, Ingeniería
+biomédica, Seminario de ingeniería biomédica, Comunicaciones inalámbricas.
+
+Perfil Procesamiento de Señales y Aprendizaje Automático
+El ingeniero eléctrico, perfil Procesamiento de Señales, habrá profundizado en los principios y técnicas
+asociadas a la adquisición y procesamiento de señales de diversos orígenes. Esta formación comprende el
+estudio de sistemas de adquisición, técnicas de acondicionamiento y herramientas físico-matemáticas de
+modelado y análisis de señales. Esto se complementará en áreas afines como electrónica e informática.
+Las señales a las que se enfrentará el futuro profesional provienen de diversas áreas, por ejemplo,
+biología, música, audiovisual, control entre otras. Para alcanzar esto es necesario tener un conocimiento
+básico que permita acercarse a dichas áreas así como capacidad de trabajo interdisciplinario. El volumen
+y diversidad de señales generadas en los diversas disciplinas requieren soluciones sistemáticas y que
+pueden llegar a ser automatizadas para la interpretación y el análisis de los fenómenos representados por
+las señales, así como una eventual toma de decisiones. Estos temas son los propios del ejercicio de la
+ingeniería en aplicaciones en medicina, biología, control industrial, robótica, telecomunicaciones,
+audiovisuales, entre otras.
+Dada la mencionada diversidad, este perfil es el punto de partida adecuado para aquellos alumnos
+
+20
+
+interesados en profundizar en las áreas como procesamiento de imágenes, procesamiento de audio,
+análisis de datos, reconocimiento de patrones, etc.
+
+Semestre
+
+1
+
+Cr.
+
+2
+
+Cr.
+
+3
+
+Cr.
+
+4
+
+Cr.
+
+5
+
+Cr.
+
+Cr.
+
+1
+
+Cálculo dif. e integral
+en una variable
+
+13
+
+GAL 1
+
+9
+
+Física 1
+
+10
+
+Tallerine
+
+10
+
+Matemática inicial
+
+4
+
+46
+
+2
+
+Cálculo dif. e integral
+en varias variables
+
+13
+
+GAL 2
+
+9
+
+Física 2
+
+10
+
+Programación 1
+
+10
+
+0
+
+0
+
+42
+
+3
+
+Cálculo Vectorial
+
+10
+
+Probabilidad y
+Estadística
+
+10
+
+Física 3
+
+10
+
+Mecánica Newtoniana
+
+5
+
+45
+
+4
+
+Ecuaciones
+Diferenciales
+
+10
+
+Electromagnetismo
+
+10
+
+Física Experimental 2
+
+5
+
+Teoría de Circuitos
+
+8
+
+Diseño Lógico
+
+12
+
+45
+
+5
+
+Funciones de Variable
+Compleja
+
+5
+
+Señales y Sistemas
+
+11
+
+Intro. A los
+microprocesadores
+
+11
+
+Programación para
+Ingeniería Eléctrica
+
+7
+
+Electrónica
+Fundamental
+
+11
+
+45
+
+6
+
+Métodos numéricos
+
+8
+
+Sistemas y Control
+
+12
+
+Taller Fourier
+
+8
+
+Señales aleatorias y
+Modulación
+
+8
+
+Fundamentos de
+Aprendizaje
+Automático
+
+8
+
+44
+
+7
+
+Medidas Eléctricas
+
+10
+
+Opcional Aprendizaje
+Automático
+
+0
+
+Opcional Básica
+
+0
+
+Opcional Señales
+
+0
+
+Opcional
+Telecomunicaciones
+
+0
+
+10+
+
+8
+
+Pasantía
+
+10
+
+Redes de Datos I
+
+8
+
+Opcional Señales
+
+0
+
+Opcional Computación
+
+0
+
+Opcional Electrónica
+o Sistemas Digitales
+
+0
+
+18+
+
+9
+
+Proyecto
+
+10
+
+Opcional Ing. Industrial
+
+0
+
+Electrotécnica
+
+10
+
+Opcional Señales
+
+0
+
+Opcional Señales
+
+0
+
+20+
+
+10
+
+Proyecto
+
+25
+
+Legislación y relaciones
+industriales
+
+6
+
+Instalaciones
+Eléctricas
+
+8
+
+Economía
+
+7
+
+0
+
+0
+
+46
+
+10 Física Experimental 1
+
+Opcionales de Señales: Tratamiento de imágenes por computadora; Estimación y Predicción en Series
+Temporales; Reconocimiento de Patrones; Procesamiento Digital de Señales de Audio; Herramientas de
+representación tiempo-frecuencia; Introducción a la Teoría de la Información; Teoría de Códigos
+Avanzado; Aplicaciones de la Teoría de la Información al Procesamiento de Imágenes; etc.
+Opcionales de Telecomunicaciones: Comunicaciones Inalámbricas; Núcleo de Red, Redes de acceso;
+Multimedia sobre IP; Taller de Comunicaciones; Tecnologías de servicios audiovisuales; etc.
+Opcionales Computación: Introducción a la Computación Científica; Fundamentos de bases de datos;
+Programación 2; Programación 3; Programación 4; Sistemas Operativos; Herramientas de Programación
+para el Procesamiento de Señales; etc.
+Opcional Electrónica ó Sistemas digitales: Redes de sensores inalámbricos; Sistemas embebidos para
+tiempo real; etc.
+Ingeniería Industrial: Costos para ingeniería; Control de calidad; Introducción a la investigación de
+operaciones; Administración general para ingenieros; etc.
+Ingeniería y Sociedad: Ciencia, tecnología y sociedad; Taller encararé; Módulos de Extensión; etc.
+Opcional básica: una unidad curricular de Matemática, Física, Biología, etc. A modo de ejemplo:
+Matemática discreta 1, Física Moderna, Vibraciones y Ondas, Optimización, un curso en Biología Celular
+y Molecular; Fisiología; Introducción a la Biología, etc.
+Otras áreas de formación complementaria: Seminario de iniciación a la investigación;
+
+21
+
+Perfil Ingeniería Biomédica
+El Ingeniero Electricista, perfil Ingeniería Biomédica, habrá profundizado en aspectos básicos de
+la medicina o biología que se complementará con formación en áreas afines de la Ingeniería
+Eléctrica como electrónica, informática, procesamiento de señales y telecomunicaciones.
+Se apunta especialmente a que el egresado esté preparado para participar en equipos
+interdisciplinarios en la diversidad de áreas en que interviene un ingeniero con este perfil, tales
+como fisiología, biología, veterinaria, ,medicina, neurociencias, entre otras. Asimismo, se espera que
+el egresado conozca la existencia de la normativa que regula las actividades del área y sea capaz
+de acudir a ella e interpretarla cada vez que lo necesite.
+El perfil requiere un mínimo de 32 créditos en unidades curriculares específicas del perfil: 8 créditos
+mínimos en una opcional básica en el área de medicina o biología (de áreas como Biología o
+Neurociencias dentro del área de formación “Otras áreas de formación básica”) y 24 créditos mínimos en
+opcionales de Ingeniería en Medicina y Biología.
+A continuación se esbozan cuatro ejemplos de organización de currícula que definen parte de la
+opcionalidad, dando un matiz en la formación con cuatro posibles énfasis diferentes en el ejercicio
+profesional.
+Ejemplo 1: perfil Ingeniería Biomédica con énfasis en señales
+Se profundiza en áreas que apuntan al ejercicio profesional en el procesamiento de señales,
+incluyendo el diseño de productos o sistemas (electrónicos o informáticos) y la especificación y
+selección de equipamiento biomédico vinculado al procesamiento de señales.
+El egresado con este perfil maneja con solidez técnicas de acondicionamiento y procesamiento de
+señales y aprendizaje automático, tanto para sistemas basados en señales temporales o
+multidimensionales. Se profundiza la formación en procesamiento de imágenes, y se complementa
+con formación adicional en áreas con las que el procesamiento de señales interactúa. Estas áreas
+incluyen: informática, imágenes médicas, diseño de dispositivos o equipamiento biomédico.
+Ejemplo 2: perfil Ingeniería Biomédica con énfasis en ingeniería clínica
+Se profundiza en áreas temáticas que apuntan al ejercicio profesional en el ámbito hospitalario.
+En particular, se profundiza la formación en ingeniería clínica, incluyendo aspectos de selección,
+mantenimiento y gestión de equipamiento biomédico, así como el mantenimiento de la
+infraestructura hospitalaria.
+El perfil combina sistemas eléctricos, electrónica (incluyendo electrónica de potencia),
+telecomunicaciones y señales con una formación específica de su área de actuación: informática
+médica, imágenes médicas, instalaciones eléctricas, diseño de equipamiento biomédico y mecánica
+de los fluidos.
+Ejemplo 3: perfil Ingeniería Biomédica con énfasis en electrónica
+Se profundiza en áreas temáticas que apuntan al ejercicio profesional en diseño, especificación, y
+fabricación de dispositivos y sistemas biomédicos. Esto incluye la adquisición y acondicionamiento
+de señales biomédicas.
+Otorga una sólida formación de base en análisis y diseño de circuitos y sistemas electrónicos
+que lo habilita a ser referente en los aspectos relativos a la electrónica en equipos de trabajo
+
+22
+
+interdisciplinarios.
+Ejemplo 4: perfil Ingeniería Biomédica con énfasis en informática
+Se profundiza en áreas temáticas que apuntan al ejercicio profesional en el área biomédica en
+temas de frontera entre la informática y la ingeniería eléctrica, incluyendo el diseño de productos
+o sistemas (electrónicos o informáticos), y la especificación y selección de equipamiento y
+sistemas informáticos biomédicos.
+Se profundiza en aspectos básicos de informática, en fundamentos de aprendizaje automático y en
+sistemas de información en salud. Se complementa con formación adicional en áreas con las que
+la informática interactúa con la aplicación final como la historia clínica electrónica y las ayudas
+al diagnóstico. Estas áreas incluyen: informática médica, protocolos y formatos de intercambio de
+información en equipamiento biomédico, aspectos de privacidad y seguridad de datos personales.
+A continuación un ejemplo de Perfil Ing. Biomédica con la organización por semestre:
+
+Semestre
+
+1
+
+Cr.
+
+2
+
+Cr.
+
+3
+
+Cr.
+
+4
+
+Cr.
+
+5
+
+1
+
+Cálculo dif. e integral
+13
+en una variable
+
+GAL 1
+
+9
+
+Física 1
+
+10
+
+Tallerine
+
+2
+
+Cálculo dif. e integral
+13
+en varias variables
+
+GAL 2
+
+9
+
+Física 2
+
+10
+
+Programación 1
+
+10 Mecánica Newtoniana 10 Física Experimental 1
+
+10 Matemática inicial (1)
+
+10
+
+0
+
+Cr.
+
+6
+
+Cr.
+
+Cr.
+
+4
+
+0
+
+0
+
+46
+
+0
+
+0
+
+0
+
+42
+
+5
+
+0
+
+0
+
+45
+
+3
+
+Cálculo Vectorial
+
+10
+
+Probabilidad y
+Estadística
+
+10
+
+Física 3
+
+4
+
+Ecuaciones
+Diferenciales
+
+10
+
+Electromagnetismo
+
+10
+
+Física Experimental 2
+
+5
+
+Teoría de Circuitos
+
+8
+
+Diseño Lógico
+
+12
+
+0
+
+0
+
+45
+
+Funciones de Variable
+5
+Compleja (Nueva)
+
+Señales y Sistemas
+
+11
+
+Intro. a los
+microprocesadores
+
+11
+
+Programación para
+Ingeniería Eléctrica
+
+7
+
+Electrónica
+Fundamental
+
+11
+
+0
+
+0
+
+45
+
+Sistemas y Control
+
+12
+
+Taller Fourier
+
+8
+
+Señales aleatorias y
+Modulación
+
+8
+
+Opcional Ingeniería
+Eléctrica
+
+0
+
+0
+
+0
+
+36+
+
+10
+
+0
+
+0
+
+20+
+
+5
+
+6
+
+Métodos numéricos
+
+8
+
+7
+
+Medidas Eléctricas
+
+10
+
+Opcional Ingeniería
+Eléctrica
+
+0
+
+Opcional Básica
+
+0
+
+Opcional Ingenieria
+Biológica
+
+0
+
+Estimación y
+predicción en series
+temporales
+
+8
+
+Pasantía
+
+10
+
+Redes de Datos I
+
+8
+
+Ingeniería Biomédica
+
+8
+
+AIMDs
+
+8
+
+Opcional Ingeniería
+Eléctrica
+
+0
+
+0
+
+0
+
+34+
+
+9
+
+Proyecto
+
+10 Opcional Ing. Industrial
+
+0
+
+Opcional Ingenieria
+Biológica
+
+0
+
+Opcional Ingenieria
+Biológica
+
+0
+
+Electrotécnica
+
+10
+
+0
+
+0
+
+20+
+
+10
+
+Proyecto
+
+25
+
+Legislación y relaciones
+industriales
+
+6
+
+Opc. Ingeniería y
+sociedad
+
+0
+
+Economía
+
+7
+
+Instalaciones
+Eléctricas
+
+8
+
+0
+
+0
+
+46+
+
+23
+
+
