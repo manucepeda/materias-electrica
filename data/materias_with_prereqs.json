@@ -171,6 +171,12 @@
       {
         "codigo": "CDIVV",
         "requiere_curso": true,
+        "requiere_exoneracion": false,
+        "exam_only": true
+      },
+      {
+        "codigo": "CDIV",
+        "requiere_curso": true,
         "requiere_exoneracion": true
       }
     ]
