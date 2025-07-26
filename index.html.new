@@ -89,11 +89,8 @@
     <div id="count"></div>
     <div id="grid" class="grid"></div>
     
-    <div class="nav-links" style="text-align: center; margin-top: 30px;">
+    <div style="text-align: center; margin-top: 30px;">
       <a href="graph.html" class="link" id="link-to-graph">Ver Grafo de Materias y Prerrequisitos</a>
-      <span id="table-view-link" style="display: none;">
-        <a href="table-view.html" class="link">Ver Plan Recomendado en tabla</a>
-      </span>
     </div>
   </main>
   

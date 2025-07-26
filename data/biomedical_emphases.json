@@ -1,0 +1,441 @@
+{
+  "Ingeniería Biomédica": {
+    "Electrónica": [
+      {
+        "semestre": 1,
+        "materias": [
+          {"codigo": "CAL1", "nombre": "Cálculo dif. e integral en una variable", "creditos": 13},
+          {"codigo": "GAL1", "nombre": "GAL 1", "creditos": 9},
+          {"codigo": "FIS1", "nombre": "Física 1", "creditos": 10},
+          {"codigo": "TINE", "nombre": "Tallerine", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 2,
+        "materias": [
+          {"codigo": "CAL2", "nombre": "Cálculo dif. e integral en varias variables", "creditos": 13},
+          {"codigo": "GAL2", "nombre": "GAL 2", "creditos": 9},
+          {"codigo": "FIS2", "nombre": "Física 2", "creditos": 10},
+          {"codigo": "PROG1", "nombre": "Programación 1", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 3,
+        "materias": [
+          {"codigo": "CALV", "nombre": "Cálculo Vectorial", "creditos": 10},
+          {"codigo": "PYES", "nombre": "Probabilidad y Estadística", "creditos": 10},
+          {"codigo": "FIS3", "nombre": "Física 3", "creditos": 10},
+          {"codigo": "MNEW", "nombre": "Mecánica Newtoniana", "creditos": 10},
+          {"codigo": "DL", "nombre": "Diseño Lógico", "creditos": 12}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 4,
+        "materias": [
+          {"codigo": "ECDF", "nombre": "Ecuaciones Diferenciales", "creditos": 10},
+          {"codigo": "ELMG", "nombre": "Electromagnetismo", "creditos": 10},
+          {"codigo": "FEXP2", "nombre": "Física Experimental 2", "creditos": 5},
+          {"codigo": "TC", "nombre": "Teoría de Circuitos", "creditos": 8},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 11}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 5,
+        "materias": [
+          {"codigo": "FVC", "nombre": "Funciones de Variable Compleja", "creditos": 5},
+          {"codigo": "SYS", "nombre": "Señales y Sistemas", "creditos": 11},
+          {"codigo": "IMPR", "nombre": "Intro. microprocesadores", "creditos": 11},
+          {"codigo": "PIE", "nombre": "Programación Ing. Eléctrica", "creditos": 7},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 11}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 6,
+        "materias": [
+          {"codigo": "MN", "nombre": "Métodos numéricos", "creditos": 8},
+          {"codigo": "SYC", "nombre": "Sistemas y Control", "creditos": 12},
+          {"codigo": "TF", "nombre": "Taller Fourier", "creditos": 8},
+          {"codigo": "SAM", "nombre": "Señales aleatorias y Modulación", "creditos": 8},
+          {"codigo": "EA1", "nombre": "Electrónica Avanzada 1", "creditos": 10}
+        ],
+        "totalCreditos": 46
+      },
+      {
+        "semestre": 7,
+        "materias": [
+          {"codigo": "ME", "nombre": "Medidas Eléctricas", "creditos": 10},
+          {"codigo": "SETR", "nombre": "Sistemas Embebidos T. Real", "creditos": 10},
+          {"codigo": "FC", "nombre": "Fisiología Cuantitativa", "creditos": 10},
+          {"codigo": "SIB", "nombre": "Seminario Ing. Biomédica", "creditos": 4},
+          {"codigo": "EA2", "nombre": "Electrónica Avanzada 2", "creditos": 8}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 8,
+        "materias": [
+          {"codigo": "PAS", "nombre": "Pasantía", "creditos": 10},
+          {"codigo": "RD1", "nombre": "Redes de Datos I", "creditos": 8},
+          {"codigo": "IB", "nombre": "Ingeniería Biomédica", "creditos": 8},
+          {"codigo": "AMD", "nombre": "AMDs", "creditos": 8},
+          {"codigo": "TIB2", "nombre": "Taller Ing. Biológica 2", "creditos": 8}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 9,
+        "materias": [
+          {"codigo": "PROY", "nombre": "Proyecto", "creditos": 15},
+          {"codigo": "IOP", "nombre": "Inv. Operaciones", "creditos": 10},
+          {"codigo": "DL2", "nombre": "Diseño lógico 2", "creditos": 8},
+          {"codigo": "EST", "nombre": "Estimación series temporales", "creditos": 10},
+          {"codigo": "ET", "nombre": "Electrotecnica", "creditos": 10}
+        ],
+        "totalCreditos": 53
+      },
+      {
+        "semestre": 10,
+        "materias": [
+          {"codigo": "PROY2", "nombre": "Proyecto", "creditos": 20},
+          {"codigo": "CTS", "nombre": "Ciencia, Tecnología y Sociedad", "creditos": 8},
+          {"codigo": "ECO", "nombre": "Economía", "creditos": 7},
+          {"codigo": "IE", "nombre": "Instalaciones Eléctricas", "creditos": 8}
+        ],
+        "totalCreditos": 43
+      }
+    ],
+    "Ingeniería Clínica": [
+      {
+        "semestre": 1,
+        "materias": [
+          {"codigo": "CAL1", "nombre": "Cálculo dif. e integral en una variable", "creditos": 13},
+          {"codigo": "GAL1", "nombre": "GAL 1", "creditos": 9},
+          {"codigo": "FIS1", "nombre": "Física 1", "creditos": 10},
+          {"codigo": "TINE", "nombre": "Tallerine", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 2,
+        "materias": [
+          {"codigo": "CAL2", "nombre": "Cálculo dif. e integral en varias variables", "creditos": 13},
+          {"codigo": "GAL2", "nombre": "GAL 2", "creditos": 9},
+          {"codigo": "FIS2", "nombre": "Física 2", "creditos": 10},
+          {"codigo": "PROG1", "nombre": "Programación 1", "creditos": 10},
+          {"codigo": "FEXP1", "nombre": "Física Experimental 1", "creditos": 5}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 3,
+        "materias": [
+          {"codigo": "CALV", "nombre": "Cálculo Vectorial", "creditos": 10},
+          {"codigo": "PYES", "nombre": "Probabilidad y Estadística", "creditos": 10},
+          {"codigo": "FIS3", "nombre": "Física 3", "creditos": 10},
+          {"codigo": "MNEW", "nombre": "Mecánica Newtoniana", "creditos": 10},
+          {"codigo": "DL", "nombre": "Diseño Lógico", "creditos": 12}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 4,
+        "materias": [
+          {"codigo": "ECDF", "nombre": "Ecuaciones Diferenciales", "creditos": 10},
+          {"codigo": "ELMG", "nombre": "Electromagnetismo", "creditos": 10},
+          {"codigo": "FEXP2", "nombre": "Física Experimental 2", "creditos": 5},
+          {"codigo": "TC", "nombre": "Teoría de Circuitos", "creditos": 8},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 11}
+        ],
+        "totalCreditos": 46
+      },
+      {
+        "semestre": 5,
+        "materias": [
+          {"codigo": "FVC", "nombre": "Funciones de Variable Compleja", "creditos": 5},
+          {"codigo": "SYS", "nombre": "Señales y Sistemas", "creditos": 11},
+          {"codigo": "IMPR", "nombre": "Intro. microprocesadores", "creditos": 11},
+          {"codigo": "PIE", "nombre": "Programación Ing. Eléctrica", "creditos": 7},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 10}
+        ],
+        "totalCreditos": 46
+      },
+      {
+        "semestre": 6,
+        "materias": [
+          {"codigo": "MN", "nombre": "Métodos numéricos", "creditos": 8},
+          {"codigo": "SYC", "nombre": "Sistemas y Control", "creditos": 12},
+          {"codigo": "TF", "nombre": "Taller Fourier", "creditos": 8},
+          {"codigo": "SAM", "nombre": "Señales aleatorias y Modulación", "creditos": 8},
+          {"codigo": "EA1", "nombre": "Electrónica Avanzada 1", "creditos": 10}
+        ],
+        "totalCreditos": 46
+      },
+      {
+        "semestre": 7,
+        "materias": [
+          {"codigo": "ME", "nombre": "Medidas Eléctricas", "creditos": 10},
+          {"codigo": "ET", "nombre": "Electrotécnica", "creditos": 10},
+          {"codigo": "FC", "nombre": "Fisiología Cuantitativa", "creditos": 10},
+          {"codigo": "SIB", "nombre": "Seminario Ing. Biomédica", "creditos": 4},
+          {"codigo": "EST", "nombre": "Estimación series temporales", "creditos": 10}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 8,
+        "materias": [
+          {"codigo": "PAS", "nombre": "Pasantía", "creditos": 10},
+          {"codigo": "IE", "nombre": "Instalaciones Eléctricas", "creditos": 8},
+          {"codigo": "IB", "nombre": "Ingeniería Biomédica", "creditos": 8},
+          {"codigo": "AMD", "nombre": "AMDs", "creditos": 8},
+          {"codigo": "IC", "nombre": "Ingeniería clínica", "creditos": 8}
+        ],
+        "totalCreditos": 47
+      },
+      {
+        "semestre": 9,
+        "materias": [
+          {"codigo": "PROY", "nombre": "Proyecto", "creditos": 15},
+          {"codigo": "PRL", "nombre": "Prev. Riesgos Laborales", "creditos": 6},
+          {"codigo": "IM", "nombre": "Imágenes médicas", "creditos": 8},
+          {"codigo": "EP", "nombre": "Electrónica de Potencia", "creditos": 10},
+          {"codigo": "SETR", "nombre": "Embebidos T. Real", "creditos": 10}
+        ],
+        "totalCreditos": 49
+      },
+      {
+        "semestre": 10,
+        "materias": [
+          {"codigo": "PROY2", "nombre": "Proyecto", "creditos": 20},
+          {"codigo": "CTS", "nombre": "Ciencia, Tecnología y Sociedad", "creditos": 8},
+          {"codigo": "ECO", "nombre": "Economía", "creditos": 7},
+          {"codigo": "RD1", "nombre": "Redes de Datos I", "creditos": 8}
+        ],
+        "totalCreditos": 43
+      }
+    ],
+    "Señales": [
+      {
+        "semestre": 1,
+        "materias": [
+          {"codigo": "CAL1", "nombre": "Cálculo dif. e integral en una variable", "creditos": 13},
+          {"codigo": "GAL1", "nombre": "GAL 1", "creditos": 9},
+          {"codigo": "FIS1", "nombre": "Física 1", "creditos": 10},
+          {"codigo": "TINE", "nombre": "Tallerine", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 2,
+        "materias": [
+          {"codigo": "CAL2", "nombre": "Cálculo dif. e integral en varias variables", "creditos": 13},
+          {"codigo": "GAL2", "nombre": "GAL 2", "creditos": 9},
+          {"codigo": "FIS2", "nombre": "Física 2", "creditos": 10},
+          {"codigo": "PROG1", "nombre": "Programación 1", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 3,
+        "materias": [
+          {"codigo": "CALV", "nombre": "Cálculo Vectorial", "creditos": 10},
+          {"codigo": "PYES", "nombre": "Probabilidad y Estadística", "creditos": 10},
+          {"codigo": "FIS3", "nombre": "Física 3", "creditos": 10},
+          {"codigo": "MNEW", "nombre": "Mecánica Newtoniana", "creditos": 10},
+          {"codigo": "FEXP1", "nombre": "Física Experimental 1", "creditos": 5}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 4,
+        "materias": [
+          {"codigo": "ECDF", "nombre": "Ecuaciones Diferenciales", "creditos": 10},
+          {"codigo": "ELMG", "nombre": "Electromagnetismo", "creditos": 10},
+          {"codigo": "FEXP2", "nombre": "Física Experimental 2", "creditos": 5},
+          {"codigo": "TC", "nombre": "Teoría de Circuitos", "creditos": 8},
+          {"codigo": "DL", "nombre": "Diseño Lógico", "creditos": 12}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 5,
+        "materias": [
+          {"codigo": "FVC", "nombre": "Funciones de Variable Compleja", "creditos": 5},
+          {"codigo": "SYS", "nombre": "Señales y Sistemas", "creditos": 11},
+          {"codigo": "IMPR", "nombre": "Intro. microprocesadores", "creditos": 11},
+          {"codigo": "PIE", "nombre": "Programación Ing. Eléctrica", "creditos": 7},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 11}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 6,
+        "materias": [
+          {"codigo": "MN", "nombre": "Métodos numéricos", "creditos": 8},
+          {"codigo": "SYC", "nombre": "Sistemas y Control", "creditos": 12},
+          {"codigo": "TF", "nombre": "Taller Fourier", "creditos": 8},
+          {"codigo": "SAM", "nombre": "Señales aleatorias y Modulación", "creditos": 8},
+          {"codigo": "AA", "nombre": "Aprendizaje Automático", "creditos": 8}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 7,
+        "materias": [
+          {"codigo": "ME", "nombre": "Medidas Eléctricas", "creditos": 10},
+          {"codigo": "SETR", "nombre": "Sistemas Embebidos T. Real", "creditos": 10},
+          {"codigo": "FC", "nombre": "Fisiología Cuantitativa", "creditos": 10},
+          {"codigo": "SIB", "nombre": "Seminario Ing. Biomédica", "creditos": 4},
+          {"codigo": "EST", "nombre": "Estimación series temporales", "creditos": 10}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 8,
+        "materias": [
+          {"codigo": "PAS", "nombre": "Pasantía", "creditos": 10},
+          {"codigo": "RD1", "nombre": "Redes de Datos", "creditos": 8},
+          {"codigo": "IB", "nombre": "Ingeniería Biomédica", "creditos": 8},
+          {"codigo": "AMD", "nombre": "AMDs", "creditos": 8},
+          {"codigo": "IC", "nombre": "Inteligencia Computacional", "creditos": 10}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 9,
+        "materias": [
+          {"codigo": "PROY", "nombre": "Proyecto", "creditos": 15},
+          {"codigo": "IOP", "nombre": "Inv. Operaciones", "creditos": 10},
+          {"codigo": "IM", "nombre": "Imágenes médicas", "creditos": 8},
+          {"codigo": "IBM", "nombre": "Informática Biología/Medicina", "creditos": 10},
+          {"codigo": "ET", "nombre": "Electrotécnica", "creditos": 10}
+        ],
+        "totalCreditos": 53
+      },
+      {
+        "semestre": 10,
+        "materias": [
+          {"codigo": "PROY2", "nombre": "Proyecto", "creditos": 20},
+          {"codigo": "CTS", "nombre": "Ciencia, Tecnología y Sociedad", "creditos": 8},
+          {"codigo": "ECO", "nombre": "Economía", "creditos": 7},
+          {"codigo": "IE", "nombre": "Instalaciones Eléctricas", "creditos": 8}
+        ],
+        "totalCreditos": 43
+      }
+    ],
+    "Informática": [
+      {
+        "semestre": 1,
+        "materias": [
+          {"codigo": "CAL1", "nombre": "Cálculo dif. e integral en una variable", "creditos": 13},
+          {"codigo": "GAL1", "nombre": "GAL 1", "creditos": 9},
+          {"codigo": "FIS1", "nombre": "Física 1", "creditos": 10},
+          {"codigo": "TINE", "nombre": "Tallerine", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 2,
+        "materias": [
+          {"codigo": "CAL2", "nombre": "Cálculo dif. e integral en varias variables", "creditos": 13},
+          {"codigo": "GAL2", "nombre": "GAL 2", "creditos": 9},
+          {"codigo": "FIS2", "nombre": "Física 2", "creditos": 10},
+          {"codigo": "PROG1", "nombre": "Programación 1", "creditos": 10}
+        ],
+        "totalCreditos": 42
+      },
+      {
+        "semestre": 3,
+        "materias": [
+          {"codigo": "CALV", "nombre": "Cálculo Vectorial", "creditos": 10},
+          {"codigo": "PYES", "nombre": "Probabilidad y Estadística", "creditos": 10},
+          {"codigo": "FIS3", "nombre": "Física 3", "creditos": 10},
+          {"codigo": "MNEW", "nombre": "Mecánica Newtoniana", "creditos": 10},
+          {"codigo": "FEXP1", "nombre": "Física Experimental 1", "creditos": 5}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 4,
+        "materias": [
+          {"codigo": "ECDF", "nombre": "Ecuaciones Diferenciales", "creditos": 10},
+          {"codigo": "ELMG", "nombre": "Electromagnetismo", "creditos": 10},
+          {"codigo": "FEXP2", "nombre": "Física Experimental 2", "creditos": 5},
+          {"codigo": "TC", "nombre": "Teoría de Circuitos", "creditos": 8},
+          {"codigo": "DL", "nombre": "Diseño Lógico", "creditos": 12}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 5,
+        "materias": [
+          {"codigo": "FVC", "nombre": "Funciones de Variable Compleja", "creditos": 5},
+          {"codigo": "SYS", "nombre": "Señales y Sistemas", "creditos": 11},
+          {"codigo": "IMPR", "nombre": "Intro. microprocesadores", "creditos": 11},
+          {"codigo": "PIE", "nombre": "Programación Ing. Eléctrica", "creditos": 7},
+          {"codigo": "EF", "nombre": "Electrónica Fundamental", "creditos": 11}
+        ],
+        "totalCreditos": 45
+      },
+      {
+        "semestre": 6,
+        "materias": [
+          {"codigo": "MN", "nombre": "Métodos numéricos", "creditos": 8},
+          {"codigo": "SYC", "nombre": "Sistemas y Control", "creditos": 12},
+          {"codigo": "TF", "nombre": "Taller Fourier", "creditos": 8},
+          {"codigo": "SAM", "nombre": "Señales aleatorias y Modulación", "creditos": 8},
+          {"codigo": "AA", "nombre": "Aprendizaje Automático", "creditos": 8}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 7,
+        "materias": [
+          {"codigo": "ME", "nombre": "Medidas Eléctricas", "creditos": 10},
+          {"codigo": "SETR", "nombre": "Embebidos T. Real", "creditos": 10},
+          {"codigo": "FC", "nombre": "Fisiología Cuantitativa", "creditos": 10},
+          {"codigo": "SIB", "nombre": "Seminario Ing. Biomédica", "creditos": 4},
+          {"codigo": "IBM", "nombre": "Informática Biología/Medicina", "creditos": 10}
+        ],
+        "totalCreditos": 44
+      },
+      {
+        "semestre": 8,
+        "materias": [
+          {"codigo": "PAS", "nombre": "Pasantía", "creditos": 10},
+          {"codigo": "RD1", "nombre": "Redes de Datos", "creditos": 8},
+          {"codigo": "IB", "nombre": "Ingeniería Biomédica", "creditos": 8},
+          {"codigo": "AMD", "nombre": "AMDs", "creditos": 8},
+          {"codigo": "SO", "nombre": "Sistemas Operativos", "creditos": 12}
+        ],
+        "totalCreditos": 46
+      },
+      {
+        "semestre": 9,
+        "materias": [
+          {"codigo": "PROY", "nombre": "Proyecto", "creditos": 15},
+          {"codigo": "IOP", "nombre": "Inv. Operaciones", "creditos": 10},
+          {"codigo": "IMED", "nombre": "Informática médica", "creditos": 5},
+          {"codigo": "EST", "nombre": "Estimación series temporales", "creditos": 10},
+          {"codigo": "ET", "nombre": "Electrotecnica", "creditos": 10}
+        ],
+        "totalCreditos": 50
+      },
+      {
+        "semestre": 10,
+        "materias": [
+          {"codigo": "PROY2", "nombre": "Proyecto", "creditos": 20},
+          {"codigo": "CTS", "nombre": "Ciencia, Tecnología y Sociedad", "creditos": 8},
+          {"codigo": "ECO", "nombre": "Economía", "creditos": 7},
+          {"codigo": "IE", "nombre": "Instalaciones Eléctricas", "creditos": 8}
+        ],
+        "totalCreditos": 43
+      }
+    ]
+  }
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan Recomendado - Ingeniería Biomédica</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="table-styles.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Plan de Estudios Recomendado</h1>
+      <h2>Ingeniería Biomédica</h2>
+      
+      <div class="nav-links">
+        <a href="index.html" class="link">Ver Listado de Materias</a>
+        <a href="graph.html" class="link">Ver Grafo de Materias</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Emphasis selector tabs -->
+    <div class="emphasis-tabs">
+      <button class="emphasis-tab active" data-emphasis="Electrónica">Énfasis Electrónica</button>
+      <button class="emphasis-tab" data-emphasis="Clínica">Énfasis Clínica</button>
+      <button class="emphasis-tab" data-emphasis="Señales">Énfasis Señales</button>
+      <button class="emphasis-tab" data-emphasis="Informática">Énfasis Informática</button>
+    </div>
+
+    <!-- Table container -->
+    <div class="table-container">
+      <div id="loading">Cargando plan de estudios...</div>
+      <div id="table-view" class="emphasis-table-container"></div>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item">
+        <div class="legend-color highlighted-subject"></div>
+        <span>Materia Seleccionada</span>
+      </div>
+      <div class="legend-item">
+        <div class="legend-color semester-total"></div>
+        <span>Créditos por Semestre (Acumulados)</span>
+      </div>
+    </div>
+    
+    <div class="info-message">
+      <p>Esta vista muestra el plan recomendado para cada énfasis de Ingeniería Biomédica.</p>
+      <p>Las materias se organizan por semestre y se muestra el total de créditos por semestre y acumulado.</p>
+      <p>Para volver a la vista anterior, use los enlaces en la parte superior.</p>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2023 Plan de Estudios - Ingeniería Eléctrica</p>
+    </div>
+  </footer>
+
+  <script src="table-view.js"></script>
+</body>
+</html>

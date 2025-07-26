@@ -7,8 +7,6 @@ let totalCredits = 0;
 let showExamOnlySubjects = false;
 let selectedDictationSemester = 'all';
 let selectedCreditFilter = 'all';
-let recommendedSubjects = []; // Subjects recommended for the selected emphasis
-let showRecommendedPath = false; // Flag to show recommended path
 
 // Static definition of profile emphasis options
 const EMPHASIS_OPTIONS = {
@@ -21,24 +19,17 @@ const NO_EMPHASIS_PROFILES = ['Control', 'Sistemas Eléctricos de Potencia'];
 
 async function load() {
   try {
-    // Load subjects data
     const res = await fetch('data/materias_with_prereqs.json');
     materias = await res.json();
     
     // Add event listeners to profile and emphasis selectors
     document.getElementById('perfil').addEventListener('change', handleProfileChange);
-    document.getElementById('emphasis').addEventListener('change', handleEmphasisChange);
+    document.getElementById('emphasis').addEventListener('change', renderGraph);
     
     // Add event listeners to the new filters
     document.getElementById('dictationSemester').addEventListener('change', handleDictationSemesterChange);
     document.getElementById('examOnlyFilter').addEventListener('click', toggleExamOnlyFilter);
     document.getElementById('creditFilter').addEventListener('change', handleCreditFilterChange);
-    
-    // Add event listener to the show recommended path toggle if it exists
-    const recommendedPathToggle = document.getElementById('recommendedPathToggle');
-    if (recommendedPathToggle) {
-      recommendedPathToggle.addEventListener('click', toggleRecommendedPath);
-    }
     
     // Initialize the graph (empty)
     renderGraph();
@@ -72,113 +63,28 @@ function handleCreditFilterChange() {
   renderGraph();
 }
 
-async function handleEmphasisChange() {
-  selectedEmphasis = document.getElementById('emphasis').value;
-  
-  // Only load recommended subjects for Ingeniería Biomédica profile
-  if (selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis) {
-    try {
-      const res = await fetch('data/biomedical_emphases.json');
-      const emphasisData = await res.json();
-      
-      if (emphasisData['Ingeniería Biomédica'] && emphasisData['Ingeniería Biomédica'][selectedEmphasis]) {
-        recommendedSubjects = emphasisData['Ingeniería Biomédica'][selectedEmphasis];
-        
-        // Show the recommended path toggle
-        const toggleContainer = document.getElementById('recommendedPathToggleContainer');
-        if (toggleContainer) {
-          toggleContainer.style.display = 'block';
-        } else {
-          // Create the toggle if it doesn't exist
-          createRecommendedPathToggle();
-        }
-      }
-    } catch (e) {
-      console.error('Error loading emphasis data:', e);
-      recommendedSubjects = [];
-    }
-  } else {
-    recommendedSubjects = [];
-    // Hide the recommended path toggle
-    const toggleContainer = document.getElementById('recommendedPathToggleContainer');
-    if (toggleContainer) {
-      toggleContainer.style.display = 'none';
-    }
-  }
-  
-  renderGraph();
-}
-
-function createRecommendedPathToggle() {
-  // Create the toggle container
-  const controlsContainer = document.querySelector('.additional-filters');
-  if (!controlsContainer) return;
-  
-  const toggleContainer = document.createElement('div');
-  toggleContainer.className = 'filter-group';
-  toggleContainer.id = 'recommendedPathToggleContainer';
-  
-  // Create the toggle button
-  const toggleButton = document.createElement('button');
-  toggleButton.id = 'recommendedPathToggle';
-  toggleButton.className = 'toggle-button';
-  toggleButton.textContent = 'Mostrar Plan de Estudio Recomendado';
-  toggleButton.addEventListener('click', toggleRecommendedPath);
-  
-  // Add to the DOM
-  toggleContainer.appendChild(toggleButton);
-  controlsContainer.appendChild(toggleContainer);
-}
-
-function toggleRecommendedPath() {
-  showRecommendedPath = !showRecommendedPath;
-  const button = document.getElementById('recommendedPathToggle');
-  if (button) {
-    if (showRecommendedPath) {
-      button.classList.add('active');
-      button.textContent = 'Ocultar Plan de Estudio Recomendado';
-    } else {
-      button.classList.remove('active');
-      button.textContent = 'Mostrar Plan de Estudio Recomendado';
-    }
-  }
-  renderGraph();
-}
-
 function handleProfileChange() {
   selectedPerfil = document.getElementById('perfil').value;
   const emphasisSelect = document.getElementById('emphasis');
-  const tableViewLink = document.getElementById('table-view-link');
+  
+  // Reset subject status when profile changes
+  approvedSubjects.clear();
+  exoneratedSubjects.clear();
+  totalCredits = 0;
   
   // Clear emphasis selection
-  emphasisSelect.innerHTML = '';
   selectedEmphasis = '';
   
-  // Hide recommended path toggle if it exists
-  const toggleContainer = document.getElementById('recommendedPathToggleContainer');
-  if (toggleContainer) {
-    toggleContainer.style.display = 'none';
-  }
-  
-  // Reset recommended path view
-  showRecommendedPath = false;
-  recommendedSubjects = [];
-  
-  // Show or hide table view link based on profile
-  if (selectedPerfil === 'Ingeniería Biomédica') {
-    tableViewLink.style.display = 'inline-block';
-  } else {
-    tableViewLink.style.display = 'none';
-  }
-  
-  // If profile has emphasis options, populate and enable the emphasis selector
+  // Update emphasis options based on selected profile
   if (selectedPerfil && EMPHASIS_OPTIONS[selectedPerfil]) {
+    // Profile has emphasis options
+    emphasisSelect.innerHTML = '';
     emphasisSelect.disabled = false;
     
-    // Add default option
+    // Add default "All emphasis" option
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
-    defaultOption.textContent = 'Seleccione un énfasis';
+    defaultOption.textContent = 'Todos los énfasis';
     emphasisSelect.appendChild(defaultOption);
     
     // Add emphasis options
@@ -188,10 +94,13 @@ function handleProfileChange() {
       option.textContent = emphasis;
       emphasisSelect.appendChild(option);
     });
+    
+    emphasisSelect.style.display = 'inline-block';
   } else {
-    // If profile doesn't have emphasis options, disable the emphasis selector
+    // Profile has no emphasis options or no profile selected
+    emphasisSelect.innerHTML = '<option value="">Seleccione un perfil primero</option>';
     emphasisSelect.disabled = true;
-    emphasisSelect.innerHTML = '<option value="">No aplica</option>';
+    emphasisSelect.style.display = 'none';
   }
   
   renderGraph();
@@ -208,12 +117,6 @@ function renderGraph() {
       <div style="text-align: center; padding: 50px; color: #5a6b7b;">
         Seleccione un perfil para visualizar el grafo de materias
       </div>`;
-    return;
-  }
-  
-  // Check if we should show the recommended path
-  if (showRecommendedPath && selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis && recommendedSubjects.length > 0) {
-    renderRecommendedPath();
     return;
   }
   
@@ -297,11 +200,11 @@ function renderGraph() {
         let dictationText = '';
         if (subject.dictation_semester) {
           if (subject.dictation_semester === 'both') {
-            dictationText = 'Ambos sem.';
+            dictationText = 'Ambos semestres';
           } else if (subject.dictation_semester === '1') {
-            dictationText = 'Sem. impar';
+            dictationText = 'Semestre impar';
           } else if (subject.dictation_semester === '2') {
-            dictationText = 'Sem. par';
+            dictationText = 'Semestre par';
           }
         }
         
@@ -329,16 +232,13 @@ function renderGraph() {
         const controlTags = [];
         if (selectedPerfil === 'Control') {
           if (subject.core) {
-            controlTags.push('<span class="tag-badge core-badge">C</span>');
+            controlTags.push('<span class="tag-badge core-badge">Core</span>');
           } else if (subject.opcional_perfil) {
-            controlTags.push('<span class="tag-badge opcional-badge">O</span>');
+            controlTags.push('<span class="tag-badge opcional-badge">Opcional</span>');
           } else if (subject.opcional_sugerida) {
-            controlTags.push('<span class="tag-badge sugerida-badge">S</span>');
+            controlTags.push('<span class="tag-badge sugerida-badge">Sugerida</span>');
           }
         }
-        
-        // Truncate the name more aggressively for a more compact view
-        const displayName = subject.nombre.length > 18 ? subject.nombre.substring(0, 16) + '...' : subject.nombre;
         
         return `
           <div 
@@ -348,10 +248,10 @@ function renderGraph() {
             title="${subject.nombre} (${subject.creditos} créditos)${prereqInfo ? '\n' + prereqInfo : ''}"
           >
             <span class="code">${subject.codigo}</span>
-            ${displayName}
-            <span class="credits">${subject.creditos} cr.</span>
+            ${subject.nombre.length > 22 ? subject.nombre.substring(0, 20) + '...' : subject.nombre}
+            <span class="credits">${subject.creditos} créditos</span>
             ${dictationText ? `<span class="dictation">${dictationText}</span>` : ''}
-            ${subject.exam_only ? `<span class="exam-only">L</span>` : ''}
+            ${subject.exam_only ? `<span class="exam-only">Libre</span>` : ''}
             ${controlTags.join('')}
           </div>
         `;
@@ -446,64 +346,6 @@ function updateStatusPanel() {
   document.getElementById('totalCredits').textContent = totalCredits;
 }
 
-function renderRecommendedPath() {
-  const treeContainer = document.getElementById('tree');
-  
-  let html = `
-    <div class="recommended-path-header">
-      <h3>Plan de Estudio Recomendado - ${selectedPerfil}: Énfasis en ${selectedEmphasis}</h3>
-      <p class="muted">Este plan muestra la combinación recomendada de materias por semestre.</p>
-    </div>
-  `;
-  
-  // Add semester rows for each semester in the recommended path
-  recommendedSubjects.forEach(semesterData => {
-    html += `
-    <div class="semester-row recommended-semester">
-      <div class="semester-label">Semestre ${semesterData.semestre} <span class="credits-total">${semesterData.totalCreditos} cr.</span></div>
-      <div class="recommended-subjects">
-        ${semesterData.materias.map(subject => {
-          // Find the subject in the main materias array to get full details
-          const fullSubject = materias.find(m => m.codigo === subject.codigo) || subject;
-          
-          // Check if subject is approved or exonerated
-          let statusClass = '';
-          if (exoneratedSubjects.has(subject.codigo)) {
-            statusClass = 'exonerated';
-          } else if (approvedSubjects.has(subject.codigo)) {
-            statusClass = 'approved';
-          }
-          
-          return `
-            <div 
-              class="subject-btn recommended-subject ${statusClass}" 
-              data-code="${subject.codigo}"
-              onclick="toggleSubjectStatus('${subject.codigo}')"
-              title="${subject.nombre} (${subject.creditos} créditos)"
-            >
-              <span class="code">${subject.codigo}</span>
-              ${subject.nombre.length > 18 ? subject.nombre.substring(0, 16) + '...' : subject.nombre}
-              <span class="credits">${subject.creditos} cr.</span>
-              ${fullSubject.exam_only ? `<span class="exam-only">L</span>` : ''}
-            </div>
-          `;
-        }).join('')}
-      </div>
-    </div>`;
-  });
-  
-  // Add total credits at the bottom
-  const totalCreditsCount = recommendedSubjects.reduce((total, semester) => total + semester.totalCreditos, 0);
-  html += `
-    <div class="recommended-path-footer">
-      <p>Total de créditos del plan: <strong>${totalCreditsCount}</strong></p>
-    </div>
-  `;
-  
-  treeContainer.innerHTML = html;
-  updateStatusPanel();
-}
-
 // Add a link to the graph view in the original index.html
 function addLinkToIndex() {
   const mainElement = document.querySelector('main');
@@ -517,108 +359,6 @@ function addLinkToIndex() {
 }
 
 // Load the data when the page loads
-// Enhanced subject creation function to support table view link
-function createSubjectElement(subject, status) {
-  // Create the button element
-  const button = document.createElement('button');
-  button.className = `subject-btn ${status}`;
-  button.dataset.code = subject.code;
-  button.dataset.credits = subject.credits;
-  
-  if (subject.exam_only) {
-    button.classList.add('exam-only');
-  }
-  
-  // Add recommended class if needed
-  if (showRecommendedPath && isRecommendedSubject(subject.code)) {
-    button.classList.add('recommended');
-  }
-
-  // Create subject details content
-  const content = document.createElement('div');
-  content.className = 'subject-content';
-  
-  // Subject name
-  const name = document.createElement('div');
-  name.className = 'subject-name';
-  name.textContent = subject.name;
-  
-  // Subject code
-  const code = document.createElement('div');
-  code.className = 'subject-code';
-  code.textContent = subject.code;
-  
-  // Credits info
-  const credits = document.createElement('div');
-  credits.className = 'subject-credits';
-  credits.textContent = `${subject.credits} créditos`;
-  
-  // Append all elements
-  content.appendChild(name);
-  content.appendChild(code);
-  content.appendChild(credits);
-  button.appendChild(content);
-  
-  // Add table link for Ingeniería Biomédica
-  if (selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis) {
-    const tableLink = document.createElement('a');
-    tableLink.href = `table-view.html?highlight=${subject.code}&emphasis=${selectedEmphasis}`;
-    tableLink.className = 'table-link';
-    tableLink.title = 'Ver en tabla de plan recomendado';
-    tableLink.textContent = '📋';
-    tableLink.style.position = 'absolute';
-    tableLink.style.top = '5px';
-    tableLink.style.right = '5px';
-    tableLink.style.fontSize = '0.8rem';
-    tableLink.style.padding = '2px';
-    tableLink.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-    tableLink.style.borderRadius = '3px';
-    tableLink.style.display = 'none';
-    
-    button.appendChild(tableLink);
-    
-    // Show table link on hover
-    button.addEventListener('mouseenter', () => {
-      tableLink.style.display = 'block';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      tableLink.style.display = 'none';
-    });
-    
-    // Prevent click propagation when clicking the table link
-    tableLink.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-  }
-  
-  // Add click handlers
-  button.addEventListener('click', () => {
-    if (status === 'approved') {
-      removeApprovedSubject(subject.code);
-    } else if (status === 'exonerated') {
-      removeExoneratedSubject(subject.code);
-    } else {
-      // Toggle between approved and exonerated
-      if (event.ctrlKey || event.metaKey) {
-        addExoneratedSubject(subject.code);
-      } else {
-        addApprovedSubject(subject.code);
-      }
-    }
-  });
-  
-  // Add tooltip for prerequisites
-  if (subject.prerequisites && subject.prerequisites.length > 0) {
-    const prereqCodes = subject.prerequisites.map(p => p.code).join(', ');
-    button.title = `Prerrequisitos: ${prereqCodes}`;
-  } else {
-    button.title = 'No tiene prerrequisitos';
-  }
-  
-  return button;
-}
-
 window.addEventListener('DOMContentLoaded', () => {
   load();
   addLinkToIndex();

@@ -4,12 +4,15 @@
     "creditos": 13,
     "semestre": 1,
     "perfiles": [
-      "Telecomunicaciones",
-      "Sistemas Eléctricos de Potencia",
       "Electrónica",
-      "Procesamiento de Señales y Aprendizaje Automático",
+      "Control",
+      "Sistemas Eléctricos de Potencia", 
       "Ingeniería Biomédica"
     ],
+    "enfasis": {
+      "Electrónica": ["Electrónica Biomédica", "Sistemas Embebidos", "Circuitos y Sistemas Electrónicos"],
+      "Ingeniería Biomédica": ["Electrónica", "Ingeniería Clínica", "Señales", "Informática"]
+    },
     "codigo": "CDIV",
     "dictation_semester": "1", 
     "exam_only": true,
@@ -28,7 +31,7 @@
     ],
     "codigo": "GAL1",
     "dictation_semester": "1", 
-    "exam_only": false,
+    "exam_only": true,
     "prerequisitos": []
   },
   {
@@ -44,7 +47,7 @@
     ],
     "codigo": "FIS1",
     "dictation_semester": "both", 
-    "exam_only": false,
+    "exam_only": true,
     "prerequisitos": []
   },
   {
@@ -76,7 +79,7 @@
     ],
     "codigo": "MATINIC",
     "dictation_semester": "both",
-    "exam_only": true,
+    "exam_only": false,
     "prerequisitos": []
   },
   {
@@ -167,12 +170,12 @@
       "Ingeniería Biomédica"
     ],
     "codigo": "CVEC",
+    "exam_only": true,
     "prerequisitos": [
       {
         "codigo": "CDIVV",
         "requiere_curso": true,
-        "requiere_exoneracion": false,
-        "exam_only": true
+        "requiere_exoneracion": false
       },
       {
         "codigo": "CDIV",
@@ -560,12 +563,12 @@
     "creditos": 8,
     "semestre": 6,
     "perfiles": [
-      "Telecomunicaciones",
-      "Sistemas Eléctricos de Potencia",
       "Electrónica",
-      "Procesamiento de Señales y Aprendizaje Automático",
+      "Control",
+      "Sistemas Eléctricos de Potencia",
       "Ingeniería Biomédica"
     ],
+    "core": true,
     "codigo": "REDES1",
     "prerequisitos": [
       {
@@ -755,20 +758,15 @@
     "semestre": 6,
     "perfiles": ["Electrónica"],
     "codigo": "ELECAV1",
-    "prerequisitos": [
-      {
-        "codigo": "ELECFUND",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
-      }
-    ]
+    "prerequisitos": []
   },
   {
     "nombre": "Sistemas Embebidos para Tiempo Real",
     "creditos": 8,
     "semestre": 7,
-    "perfiles": ["Electrónica"],
+    "perfiles": ["Electrónica", "Control"],
     "codigo": "SISEMB",
+    "core": true,
     "prerequisitos": [
       {
         "codigo": "MICRO",
@@ -809,8 +807,9 @@
     "nombre": "Estimación y predicción en series temporales",
     "creditos": 10,
     "semestre": 7,
-    "perfiles": ["Ingeniería Biomédica"],
+    "perfiles": ["Ingeniería Biomédica", "Control"],
     "codigo": "ESTSER",
+    "opcional_perfil": true,
     "prerequisitos": [
       {
         "codigo": "PROB",
@@ -1179,5 +1178,59 @@
     "prerequisitos": [
       {"codigo": "PROY9BIO", "requiere_curso": true, "requiere_exoneracion": false}
     ]
+  },
+  {
+    "nombre": "Instrumentación industrial",
+    "creditos": 8,
+    "semestre": 8,
+    "perfiles": ["Control"],
+    "codigo": "INSIND",
+    "core": true,
+    "prerequisitos": []
+  },
+  {
+    "nombre": "Introducción a los PLC",
+    "creditos": 5,
+    "semestre": 8,
+    "perfiles": ["Control"],
+    "codigo": "INTPLC",
+    "core": true,
+    "prerequisitos": []
+  },
+  {
+    "nombre": "Control en tiempo discreto",
+    "creditos": 8,
+    "semestre": 9,
+    "perfiles": ["Control"],
+    "codigo": "CTDISC",
+    "opcional_perfil": true,
+    "prerequisitos": []
+  },
+  {
+    "nombre": "Fundamentos de robótica industrial",
+    "creditos": 8,
+    "semestre": 9,
+    "perfiles": ["Control"],
+    "codigo": "FROBIN",
+    "opcional_perfil": true,
+    "prerequisitos": []
+  },
+  {
+    "nombre": "Análisis y control de sistemas no lineales",
+    "creditos": 8,
+    "semestre": 9,
+    "perfiles": ["Control"],
+    "codigo": "ACSNL",
+    "opcional_perfil": true,
+    "prerequisitos": []
+  },
+  {
+    "nombre": "Fundamentos de robótica autónoma",
+    "creditos": 8,
+    "semestre": 9,
+    "perfiles": ["Control"],
+    "codigo": "FROBA",
+    "opcional_perfil": true,
+    "prerequisitos": []
   }
 ]

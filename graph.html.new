@@ -10,14 +10,6 @@
     <header>
         <h1>Malla Curricular Ingeniería Eléctrica</h1>
         <h2>Visualización en Grafo por Perfil</h2>
-        
-        <div class="nav-links">
-            <a href="index.html" class="link">Ver Listado de Materias</a>
-            <span id="table-view-link" style="display: none;">
-                <a href="table-view.html" class="link">Ver Plan Recomendado en tabla</a>
-            </span>
-        </div>
-        
         <div class="filters">
             <div class="filter-group">
                 <label for="perfil">Perfil:</label>
@@ -61,8 +53,6 @@
             <div class="filter-group">
                 <button id="examOnlyFilter">Mostrar materias libres</button>
             </div>
-            
-            <!-- The recommended path toggle will appear here dynamically when an Ing. Biomédica emphasis is selected -->
         </div>
         
         <div class="legend">

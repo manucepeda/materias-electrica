@@ -94,14 +94,7 @@ function render() {
     return a.nombre.localeCompare(b.nombre);
   });
 
-  renderSubjectCards(filtered);
-}
-
-function renderSubjectCards(filtered) {
   const grid = document.getElementById('grid');
-  const perfil = document.getElementById('perfil').value;
-  const enfasis = document.getElementById('emphasis')?.value;
-  
   grid.innerHTML = filtered.map(m => {
     // Get dictation semester text
     let dictationText = '';
@@ -144,16 +137,10 @@ function renderSubjectCards(filtered) {
       });
     }
     
-    // Table view link for Ingeniería Biomédica
-    let tableViewButton = '';
-    if (perfil === 'Ingeniería Biomédica' && enfasis) {
-      tableViewButton = `<a href="table-view.html?highlight=${m.codigo}&emphasis=${enfasis}" class="table-link" title="Ver en tabla de plan recomendado">📋</a>`;
-    }
-    
     return `
       <article>
         <h2 style="margin:0;font-size:1.05rem;font-weight:700;">
-          <span class="codigo">${m.codigo || ''}</span> ${m.nombre} ${tableViewButton}
+          <span class="codigo">${m.codigo || ''}</span> ${m.nombre}
         </h2>
 
         <div class="muted">
@@ -190,17 +177,9 @@ function handlePerfilChange() {
   const perfilSelect = document.getElementById('perfil');
   const selectedPerfil = perfilSelect.value;
   const emphasisSelect = document.getElementById('emphasis');
-  const tableViewLink = document.getElementById('table-view-link');
   
   // Reset the emphasis options
   emphasisSelect.innerHTML = '';
-  
-  // Show or hide table view link based on profile
-  if (selectedPerfil === 'Ingeniería Biomédica') {
-    tableViewLink.style.display = 'inline-block';
-  } else {
-    tableViewLink.style.display = 'none';
-  }
   
   if (!selectedPerfil) {
     // No profile selected
