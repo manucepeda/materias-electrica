@@ -49,14 +49,16 @@ export class UIManager {
     if (!profileName) {
       emphasisElement.innerHTML = '<option value="">Seleccione un perfil primero</option>';
       emphasisElement.disabled = true;
-      emphasisElement.style.display = 'none';
+      emphasisElement.classList.add('hidden');
+      emphasisElement.classList.remove('visible');
       return;
     }
 
     if (profileHasEmphasis(profileName)) {
       // Profile has emphasis options
       emphasisElement.disabled = false;
-      emphasisElement.style.display = 'inline-block';
+      emphasisElement.classList.add('visible');
+      emphasisElement.classList.remove('hidden');
 
       // Add default option
       const defaultOption = document.createElement('option');
@@ -76,7 +78,8 @@ export class UIManager {
       // Profile has no emphasis options
       emphasisElement.innerHTML = '<option value="">No hay énfasis para este perfil</option>';
       emphasisElement.disabled = true;
-      emphasisElement.style.display = 'none';
+      emphasisElement.classList.add('hidden');
+      emphasisElement.classList.remove('visible');
     }
   }
 
@@ -87,9 +90,11 @@ export class UIManager {
     if (!linkElement) return;
 
     if (profileHasTableView(profileName)) {
-      linkElement.style.display = 'inline-block';
+      linkElement.classList.add('visible');
+      linkElement.classList.remove('hidden');
     } else {
-      linkElement.style.display = 'none';
+      linkElement.classList.add('hidden');
+      linkElement.classList.remove('visible');
     }
   }
 

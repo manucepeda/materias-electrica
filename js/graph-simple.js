@@ -3,32 +3,7 @@
  * Working version that properly loads and displays profiles
  */
 
-// Profile configuration
-const PROFILE_CONFIG = {
-  'Electrónica': {
-    file: 'data/profiles/electronica.json',
-    hasEmphasis: true,
-    emphasis: ['Electrónica Biomédica', 'Sistemas Embebidos', 'Circuitos y Sistemas Electrónicos']
-  },
-  'Control': {
-    file: 'data/profiles/control.json',
-    hasEmphasis: false
-  },
-  'Sistemas Eléctricos de Potencia': {
-    file: 'data/profiles/potencia.json',
-    hasEmphasis: false
-  },
-  'Ingeniería Biomédica': {
-    file: 'data/profiles/biomedica.json',
-    hasEmphasis: true,
-    emphasis: ['Electrónica', 'Ingeniería Clínica', 'Señales', 'Informática'],
-    hasTableView: true
-  },
-  'Señales y Aprendizaje Automático': {
-    file: 'data/profiles/senales.json',
-    hasEmphasis: false
-  }
-};
+import { PROFILE_CONFIG } from './config.js';
 
 class GraphApp {
   constructor() {

@@ -3,6 +3,8 @@
  * Main application for subject listing and search functionality
  */
 
+import { PROFILE_CONFIG } from './config.js';
+
 class ListadoApp {
   constructor() {
     this.allSubjects = [];
@@ -18,31 +20,8 @@ class ListadoApp {
       examOnly: 'all'
     };
     
-    // Profile configuration
-    this.PROFILE_CONFIG = {
-      'Electrónica': {
-        file: 'data/profiles/electronica.json',
-        hasEmphasis: true,
-        emphasis: ['Electrónica Biomédica', 'Sistemas Embebidos', 'Circuitos y Sistemas Electrónicos']
-      },
-      'Control': {
-        file: 'data/profiles/control.json',
-        hasEmphasis: false
-      },
-      'Sistemas Eléctricos de Potencia': {
-        file: 'data/profiles/potencia.json',
-        hasEmphasis: false
-      },
-      'Ingeniería Biomédica': {
-        file: 'data/profiles/biomedica.json',
-        hasEmphasis: true,
-        emphasis: ['Electrónica', 'Ingeniería Clínica', 'Señales', 'Informática']
-      },
-      'Señales y Aprendizaje Automático': {
-        file: 'data/profiles/senales.json',
-        hasEmphasis: false
-      }
-    };
+    // Use imported profile configuration
+    this.PROFILE_CONFIG = PROFILE_CONFIG;
   }
 
   /**

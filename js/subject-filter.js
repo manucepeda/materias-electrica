@@ -8,6 +8,15 @@ export class SubjectFilter {
   }
 
   /**
+   * Get default dictation semester based on semester number
+   * @param {number} semester - The semester number
+   * @returns {string} The default dictation semester ('1' or '2')
+   */
+  getDefaultDictationSemester(semester) {
+    return semester % 2 === 1 ? '1' : '2';
+  }
+
+  /**
    * Filter subjects based on search query
    */
   filterBySearch(subjects, searchQuery) {
@@ -46,8 +55,8 @@ export class SubjectFilter {
 
     return subjects.filter(subject => {
       if (!subject.dictation_semester) {
-        // Default value if not specified (backward compatibility)
-        const defaultDictation = subject.semestre % 2 === 1 ? '1' : '2';
+        // Default dictation semester based on the current semester value
+        const defaultDictation = this.getDefaultDictationSemester(subject.semestre);
         if (dictationSemester === 'both') return false;
         return dictationSemester === defaultDictation;
       } else {

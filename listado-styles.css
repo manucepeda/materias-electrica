@@ -1,5 +1,9 @@
 /* Enhanced Listado Page Styles */
 
+:root {
+  --monospace-font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
 /* Quick Stats */
 .quick-stats {
   margin: 2rem auto;
@@ -166,7 +170,7 @@
 }
 
 .subject-code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: var(--monospace-font-family);
   font-size: 0.95rem;
   font-weight: 600;
   color: #003366;
@@ -300,7 +304,7 @@
 }
 
 .prereq-code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: var(--monospace-font-family);
   font-weight: 600;
   color: #003366;
   font-size: 0.9rem;
@@ -368,7 +372,7 @@
 }
 
 .related-code {
-  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-family: var(--monospace-font-family);
   font-weight: 600;
   color: #1e40af;
   font-size: 0.85rem;

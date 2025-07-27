@@ -1,4 +1,14 @@
 /* Facultad de Ingeniería UDELAR - Ingeniería Eléctrica Modern Theme */
+
+/* Utility classes for show/hide functionality */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: inline-block !important;
+}
+
 html, body {
   height: 100%;
   margin: 0;
