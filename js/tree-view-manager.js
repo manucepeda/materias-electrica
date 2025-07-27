@@ -565,17 +565,13 @@ export class TreeViewManager {
     }
 
     if (totalCreditsEl) {
-      const approvedCredits = Array.from(this.approvedSubjects).reduce((total, code) => {
-        const subject = this.allSubjects.find(s => s.codigo === code);
-        return total + (subject ? parseInt(subject.creditos) || 0 : 0);
-      }, 0);
-
+      // Only exonerated subjects count towards credits, not approved ones
       const exoneratedCredits = Array.from(this.exoneratedSubjects).reduce((total, code) => {
         const subject = this.allSubjects.find(s => s.codigo === code);
         return total + (subject ? parseInt(subject.creditos) || 0 : 0);
       }, 0);
 
-      totalCreditsEl.textContent = approvedCredits + exoneratedCredits;
+      totalCreditsEl.textContent = exoneratedCredits;
     }
   }
 
