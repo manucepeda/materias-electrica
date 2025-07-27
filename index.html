@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla Curricular Ingeniería Eléctrica - Visualización en Grafo</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles-profile-notes.css">
 </head>
 <body>
     <header>
@@ -12,7 +13,7 @@
         <h2>Visualización en Grafo por Perfil</h2>
         
         <div class="nav-links">
-            <a href="index.html" class="link">Ver Listado de Materias</a>
+            <a href="listado.html" class="link">Ver Listado de Materias</a>
             <span id="table-view-link" style="display: none;">
                 <a href="table-view.html" class="link">Ver Plan Recomendado en tabla</a>
             </span>
@@ -23,10 +24,6 @@
                 <label for="perfil">Perfil:</label>
                 <select id="perfil">
                     <option value="">Seleccione un perfil</option>
-                    <option value="Electrónica">Electrónica</option>
-                    <option value="Control">Control</option>
-                    <option value="Sistemas Eléctricos de Potencia">Sistemas Eléctricos de Potencia</option>
-                    <option value="Ingeniería Biomédica">Ingeniería Biomédica</option>
                 </select>
             </div>
             
@@ -53,16 +50,33 @@
                 <label for="creditFilter">Créditos:</label>
                 <select id="creditFilter">
                     <option value="all">Todos</option>
-                    <option value="less10">Menos de 10</option>
-                    <option value="more10">10 o más</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="15">15</option>
+                    <option value="20">20</option>
+                    <option value="25">25</option>
                 </select>
             </div>
             
             <div class="filter-group">
-                <button id="examOnlyFilter">Mostrar materias libres</button>
+                <label>
+                    <input type="checkbox" id="examOnlyFilter">
+                    Mostrar solo materias libres
+                </label>
             </div>
-            
-            <!-- The recommended path toggle will appear here dynamically when an Ing. Biomédica emphasis is selected -->
+        </div>
+        
+        <div id="recommendedPathToggleContainer" style="display: none;">
+            <button id="recommendedPathToggle" class="recommended-path-toggle">
+                Mostrar Plan de Estudio Recomendado
+            </button>
         </div>
         
         <div class="legend">
@@ -102,7 +116,7 @@
         
         <div class="status-panel">
             <div class="status-item">
-                <span>Total materias aprobadas/exoneradas: </span>
+                <span>Total materias: </span>
                 <span id="totalSubjects">0</span>
             </div>
             <div class="status-item">
@@ -129,6 +143,6 @@
         <p>"Las nubes pasan, el azul queda" -  💙</p>
     </footer>
 
-    <script src="graph.js"></script>
+    <script type="module" src="js/graph-simple.js"></script>
 </body>
 </html>
