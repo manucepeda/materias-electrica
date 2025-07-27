@@ -49,16 +49,14 @@ export class UIManager {
     if (!profileName) {
       emphasisElement.innerHTML = '<option value="">Seleccione un perfil primero</option>';
       emphasisElement.disabled = true;
-      emphasisElement.classList.add('hidden');
-      emphasisElement.classList.remove('visible');
+      this.toggleVisibility(emphasisElement, false);
       return;
     }
 
     if (profileHasEmphasis(profileName)) {
       // Profile has emphasis options
       emphasisElement.disabled = false;
-      emphasisElement.classList.add('visible');
-      emphasisElement.classList.remove('hidden');
+      this.toggleVisibility(emphasisElement, true);
 
       // Add default option
       const defaultOption = document.createElement('option');
