@@ -1,0 +1,19 @@
+{
+  "nombre": "Sistemas Eléctricos de Potencia",
+  "descripcion": "Perfil de Sistemas Eléctricos de Potencia enfocado en generación, transmisión y distribución de energía eléctrica",
+  "materias_core": ["Electro", "Maquel", "Elepot", "iiee"],
+  "materias_optativas": ["Medel", "SyC"],
+  "materias_sugeridas": [],
+  "plan_recomendado": {
+    "1": ["CDIV", "GAL1", "F1", "Tallerine", "MATINIC"],
+    "2": ["CDIVV", "GAL2", "F2", "P1"],
+    "3": ["CVec", "PyE", "F3", "MecNewt", "FExp1"],
+    "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
+    "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
+    "6": ["MetNum", "SyC", "Maquel"],
+    "7": ["Medel", "Electro", "Elepot"],
+    "8": ["PROYDIS"],
+    "9": [],
+    "10": ["iiee"]
+  }
+}

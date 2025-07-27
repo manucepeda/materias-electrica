@@ -1,0 +1,19 @@
+{
+  "nombre": "Control",
+  "descripcion": "Perfil de Control con énfasis en sistemas automáticos y control de procesos",
+  "materias_core": ["SyC", "InsInd", "IntroPLC"],
+  "materias_optativas": ["SCTD", "FRI", "CNL", "FRA"],
+  "materias_sugeridas": ["MetNum", "Medel", "Elepot"],
+  "plan_recomendado": {
+    "1": ["CDIV", "GAL1", "F1", "Tallerine", "MATINIC"],
+    "2": ["CDIVV", "GAL2", "F2", "P1"],
+    "3": ["CVec", "PyE", "F3", "MecNewt", "FExp1"],
+    "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
+    "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
+    "6": ["MetNum", "SyC", "TFourier"],
+    "7": ["Medel", "Elepot"],
+    "8": ["InsInd", "IntroPLC", "PROYDIS"],
+    "9": ["SCTD", "FRI", "Electro"],
+    "10": ["iiee", "CNL", "FRA"]
+  }
+}

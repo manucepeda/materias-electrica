@@ -1,0 +1,720 @@
+[
+  {
+    "codigo": "CDIV",
+    "nombre": "Cálculo dif. e integral en una variable",
+    "creditos": 13,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "GAL1",
+    "nombre": "GAL 1",
+    "creditos": 9,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "F1",
+    "nombre": "Física 1",
+    "creditos": 10,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Tallerineine",
+    "nombre": "Tallerineine",
+    "creditos": 10,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "MI",
+    "nombre": "Matemática inicial",
+    "creditos": 4,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "CDIVV",
+    "nombre": "Cálculo dif. e integral en varias variables",
+    "creditos": 13,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "GAL2",
+    "nombre": "GAL 2",
+    "creditos": 9,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "GAL1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "F2",
+    "nombre": "Física 2",
+    "creditos": 10,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "F1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "P1",
+    "nombre": "Programación 1",
+    "creditos": 10,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "CVec",
+    "nombre": "Cálculo Vectorial",
+    "creditos": 10,
+    "semestre": 3,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "PyE",
+    "nombre": "Probabilidad y Estadística",
+    "creditos": 10,
+    "semestre": 3,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "F3",
+    "nombre": "Física 3",
+    "creditos": 10,
+    "semestre": 3,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "F2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "MecNewt",
+    "nombre": "Mecánica Newtoniana",
+    "creditos": 10,
+    "semestre": 3,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "F1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FExp1",
+    "nombre": "Física Experimental 1",
+    "creditos": 5,
+    "semestre": 3,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "F2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "EcuDif",
+    "nombre": "Ecuaciones Diferenciales",
+    "creditos": 10,
+    "semestre": 4,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "CVec",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "ElecMag",
+    "nombre": "Electromagnetismo",
+    "creditos": 10,
+    "semestre": 4,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "F2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "CVec",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FExp2",
+    "nombre": "Física Experimental 2",
+    "creditos": 5,
+    "semestre": 4,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "FExp1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TeoCirc",
+    "nombre": "Teoría de Circuitos",
+    "creditos": 8,
+    "semestre": 4,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "CVec",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "F2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "DisLog",
+    "nombre": "Diseño Lógico",
+    "creditos": 12,
+    "semestre": 4,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FVC",
+    "nombre": "Funciones de Variable Compleja",
+    "creditos": 5,
+    "semestre": 5,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "EcuDif",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SyS",
+    "nombre": "Señales y Sistemas",
+    "creditos": 11,
+    "semestre": 5,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "EcuDif",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Micro",
+    "nombre": "Intro. A los Microcesadores",
+    "creditos": 11,
+    "semestre": 5,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "DisLog",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "PIE",
+    "nombre": "Programación para Ingeniería Eléctrica",
+    "creditos": 7,
+    "semestre": 5,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "ElecFund",
+    "nombre": "Electrónica Fundamental",
+    "creditos": 11,
+    "semestre": 5,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "MetNum",
+    "nombre": "Métodos numéricos",
+    "creditos": 10,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "codigo": "GAL2",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "SyC",
+    "nombre": "Sistemas y Control",
+    "creditos": 12,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "FVC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TFourier",
+    "nombre": "Taller Fourier",
+    "creditos": 8,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SyM",
+    "nombre": "Señales aleatorias y Modulación",
+    "creditos": 8,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Redes1",
+    "nombre": "Redes de Datos I",
+    "creditos": 8,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "EA1",
+    "nombre": "Electrónica Avanzada 1",
+    "creditos": 10,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Medel",
+    "nombre": "Medidas Eléctricas",
+    "creditos": 10,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "CD",
+    "nombre": "Comunicaciones Digitales",
+    "creditos": 11,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyM",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "AntYProp",
+    "nombre": "Antenas y Propagación",
+    "creditos": 10,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "SyM",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Electro",
+    "nombre": "Electrotécnica",
+    "creditos": 10,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Maquel",
+    "nombre": "Máquinas Eléctricas",
+    "creditos": 10,
+    "semestre": 6,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Elepot",
+    "nombre": "Electrónica de Potencia",
+    "creditos": 10,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "EA2",
+    "nombre": "Electrónica Avanzada 2",
+    "creditos": 8,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "EA1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "PROYDIS",
+    "nombre": "Proyecto y Diseño",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "TIB1",
+    "nombre": "Taller Ing. Biológica 1",
+    "creditos": 8,
+    "semestre": 7,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TIB2",
+    "nombre": "Taller Ing. Biológica 2",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "TIB1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "InsInd",
+    "nombre": "Instrumentación industrial",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "Medel",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "IntroPLC",
+    "nombre": "Introducción a los PLC",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SCTD",
+    "nombre": "Control en tiempo discreto",
+    "creditos": 8,
+    "semestre": 9,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FRI",
+    "nombre": "Fundamentos de robótica industrial",
+    "creditos": 8,
+    "semestre": 9,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "CNL",
+    "nombre": "Análisis y control de sistemas no lineales",
+    "creditos": 8,
+    "semestre": 9,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FRA",
+    "nombre": "Fundamentos de robótica autónoma",
+    "creditos": 8,
+    "semestre": 9,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "iiee",
+    "nombre": "Instalaciones Eléctricas",
+    "creditos": 8,
+    "semestre": 10,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  }
+]

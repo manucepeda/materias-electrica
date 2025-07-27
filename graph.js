@@ -1,4 +1,6 @@
-let materias = [];
+// Global variables
+let allSubjects = []; // All subjects from ucs.json
+let profiles = {}; // All profile data from profile JSON files
 let selectedPerfil = '';
 let selectedEmphasis = '';
 let approvedSubjects = new Set(); // Subjects that are approved but not exonerated
@@ -19,11 +21,36 @@ const EMPHASIS_OPTIONS = {
 // Profiles that don't have emphasis options
 const NO_EMPHASIS_PROFILES = ['Control', 'Sistemas Eléctricos de Potencia'];
 
+// Profile file mapping
+const PROFILE_FILES = {
+  'Electrónica': 'data/profiles/electronica.json',
+  'Control': 'data/profiles/control.json',
+  'Sistemas Eléctricos de Potencia': 'data/profiles/potencia.json',
+  'Ingeniería Biomédica': 'data/profiles/biomedica.json'
+};
+
 async function load() {
   try {
-    // Load subjects data
-    const res = await fetch('data/materias_with_prereqs.json');
-    materias = await res.json();
+    // Load all universal subject data
+    const ucsResponse = await fetch('data/ucs.json');
+    if (!ucsResponse.ok) {
+      throw new Error('Failed to load universal subjects data');
+    }
+    allSubjects = await ucsResponse.json();
+    
+    // Load all profiles
+    for (const [profileName, profileFile] of Object.entries(PROFILE_FILES)) {
+      try {
+        const profileResponse = await fetch(profileFile);
+        if (profileResponse.ok) {
+          profiles[profileName] = await profileResponse.json();
+        } else {
+          console.error(`Failed to load profile data for ${profileName}`);
+        }
+      } catch (e) {
+        console.error(`Error loading profile data for ${profileName}:`, e);
+      }
+    }
     
     // Add event listeners to profile and emphasis selectors
     document.getElementById('perfil').addEventListener('change', handleProfileChange);
@@ -34,18 +61,12 @@ async function load() {
     document.getElementById('examOnlyFilter').addEventListener('click', toggleExamOnlyFilter);
     document.getElementById('creditFilter').addEventListener('change', handleCreditFilterChange);
     
-    // Add event listener to the show recommended path toggle if it exists
-    const recommendedPathToggle = document.getElementById('recommendedPathToggle');
-    if (recommendedPathToggle) {
-      recommendedPathToggle.addEventListener('click', toggleRecommendedPath);
-    }
-    
     // Initialize the graph (empty)
     renderGraph();
   } catch (e) {
-    console.error('Error loading materias_with_prereqs.json', e);
+    console.error('Error loading data:', e);
     document.getElementById('tree').innerHTML = `
-      <p style="color:#b91c1c;">No se pudo cargar data/materias_with_prereqs.json. ¿Está el archivo y el path correcto?</p>`;
+      <p style="color:#b91c1c;">No se pudieron cargar los datos. ¿Están los archivos y los paths correctos?</p>`;
   }
 }
 
@@ -75,41 +96,114 @@ function handleCreditFilterChange() {
 async function handleEmphasisChange() {
   selectedEmphasis = document.getElementById('emphasis').value;
   
-  // Only load recommended subjects for Ingeniería Biomédica profile
-  if (selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis) {
-    try {
-      const res = await fetch('data/biomedical_emphases.json');
-      const emphasisData = await res.json();
+  // Load and generate recommended subjects data if emphasis is selected
+  loadRecommendedSubjects();
+  
+  renderGraph();
+}
+
+function loadRecommendedSubjects() {
+  // Only process for profiles with selected emphasis
+  if (selectedPerfil && selectedEmphasis && profiles[selectedPerfil]) {
+    const profileData = profiles[selectedPerfil];
+    
+    if (profileData.emphasis) {
+      const emphasisData = profileData.emphasis.find(e => e.nombre === selectedEmphasis);
       
-      if (emphasisData['Ingeniería Biomédica'] && emphasisData['Ingeniería Biomédica'][selectedEmphasis]) {
-        recommendedSubjects = emphasisData['Ingeniería Biomédica'][selectedEmphasis];
+      if (emphasisData && emphasisData.plan_recomendado) {
+        // Create the toggle button for recommended path if it doesn't exist
+        createRecommendedPathToggle();
+        
+        // Convert plan_recomendado data to a structured format for visualization
+        recommendedSubjects = [];
+        let totalCreditsByPlan = 0;
+        
+        // Process each semester in the recommended plan
+        for (const [semester, subjectCodes] of Object.entries(emphasisData.plan_recomendado)) {
+          if (subjectCodes && subjectCodes.length > 0) {
+            const semesterSubjects = [];
+            let semesterCredits = 0;
+            
+            // Get details for each subject in this semester
+            subjectCodes.forEach(code => {
+              const subject = allSubjects.find(s => s.codigo === code);
+              if (subject) {
+                semesterSubjects.push(subject);
+                semesterCredits += parseInt(subject.creditos) || 0;
+              } else {
+                console.warn(`Subject with code ${code} not found in allSubjects`);
+                // Add a placeholder for the subject
+                semesterSubjects.push({
+                  codigo: code,
+                  nombre: code,
+                  creditos: 0
+                });
+              }
+            });
+            
+            // Add semester data to recommendedSubjects
+            recommendedSubjects.push({
+              semestre: parseInt(semester),
+              materias: semesterSubjects,
+              totalCreditos: semesterCredits
+            });
+            
+            totalCreditsByPlan += semesterCredits;
+          }
+        }
+        
+        // Sort semesters in ascending order
+        recommendedSubjects.sort((a, b) => a.semestre - b.semestre);
         
         // Show the recommended path toggle
         const toggleContainer = document.getElementById('recommendedPathToggleContainer');
         if (toggleContainer) {
           toggleContainer.style.display = 'block';
-        } else {
-          // Create the toggle if it doesn't exist
-          createRecommendedPathToggle();
         }
+        
+        // Auto-enable recommended path view if toggle exists and is not currently active
+        if (!showRecommendedPath) {
+          showRecommendedPath = true;
+          const button = document.getElementById('recommendedPathToggle');
+          if (button) {
+            button.classList.add('active');
+            button.textContent = 'Ocultar Plan de Estudio Recomendado';
+          }
+        }
+      } else {
+        // Reset recommended subjects if no plan is found
+        recommendedSubjects = [];
+        hideRecommendedPathToggle();
       }
-    } catch (e) {
-      console.error('Error loading emphasis data:', e);
+    } else {
+      // Reset if profile has no emphasis
       recommendedSubjects = [];
+      hideRecommendedPathToggle();
     }
   } else {
+    // Reset if no profile or emphasis is selected
     recommendedSubjects = [];
-    // Hide the recommended path toggle
-    const toggleContainer = document.getElementById('recommendedPathToggleContainer');
-    if (toggleContainer) {
-      toggleContainer.style.display = 'none';
-    }
+    hideRecommendedPathToggle();
+  }
+}
+
+function hideRecommendedPathToggle() {
+  // Hide the recommended path toggle
+  const toggleContainer = document.getElementById('recommendedPathToggleContainer');
+  if (toggleContainer) {
+    toggleContainer.style.display = 'none';
   }
   
-  renderGraph();
+  // Reset the flag
+  showRecommendedPath = false;
 }
 
 function createRecommendedPathToggle() {
+  // Check if the toggle already exists
+  if (document.getElementById('recommendedPathToggleContainer')) {
+    return;
+  }
+  
   // Create the toggle container
   const controlsContainer = document.querySelector('.additional-filters');
   if (!controlsContainer) return;
@@ -122,7 +216,10 @@ function createRecommendedPathToggle() {
   const toggleButton = document.createElement('button');
   toggleButton.id = 'recommendedPathToggle';
   toggleButton.className = 'toggle-button';
-  toggleButton.textContent = 'Mostrar Plan de Estudio Recomendado';
+  toggleButton.textContent = showRecommendedPath ? 'Ocultar Plan de Estudio Recomendado' : 'Mostrar Plan de Estudio Recomendado';
+  if (showRecommendedPath) {
+    toggleButton.classList.add('active');
+  }
   toggleButton.addEventListener('click', toggleRecommendedPath);
   
   // Add to the DOM
@@ -154,14 +251,8 @@ function handleProfileChange() {
   emphasisSelect.innerHTML = '';
   selectedEmphasis = '';
   
-  // Hide recommended path toggle if it exists
-  const toggleContainer = document.getElementById('recommendedPathToggleContainer');
-  if (toggleContainer) {
-    toggleContainer.style.display = 'none';
-  }
-  
-  // Reset recommended path view
-  showRecommendedPath = false;
+  // Hide recommended path toggle and reset data
+  hideRecommendedPathToggle();
   recommendedSubjects = [];
   
   // Show or hide table view link based on profile
@@ -171,8 +262,13 @@ function handleProfileChange() {
     tableViewLink.style.display = 'none';
   }
   
-  // If profile has emphasis options, populate and enable the emphasis selector
-  if (selectedPerfil && EMPHASIS_OPTIONS[selectedPerfil]) {
+  // Configure emphasis select options based on profile
+  if (!selectedPerfil) {
+    // No profile selected
+    emphasisSelect.disabled = true;
+    emphasisSelect.innerHTML = '<option value="">Seleccione un perfil primero</option>';
+  } else if (EMPHASIS_OPTIONS[selectedPerfil]) {
+    // If profile has emphasis options, populate and enable the emphasis selector
     emphasisSelect.disabled = false;
     
     // Add default option
@@ -192,16 +288,83 @@ function handleProfileChange() {
     // If profile doesn't have emphasis options, disable the emphasis selector
     emphasisSelect.disabled = true;
     emphasisSelect.innerHTML = '<option value="">No aplica</option>';
+    
+    // For profiles without emphasis, automatically load the recommended path from profile
+    if (selectedPerfil && profiles[selectedPerfil] && profiles[selectedPerfil].plan_recomendado) {
+      // Handle recommended path for profiles without emphasis
+      const profileData = profiles[selectedPerfil];
+      
+      if (profileData.plan_recomendado) {
+        // Process plan_recomendado for this profile
+        createRecommendedPathForProfile(profileData);
+      }
+    }
   }
   
   renderGraph();
 }
 
+function createRecommendedPathForProfile(profileData) {
+  if (!profileData || !profileData.plan_recomendado) {
+    recommendedSubjects = [];
+    return;
+  }
+  
+  // Convert plan_recomendado data to a structured format for visualization
+  recommendedSubjects = [];
+  let totalCreditsByPlan = 0;
+  
+  // Process each semester in the recommended plan
+  for (const [semester, subjectCodes] of Object.entries(profileData.plan_recomendado)) {
+    if (subjectCodes && subjectCodes.length > 0) {
+      const semesterSubjects = [];
+      let semesterCredits = 0;
+      
+      // Get details for each subject in this semester
+      subjectCodes.forEach(code => {
+        const subject = allSubjects.find(s => s.codigo === code);
+        if (subject) {
+          semesterSubjects.push(subject);
+          semesterCredits += parseInt(subject.creditos) || 0;
+        } else {
+          console.warn(`Subject with code ${code} not found in allSubjects`);
+          // Add a placeholder for the subject
+          semesterSubjects.push({
+            codigo: code,
+            nombre: code,
+            creditos: 0
+          });
+        }
+      });
+      
+      // Add semester data to recommendedSubjects
+      recommendedSubjects.push({
+        semestre: parseInt(semester),
+        materias: semesterSubjects,
+        totalCreditos: semesterCredits
+      });
+      
+      totalCreditsByPlan += semesterCredits;
+    }
+  }
+  
+  // Sort semesters in ascending order
+  recommendedSubjects.sort((a, b) => a.semestre - b.semestre);
+  
+  // Create the recommended path toggle
+  createRecommendedPathToggle();
+  
+  // Auto-enable recommended path view
+  showRecommendedPath = true;
+  const button = document.getElementById('recommendedPathToggle');
+  if (button) {
+    button.classList.add('active');
+    button.textContent = 'Ocultar Plan de Estudio Recomendado';
+  }
+}
+
 function renderGraph() {
   const treeContainer = document.getElementById('tree');
-  if (selectedPerfil) {
-    selectedEmphasis = document.getElementById('emphasis').value;
-  }
   
   if (!selectedPerfil) {
     treeContainer.innerHTML = `
@@ -211,78 +374,31 @@ function renderGraph() {
     return;
   }
   
-  // Check if we should show the recommended path
-  if (showRecommendedPath && selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis && recommendedSubjects.length > 0) {
+  // Check if we should show the recommended path view
+  if (showRecommendedPath && recommendedSubjects.length > 0) {
     renderRecommendedPath();
     return;
   }
   
-  // Filter materias by selected profile and emphasis if selected
-  let filteredMaterias = materias.filter(m => {
-    if (!m || !m.perfiles) return false;
-    
-    // Basic filter by profile
-    const profileMatch = m.perfiles.includes(selectedPerfil);
-    
-    // If emphasis is selected and profile supports emphasis, check if subject belongs to that emphasis
-    let emphasisMatch = true;
-    if (selectedEmphasis && EMPHASIS_OPTIONS[selectedPerfil]) {
-      // For profiles with emphasis like Electrónica and Ingeniería Biomédica
-      emphasisMatch = false;
-      
-      // Check if the subject has this emphasis for the selected profile
-      if (m.enfasis && m.enfasis[selectedPerfil]) {
-        emphasisMatch = m.enfasis[selectedPerfil].includes(selectedEmphasis);
-      }
-    }
-    
-    // Check dictation semester filter
-    let dictationMatch = true;
-    if (selectedDictationSemester !== 'all') {
-      if (!m.dictation_semester) {
-        // Default value if not specified (backward compatibility)
-        // Odd-numbered semester subjects are taught in odd semesters, even in even semesters
-        const defaultDictation = m.semestre % 2 === 1 ? '1' : '2';
-        dictationMatch = selectedDictationSemester === 'both' ? false : selectedDictationSemester === defaultDictation;
-      } else {
-        // Check the actual dictation semester value
-        if (selectedDictationSemester === 'both') {
-          dictationMatch = m.dictation_semester === 'both';
-        } else {
-          dictationMatch = m.dictation_semester === selectedDictationSemester || m.dictation_semester === 'both';
-        }
-      }
-    }
-    
-    // Check exam-only filter
-    const examOnlyMatch = !showExamOnlySubjects || (m.exam_only === true);
-    
-    // Check credit filter
-    let creditMatch = true;
-    if (selectedCreditFilter !== 'all' && m.creditos) {
-      if (selectedCreditFilter === 'less10') {
-        creditMatch = m.creditos < 10;
-      } else if (selectedCreditFilter === 'more10') {
-        creditMatch = m.creditos >= 10;
-      }
-    }
-    
-    return profileMatch && emphasisMatch && dictationMatch && examOnlyMatch && creditMatch;
-  });
+  // Filter subjects for the selected profile and emphasis
+  const filteredSubjects = filterSubjects();
   
-  // Group by semester
+  // Sort subjects by semester
+  filteredSubjects.sort((a, b) => a.semestre - b.semestre);
+  
+  // Group subjects by semester
   const semesterGroups = {};
-  filteredMaterias.forEach(m => {
-    if (m && m.semestre !== undefined) {
-      const semester = m.semestre;
+  filteredSubjects.forEach(subject => {
+    if (subject && subject.semestre !== undefined) {
+      const semester = subject.semestre;
       if (!semesterGroups[semester]) {
         semesterGroups[semester] = [];
       }
-      semesterGroups[semester].push(m);
+      semesterGroups[semester].push(subject);
     }
   });
   
-  // Create the semester rows with better styling and information
+  // Create the semester rows with styling and information
   let html = '';
   Object.keys(semesterGroups).sort((a, b) => Number(a) - Number(b)).forEach(semester => {
     html += `
@@ -308,43 +424,47 @@ function renderGraph() {
         // Generate prerequisites info for tooltip
         let prereqInfo = '';
         if (subject.prerequisitos && subject.prerequisitos.length > 0) {
-          const prereqsList = subject.prerequisitos.map(p => {
-            const requiresExoneration = p.requiere_exoneracion || false;
-            const requiresCourse = p.requiere_curso || true;
-            
-            let reqType = '';
-            if (requiresExoneration) {
-              reqType = '(exon)';
-            } else if (requiresCourse) {
-              reqType = '(curso)';
-            }
-            
-            return `${p.codigo}${reqType}`;
-          }).join(', ');
-          
+          const prereqsList = subject.prerequisitos.join(', ');
           prereqInfo = `Previas: ${prereqsList}`;
         }
         
-        // Add special tags for Control profile courses
-        const controlTags = [];
-        if (selectedPerfil === 'Control') {
-          if (subject.core) {
-            controlTags.push('<span class="tag-badge core-badge">C</span>');
-          } else if (subject.opcional_perfil) {
-            controlTags.push('<span class="tag-badge opcional-badge">O</span>');
-          } else if (subject.opcional_sugerida) {
-            controlTags.push('<span class="tag-badge sugerida-badge">S</span>');
+        // Add special tags for profile courses
+        const profileTags = [];
+        if (profiles[selectedPerfil]) {
+          const profileData = profiles[selectedPerfil];
+          const isCoreSubject = profileData.materias_core && profileData.materias_core.includes(subject.codigo);
+          const isOptionalSubject = profileData.materias_optativas && profileData.materias_optativas.includes(subject.codigo);
+          
+          if (isCoreSubject) {
+            profileTags.push('<span class="tag-badge core-badge">C</span>');
+          } else if (isOptionalSubject) {
+            profileTags.push('<span class="tag-badge opcional-badge">O</span>');
+          }
+          
+          // Add emphasis tags
+          if (selectedEmphasis && profileData.emphasis) {
+            const emphasisData = profileData.emphasis.find(e => e.nombre === selectedEmphasis);
+            if (emphasisData) {
+              const isEmphasisCore = emphasisData.materias_core && emphasisData.materias_core.includes(subject.codigo);
+              const isEmphasisOptional = emphasisData.materias_optativas && emphasisData.materias_optativas.includes(subject.codigo);
+              
+              if (isEmphasisCore) {
+                profileTags.push('<span class="tag-badge emphasis-core-badge">EC</span>');
+              } else if (isEmphasisOptional) {
+                profileTags.push('<span class="tag-badge emphasis-opcional-badge">EO</span>');
+              }
+            }
           }
         }
         
-        // Truncate the name more aggressively for a more compact view
+        // Truncate the name for a more compact view
         const displayName = subject.nombre.length > 18 ? subject.nombre.substring(0, 16) + '...' : subject.nombre;
         
         return `
           <div 
             class="subject-btn ${statusClass}" 
             data-code="${subject.codigo}"
-            onclick="toggleSubjectStatus('${subject.codigo}')"
+            onclick="toggleSubjectApproval('${subject.codigo}')"
             title="${subject.nombre} (${subject.creditos} créditos)${prereqInfo ? '\n' + prereqInfo : ''}"
           >
             <span class="code">${subject.codigo}</span>
@@ -352,7 +472,7 @@ function renderGraph() {
             <span class="credits">${subject.creditos} cr.</span>
             ${dictationText ? `<span class="dictation">${dictationText}</span>` : ''}
             ${subject.exam_only ? `<span class="exam-only">L</span>` : ''}
-            ${controlTags.join('')}
+            ${profileTags.join('')}
           </div>
         `;
       }).join('')}
@@ -360,7 +480,7 @@ function renderGraph() {
   });
   
   treeContainer.innerHTML = html;
-  updateStatusPanel();
+  updateTotalCredits();
 }
 
 function getSubjectStatus(subject) {
@@ -383,108 +503,45 @@ function getSubjectStatus(subject) {
   return 'available';
 }
 
-function isSubjectAvailable(subject) {
-  // If no prerequisites, subject is always available
-  if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
-    return true;
-  }
-  
-  // Check if all prerequisites are satisfied
-  return subject.prerequisitos.every(prereq => {
-    const isExonerated = exoneratedSubjects.has(prereq.codigo);
-    const isApproved = approvedSubjects.has(prereq.codigo);
-    
-    // If prerequisite requires exoneration
-    if (prereq.requiere_exoneracion) {
-      return isExonerated;
-    }
-    
-    // If prerequisite requires course
-    if (prereq.requiere_curso) {
-      return isExonerated || isApproved;
-    }
-    
-    // Default case (requires course)
-    return isExonerated || isApproved;
-  });
-}
-
-function toggleSubjectStatus(code) {
-  const subject = materias.find(m => m.codigo === code);
-  if (!subject) return;
-  
-  // If subject is not available, do nothing
-  if (!isSubjectAvailable(subject) && !approvedSubjects.has(code) && !exoneratedSubjects.has(code)) {
-    return;
-  }
-  
-  if (exoneratedSubjects.has(code)) {
-    // If already exonerated, remove from both sets
-    exoneratedSubjects.delete(code);
-    totalCredits -= subject.creditos;
-  } else if (approvedSubjects.has(code)) {
-    // If already approved but not exonerated, change to exonerated
-    approvedSubjects.delete(code);
-    exoneratedSubjects.add(code);
-  } else {
-    // If not approved or exonerated, add to approved
-    approvedSubjects.add(code);
-    totalCredits += subject.creditos;
-  }
-  
-  renderGraph();
-}
-
-function updateStatusPanel() {
-  const approvedCount = approvedSubjects.size;
-  const exoneratedCount = exoneratedSubjects.size;
-  const totalCount = approvedCount + exoneratedCount;
-  
-  document.getElementById('totalSubjects').textContent = totalCount;
-  document.getElementById('approvedSubjects').textContent = approvedCount;
-  document.getElementById('exoneratedSubjects').textContent = exoneratedCount;
-  document.getElementById('totalCredits').textContent = totalCredits;
-}
-
 function renderRecommendedPath() {
   const treeContainer = document.getElementById('tree');
   
   let html = `
     <div class="recommended-path-header">
-      <h3>Plan de Estudio Recomendado - ${selectedPerfil}: Énfasis en ${selectedEmphasis}</h3>
-      <p class="muted">Este plan muestra la combinación recomendada de materias por semestre.</p>
+      <h3>Plan de Estudio Recomendado - ${selectedPerfil}${selectedEmphasis ? `: Énfasis en ${selectedEmphasis}` : ''}</h3>
+      <p class="muted">Este plan muestra la combinación recomendada de materias por semestre. Haz clic en las materias para marcarlas como aprobadas o exoneradas.</p>
     </div>
   `;
   
   // Add semester rows for each semester in the recommended path
+  let totalPlanCredits = 0;
+  
   recommendedSubjects.forEach(semesterData => {
+    const semesterCredits = semesterData.totalCreditos || 
+                           semesterData.materias.reduce((total, subject) => 
+                             total + (parseInt(subject.creditos) || 0), 0);
+    
+    totalPlanCredits += semesterCredits;
+    
     html += `
     <div class="semester-row recommended-semester">
-      <div class="semester-label">Semestre ${semesterData.semestre} <span class="credits-total">${semesterData.totalCreditos} cr.</span></div>
+      <div class="semester-label">Semestre ${semesterData.semestre} <span class="credits-total">${semesterCredits} cr.</span></div>
       <div class="recommended-subjects">
         ${semesterData.materias.map(subject => {
-          // Find the subject in the main materias array to get full details
-          const fullSubject = materias.find(m => m.codigo === subject.codigo) || subject;
-          
-          // Check if subject is approved or exonerated
-          let statusClass = '';
-          if (exoneratedSubjects.has(subject.codigo)) {
-            statusClass = 'exonerated';
-          } else if (approvedSubjects.has(subject.codigo)) {
-            statusClass = 'approved';
-          }
+          // Get the status of this subject
+          const status = getSubjectStatus(subject);
           
           return `
             <div 
-              class="subject-btn recommended-subject ${statusClass}" 
+              class="subject-btn recommended-subject ${status}" 
               data-code="${subject.codigo}"
-              onclick="toggleSubjectStatus('${subject.codigo}')"
+              onclick="toggleSubjectApproval('${subject.codigo}')"
               title="${subject.nombre} (${subject.creditos} créditos)"
             >
               <span class="code">${subject.codigo}</span>
               ${subject.nombre.length > 18 ? subject.nombre.substring(0, 16) + '...' : subject.nombre}
               <span class="credits">${subject.creditos} cr.</span>
-              ${fullSubject.exam_only ? `<span class="exam-only">L</span>` : ''}
+              ${subject.exam_only ? `<span class="exam-only">L</span>` : ''}
             </div>
           `;
         }).join('')}
@@ -493,133 +550,143 @@ function renderRecommendedPath() {
   });
   
   // Add total credits at the bottom
-  const totalCreditsCount = recommendedSubjects.reduce((total, semester) => total + semester.totalCreditos, 0);
   html += `
     <div class="recommended-path-footer">
-      <p>Total de créditos del plan: <strong>${totalCreditsCount}</strong></p>
+      <p>Total de créditos del plan: <strong>${totalPlanCredits}</strong></p>
     </div>
   `;
   
   treeContainer.innerHTML = html;
-  updateStatusPanel();
+  updateTotalCredits();
 }
 
-// Add a link to the graph view in the original index.html
-function addLinkToIndex() {
-  const mainElement = document.querySelector('main');
-  if (mainElement) {
-    const linkDiv = document.createElement('div');
-    linkDiv.style.textAlign = 'center';
-    linkDiv.style.marginTop = '30px';
-    linkDiv.innerHTML = '<a href="index.html" class="link" id="link-to-list" style="font-size: 1.1rem; padding: 10px;">Ver Listado de Materias</a>';
-    mainElement.appendChild(linkDiv);
-  }
-}
-
-// Load the data when the page loads
-// Enhanced subject creation function to support table view link
-function createSubjectElement(subject, status) {
-  // Create the button element
-  const button = document.createElement('button');
-  button.className = `subject-btn ${status}`;
-  button.dataset.code = subject.code;
-  button.dataset.credits = subject.credits;
-  
-  if (subject.exam_only) {
-    button.classList.add('exam-only');
-  }
-  
-  // Add recommended class if needed
-  if (showRecommendedPath && isRecommendedSubject(subject.code)) {
-    button.classList.add('recommended');
-  }
-
-  // Create subject details content
-  const content = document.createElement('div');
-  content.className = 'subject-content';
-  
-  // Subject name
-  const name = document.createElement('div');
-  name.className = 'subject-name';
-  name.textContent = subject.name;
-  
-  // Subject code
-  const code = document.createElement('div');
-  code.className = 'subject-code';
-  code.textContent = subject.code;
-  
-  // Credits info
-  const credits = document.createElement('div');
-  credits.className = 'subject-credits';
-  credits.textContent = `${subject.credits} créditos`;
-  
-  // Append all elements
-  content.appendChild(name);
-  content.appendChild(code);
-  content.appendChild(credits);
-  button.appendChild(content);
-  
-  // Add table link for Ingeniería Biomédica
-  if (selectedPerfil === 'Ingeniería Biomédica' && selectedEmphasis) {
-    const tableLink = document.createElement('a');
-    tableLink.href = `table-view.html?highlight=${subject.code}&emphasis=${selectedEmphasis}`;
-    tableLink.className = 'table-link';
-    tableLink.title = 'Ver en tabla de plan recomendado';
-    tableLink.textContent = '📋';
-    tableLink.style.position = 'absolute';
-    tableLink.style.top = '5px';
-    tableLink.style.right = '5px';
-    tableLink.style.fontSize = '0.8rem';
-    tableLink.style.padding = '2px';
-    tableLink.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-    tableLink.style.borderRadius = '3px';
-    tableLink.style.display = 'none';
+function filterSubjects() {
+  // Filter subjects based on selected criteria
+  return allSubjects.filter(subject => {
+    // Skip exam-only subjects based on filter
+    if (!showExamOnlySubjects && subject.exam_only) {
+      return false;
+    }
     
-    button.appendChild(tableLink);
-    
-    // Show table link on hover
-    button.addEventListener('mouseenter', () => {
-      tableLink.style.display = 'block';
-    });
-    
-    button.addEventListener('mouseleave', () => {
-      tableLink.style.display = 'none';
-    });
-    
-    // Prevent click propagation when clicking the table link
-    tableLink.addEventListener('click', (e) => {
-      e.stopPropagation();
-    });
-  }
-  
-  // Add click handlers
-  button.addEventListener('click', () => {
-    if (status === 'approved') {
-      removeApprovedSubject(subject.code);
-    } else if (status === 'exonerated') {
-      removeExoneratedSubject(subject.code);
-    } else {
-      // Toggle between approved and exonerated
-      if (event.ctrlKey || event.metaKey) {
-        addExoneratedSubject(subject.code);
+    // Match dictation semester
+    let dictationMatch = true;
+    if (selectedDictationSemester !== 'all') {
+      if (!subject.dictation_semester) {
+        // Default value if not specified
+        const defaultDictation = subject.semestre % 2 === 1 ? '1' : '2';
+        dictationMatch = selectedDictationSemester === 'both' ? false : selectedDictationSemester === defaultDictation;
       } else {
-        addApprovedSubject(subject.code);
+        // Check the actual dictation semester value
+        if (selectedDictationSemester === 'both') {
+          dictationMatch = subject.dictation_semester === 'both';
+        } else {
+          dictationMatch = subject.dictation_semester === selectedDictationSemester || subject.dictation_semester === 'both';
+        }
       }
     }
+    
+    // Match credits filter
+    let creditsMatch = true;
+    if (selectedCreditFilter !== 'all') {
+      creditsMatch = subject.creditos === parseInt(selectedCreditFilter);
+    }
+    
+    // Match profile
+    let profileMatch = !selectedPerfil; // If no profile selected, include all subjects
+    
+    if (selectedPerfil && profiles[selectedPerfil]) {
+      const profileData = profiles[selectedPerfil];
+      
+      // Check if subject is in this profile
+      const isCoreSubject = profileData.materias_core && profileData.materias_core.includes(subject.codigo);
+      const isOptionalSubject = profileData.materias_optativas && profileData.materias_optativas.includes(subject.codigo);
+      
+      profileMatch = isCoreSubject || isOptionalSubject;
+      
+      // If emphasis is selected, also check emphasis
+      if (selectedEmphasis && profileData.emphasis) {
+        const emphasisData = profileData.emphasis.find(e => e.nombre === selectedEmphasis);
+        if (emphasisData) {
+          const isEmphasisCore = emphasisData.materias_core && emphasisData.materias_core.includes(subject.codigo);
+          const isEmphasisOptional = emphasisData.materias_optativas && emphasisData.materias_optativas.includes(subject.codigo);
+          
+          // Include subjects that are in the emphasis or the profile
+          profileMatch = profileMatch || isEmphasisCore || isEmphasisOptional;
+        }
+      }
+    }
+    
+    return dictationMatch && creditsMatch && profileMatch;
   });
-  
-  // Add tooltip for prerequisites
-  if (subject.prerequisites && subject.prerequisites.length > 0) {
-    const prereqCodes = subject.prerequisites.map(p => p.code).join(', ');
-    button.title = `Prerrequisitos: ${prereqCodes}`;
-  } else {
-    button.title = 'No tiene prerrequisitos';
-  }
-  
-  return button;
 }
 
-window.addEventListener('DOMContentLoaded', () => {
-  load();
-  addLinkToIndex();
-});
+// Function to calculate if a subject is available (all prerequisites are approved or exonerated)
+function isSubjectAvailable(subject) {
+  if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
+    return true;
+  }
+  
+  return subject.prerequisitos.every(prereqCode => {
+    return approvedSubjects.has(prereqCode) || exoneratedSubjects.has(prereqCode);
+  });
+}
+
+// Function to toggle subject approval status
+function toggleSubjectApproval(subjectCode) {
+  const subject = allSubjects.find(s => s.codigo === subjectCode);
+  if (!subject) return;
+  
+  // If subject is not available, do nothing (unless it's already approved/exonerated)
+  if (!isSubjectAvailable(subject) && !approvedSubjects.has(subjectCode) && !exoneratedSubjects.has(subjectCode)) {
+    return;
+  }
+  
+  if (exoneratedSubjects.has(subjectCode)) {
+    exoneratedSubjects.delete(subjectCode);
+    approvedSubjects.delete(subjectCode);
+  } else if (approvedSubjects.has(subjectCode)) {
+    approvedSubjects.delete(subjectCode);
+    exoneratedSubjects.add(subjectCode);
+  } else {
+    approvedSubjects.add(subjectCode);
+  }
+  
+  updateTotalCredits();
+  renderGraph();
+}
+
+// Function to update total credits
+function updateTotalCredits() {
+  totalCredits = 0;
+  let approvedCount = 0;
+  let exoneratedCount = 0;
+  
+  // Calculate credits and counts
+  for (const subjectCode of approvedSubjects) {
+    const subject = allSubjects.find(s => s.codigo === subjectCode);
+    if (subject) {
+      totalCredits += parseInt(subject.creditos) || 0;
+      approvedCount++;
+    }
+  }
+  
+  for (const subjectCode of exoneratedSubjects) {
+    const subject = allSubjects.find(s => s.codigo === subjectCode);
+    if (subject) {
+      totalCredits += parseInt(subject.creditos) || 0;
+      exoneratedCount++;
+    }
+  }
+  
+  // Update the status panel
+  document.getElementById('totalSubjects').textContent = approvedCount + exoneratedCount;
+  document.getElementById('approvedSubjects').textContent = approvedCount;
+  document.getElementById('exoneratedSubjects').textContent = exoneratedCount;
+  document.getElementById('totalCredits').textContent = totalCredits;
+}
+
+// Add a global reference to the toggleSubjectApproval function
+window.toggleSubjectApproval = toggleSubjectApproval;
+
+// Load data when the page loads
+document.addEventListener('DOMContentLoaded', load);

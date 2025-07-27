@@ -1,6 +1,6 @@
 // Global variables
-let subjectsData = [];
-let biomedicalEmphases = null;
+let allSubjects = []; // All subjects from ucs.json
+let biomedicalProfile = null; // Biomedical profile data
 let selectedEmphasis = 'Electrónica'; // Default emphasis
 let highlightedSubjectCode = null;
 
@@ -16,10 +16,10 @@ async function init() {
       selectedEmphasis = emphasisParam;
     }
     
-    // Load the main data
+    // Load the data
     await Promise.all([
       loadSubjectsData(),
-      loadEmphasisData()
+      loadBiomedicalProfileData()
     ]);
     
     // Set up event listeners for tabs
@@ -51,84 +51,32 @@ async function init() {
 // Load subjects data
 async function loadSubjectsData() {
   try {
-    const res = await fetch('data/materias_with_prereqs.json');
+    const res = await fetch('data/ucs.json');
     if (!res.ok) {
       throw new Error('Failed to load subjects data');
     }
     const data = await res.json();
-    subjectsData = data;
+    allSubjects = data;
   } catch (err) {
     console.error('Error loading subjects data:', err);
     throw err;
   }
 }
 
-// Load emphasis data
-async function loadEmphasisData() {
+// Load biomedical profile data
+async function loadBiomedicalProfileData() {
   try {
-    // Load the emphasis data
-    const res = await fetch('data/biomedical_emphases.json');
+    // Load the profile data
+    const res = await fetch('data/profiles/biomedica.json');
     if (!res.ok) {
-      throw new Error('Failed to load emphasis data');
+      throw new Error('Failed to load biomedical profile data');
     }
     
-    const rawData = await res.json();
-    
-    // Check if the data is in the expected format
-    if (rawData["Ingeniería Biomédica"]) {
-      // Convert from the existing format to our needed format
-      biomedicalEmphases = {};
-      
-      // Process each emphasis
-      Object.keys(rawData["Ingeniería Biomédica"]).forEach(emphasis => {
-        const emphasisData = rawData["Ingeniería Biomédica"][emphasis];
-        
-        // Create the new format structure
-        biomedicalEmphases[emphasis] = {
-          name: `Énfasis en ${emphasis}`,
-          semesters: {}
-        };
-        
-        // Convert each semester's data
-        emphasisData.forEach(semesterData => {
-          const semesterNumber = semesterData.semestre.toString();
-          
-          // Map the subjects to the new format
-          biomedicalEmphases[emphasis].semesters[semesterNumber] = 
-            semesterData.materias.map(materia => ({
-              code: materia.codigo,
-              credits: materia.creditos
-            }));
-        });
-      });
-    } else {
-      // Data is already in the expected format
-      biomedicalEmphases = rawData;
-    }
-    
-    console.log('Loaded emphasis data:', biomedicalEmphases);
+    biomedicalProfile = await res.json();
+    console.log('Loaded biomedical profile data:', biomedicalProfile);
   } catch (err) {
-    console.error('Error loading emphasis data:', err);
-    
-    // Fallback if loading fails
-    biomedicalEmphases = {
-      "Electrónica": {
-        "name": "Énfasis en Electrónica Biomédica",
-        "semesters": {}
-      },
-      "Ingeniería Clínica": {
-        "name": "Énfasis Clínica",
-        "semesters": {}
-      },
-      "Señales": {
-        "name": "Énfasis Señales",
-        "semesters": {}
-      },
-      "Informática": {
-        "name": "Énfasis Informática",
-        "semesters": {}
-      }
-    };
+    console.error('Error loading biomedical profile data:', err);
+    throw err;
   }
 }
 
@@ -149,19 +97,27 @@ function setupTabListeners() {
 }
 
 // Render table for a specific emphasis
-function renderTable(emphasis) {
+function renderTable(emphasisName) {
   const tableView = document.getElementById('table-view');
   
-  if (!biomedicalEmphases || !biomedicalEmphases[emphasis]) {
-    tableView.innerHTML = '<div class="error-message">No se encontraron datos para este énfasis.</div>';
+  if (!biomedicalProfile || !biomedicalProfile.emphasis) {
+    tableView.innerHTML = '<div class="error-message">No se encontraron datos para énfasis.</div>';
     return;
   }
   
-  const emphasisData = biomedicalEmphases[emphasis];
+  // Find the emphasis data
+  const emphasisData = biomedicalProfile.emphasis.find(e => e.nombre === emphasisName);
+  
+  if (!emphasisData || !emphasisData.plan_recomendado) {
+    tableView.innerHTML = `<div class="error-message">No se encontraron datos para el énfasis ${emphasisName}.</div>`;
+    return;
+  }
+  
+  const recommendedPlan = emphasisData.plan_recomendado;
   
   // Create table structure
   let tableHTML = `
-    <h3>${emphasisData.name}</h3>
+    <h3>Énfasis en ${emphasisData.nombre}</h3>
     <table class="emphasis-table">
       <thead>
         <tr>
@@ -170,8 +126,8 @@ function renderTable(emphasis) {
   
   // Find the maximum number of subjects in any semester
   let maxSubjects = 0;
-  for (const semester in emphasisData.semesters) {
-    const semesterData = emphasisData.semesters[semester];
+  for (const semester in recommendedPlan) {
+    const semesterData = recommendedPlan[semester];
     if (semesterData) {
       const subjectsCount = semesterData.length;
       maxSubjects = Math.max(maxSubjects, subjectsCount);
@@ -189,11 +145,14 @@ function renderTable(emphasis) {
   let cumulativeCredits = 0;
   
   for (let semester = 1; semester <= 10; semester++) {
-    const semesterData = emphasisData.semesters[semester.toString()] || [];
+    const semesterData = recommendedPlan[semester.toString()] || [];
     
     let semesterCredits = 0;
-    semesterData.forEach(subject => {
-      semesterCredits += parseInt(subject.credits) || 0;
+    semesterData.forEach(code => {
+      const subject = allSubjects.find(s => s.codigo === code);
+      if (subject) {
+        semesterCredits += parseInt(subject.creditos) || 0;
+      }
     });
     
     cumulativeCredits += semesterCredits;
@@ -206,22 +165,33 @@ function renderTable(emphasis) {
     // Add subject cells
     for (let i = 0; i < maxSubjects; i++) {
       if (i < semesterData.length) {
-        const subject = semesterData[i];
-        const subjectDetails = findSubjectByCode(subject.code);
+        const code = semesterData[i];
+        const subject = allSubjects.find(s => s.codigo === code);
         
-        // Check if this subject should be highlighted
-        const isHighlighted = subject.code === highlightedSubjectCode;
-        const highlightClass = isHighlighted ? 'highlighted-subject' : '';
-        
-        tableHTML += `
-          <td>
-            <div class="subject-cell ${highlightClass}" data-code="${subject.code}">
-              <div class="subject-name">${subjectDetails ? subjectDetails.name : subject.code}</div>
-              <div class="subject-code">${subject.code}</div>
-              <div class="subject-credits">${subject.credits} créditos</div>
-            </div>
-          </td>
-        `;
+        if (subject) {
+          // Check if this subject should be highlighted
+          const isHighlighted = code === highlightedSubjectCode;
+          const highlightClass = isHighlighted ? 'highlighted-subject' : '';
+          
+          tableHTML += `
+            <td>
+              <div class="subject-cell ${highlightClass}" data-code="${code}">
+                <div class="subject-name">${subject.nombre}</div>
+                <div class="subject-code">${code}</div>
+                <div class="subject-credits">${subject.creditos} créditos</div>
+              </div>
+            </td>
+          `;
+        } else {
+          tableHTML += `
+            <td>
+              <div class="subject-cell">
+                <div class="subject-code">${code}</div>
+                <div class="subject-credits">? créditos</div>
+              </div>
+            </td>
+          `;
+        }
       } else {
         tableHTML += '<td class="empty-cell">-</td>';
       }
@@ -250,7 +220,7 @@ function renderTable(emphasis) {
 
 // Helper function to find subject details by code
 function findSubjectByCode(code) {
-  return subjectsData.find(subject => subject.code === code);
+  return allSubjects.find(subject => subject.codigo === code);
 }
 
 // Initialize on page load

@@ -1,4 +1,7 @@
-let materias = [];
+// Global variables
+let allSubjects = []; // All subjects from ucs.json
+let profiles = {}; // All profile data from profile JSON files
+let currentProfile = null; // Currently selected profile data
 
 // Static definition of profile emphasis options - keep in sync with graph.js
 const EMPHASIS_OPTIONS = {
@@ -6,17 +9,36 @@ const EMPHASIS_OPTIONS = {
   'Ingeniería Biomédica': ['Electrónica', 'Ingeniería Clínica', 'Señales', 'Informática']
 };
 
+// Profile file mapping
+const PROFILE_FILES = {
+  'Electrónica': 'data/profiles/electronica.json',
+  'Control': 'data/profiles/control.json',
+  'Sistemas Eléctricos de Potencia': 'data/profiles/potencia.json',
+  'Ingeniería Biomédica': 'data/profiles/biomedica.json'
+};
+
 async function load() {
   try {
-    // Try to load the new format first (with prerequisites)
-    let res = await fetch('data/materias_with_prereqs.json');
-    
-    // If new format fails, fall back to old format
-    if (!res.ok) {
-      res = await fetch('data/materias.json');
+    // Load all universal subject data
+    const ucsResponse = await fetch('data/ucs.json');
+    if (!ucsResponse.ok) {
+      throw new Error('Failed to load universal subjects data');
     }
+    allSubjects = await ucsResponse.json();
     
-    materias = await res.json();
+    // Load all profiles
+    for (const [profileName, profileFile] of Object.entries(PROFILE_FILES)) {
+      try {
+        const profileResponse = await fetch(profileFile);
+        if (profileResponse.ok) {
+          profiles[profileName] = await profileResponse.json();
+        } else {
+          console.error(`Failed to load profile data for ${profileName}`);
+        }
+      } catch (e) {
+        console.error(`Error loading profile data for ${profileName}:`, e);
+      }
+    }
     
     // Initialize all filters
     document.getElementById('search').addEventListener('input', render);
@@ -33,9 +55,9 @@ async function load() {
     
     render();
   } catch (e) {
-    console.error('Error cargando datos de materias', e);
+    console.error('Error loading data:', e);
     document.getElementById('grid').innerHTML = `
-      <p style="color:#b91c1c;">No se pudieron cargar los datos de materias. ¿Están los archivos y los paths correctos?</p>`;
+      <p style="color:#b91c1c;">No se pudieron cargar los datos. ¿Están los archivos y los paths correctos?</p>`;
   }
 }
 
@@ -43,47 +65,71 @@ function render() {
   const q = document.getElementById('search').value.toLowerCase();
   const semestre = document.getElementById('semestre').value;
   const creditos = document.getElementById('creditos').value;
-  const perfil = document.getElementById('perfil').value;
+  const perfilName = document.getElementById('perfil').value;
   const enfasis = document.getElementById('emphasis')?.value;
   const dictationSemester = document.getElementById('dictationSemester').value;
-
-  const filtered = materias.filter(m => {
+  
+  // Filter subjects based on selected criteria
+  const filtered = allSubjects.filter(subject => {
     // Match search query (in name or code)
     const matchQ = !q || 
-                  m.nombre.toLowerCase().includes(q) || 
-                  (m.codigo && m.codigo.toLowerCase().includes(q));
+                  subject.nombre.toLowerCase().includes(q) || 
+                  (subject.codigo && subject.codigo.toLowerCase().includes(q));
     
     // Match semester
-    const matchSem = !semestre || String(m.semestre) === semestre;
+    const matchSem = !semestre || String(subject.semestre) === semestre;
     
     // Match credits
-    const matchCred = !creditos || String(m.creditos) === creditos;
-    
-    // Match profile
-    const matchPerfil = !perfil || (m.perfiles && m.perfiles.includes(perfil));
-    
-    // Match emphasis if both profile and emphasis are selected
-    const matchEnfasis = !enfasis || !perfil || 
-      (m.enfasis && m.enfasis[perfil] && m.enfasis[perfil].includes(enfasis));
+    const matchCred = !creditos || String(subject.creditos) === creditos;
     
     // Match dictation semester
     let dictationMatch = true;
     if (dictationSemester !== 'all') {
-      if (!m.dictation_semester) {
+      if (!subject.dictation_semester) {
         // Default value if not specified (backward compatibility)
-        const defaultDictation = m.semestre % 2 === 1 ? '1' : '2';
+        const defaultDictation = subject.semestre % 2 === 1 ? '1' : '2';
         dictationMatch = dictationSemester === 'both' ? false : dictationSemester === defaultDictation;
       } else {
         // Check the actual dictation semester value
         if (dictationSemester === 'both') {
-          dictationMatch = m.dictation_semester === 'both';
+          dictationMatch = subject.dictation_semester === 'both';
         } else {
-          dictationMatch = m.dictation_semester === dictationSemester || m.dictation_semester === 'both';
+          dictationMatch = subject.dictation_semester === dictationSemester || subject.dictation_semester === 'both';
         }
       }
     }
+    
+    // Match profile and emphasis
+    let matchProfile = !perfilName; // If no profile selected, include all subjects
+    let matchEmphasis = !enfasis; // If no emphasis selected, include all subjects
+    
+    if (perfilName && profiles[perfilName]) {
+      currentProfile = profiles[perfilName];
+      
+      // Check if subject is in this profile
+      const isCoreSubject = currentProfile.materias_core && currentProfile.materias_core.includes(subject.codigo);
+      const isOptionalSubject = currentProfile.materias_optativas && currentProfile.materias_optativas.includes(subject.codigo);
+      
+      // If emphasis is selected, also check emphasis
+      if (enfasis && currentProfile.emphasis) {
+        const emphasisData = currentProfile.emphasis.find(e => e.nombre === enfasis);
+        if (emphasisData) {
+          const isEmphasisCore = emphasisData.materias_core && emphasisData.materias_core.includes(subject.codigo);
+          const isEmphasisOptional = emphasisData.materias_optativas && emphasisData.materias_optativas.includes(subject.codigo);
+          
+          // A subject matches the emphasis if it's in core or optional for the emphasis
+          matchEmphasis = isEmphasisCore || isEmphasisOptional;
+          
+          // A subject matches the profile+emphasis filter if it matches both or at least the emphasis
+          matchProfile = (isCoreSubject || isOptionalSubject || matchEmphasis);
+        }
+      } else {
+        // No emphasis selected, match by profile only
+        matchProfile = isCoreSubject || isOptionalSubject;
+      }
+    }
 
-    return matchQ && matchSem && matchCred && matchPerfil && matchEnfasis && dictationMatch;
+    return matchQ && matchSem && matchCred && matchProfile && matchEmphasis && dictationMatch;
   });
 
   // Sort by semester then by name
@@ -94,78 +140,88 @@ function render() {
     return a.nombre.localeCompare(b.nombre);
   });
 
-  renderSubjectCards(filtered);
+  renderSubjectCards(filtered, perfilName, enfasis);
 }
 
-function renderSubjectCards(filtered) {
+function renderSubjectCards(filtered, perfilName, enfasisName) {
   const grid = document.getElementById('grid');
-  const perfil = document.getElementById('perfil').value;
-  const enfasis = document.getElementById('emphasis')?.value;
   
-  grid.innerHTML = filtered.map(m => {
+  grid.innerHTML = filtered.map(subject => {
     // Get dictation semester text
     let dictationText = '';
-    if (m.dictation_semester) {
-      if (m.dictation_semester === 'both') {
+    if (subject.dictation_semester) {
+      if (subject.dictation_semester === 'both') {
         dictationText = '<span class="dictation-tag">Ambos semestres</span>';
-      } else if (m.dictation_semester === '1') {
+      } else if (subject.dictation_semester === '1') {
         dictationText = '<span class="dictation-tag">Semestre impar</span>';
-      } else if (m.dictation_semester === '2') {
+      } else if (subject.dictation_semester === '2') {
         dictationText = '<span class="dictation-tag">Semestre par</span>';
       }
     }
     
-    // Create special tags for Control profile
-    const controlTags = [];
-    if (m.perfiles && m.perfiles.includes('Control')) {
-      if (m.core) {
-        controlTags.push('<span class="tag core-tag">Core</span>');
-      } else if (m.opcional_perfil) {
-        controlTags.push('<span class="tag opcional-tag">Opcional</span>');
-      } else if (m.opcional_sugerida) {
-        controlTags.push('<span class="tag sugerida-tag">Sugerida</span>');
+    // Create profile and emphasis tags
+    const profileTags = [];
+    const emphasisTags = [];
+    
+    // Find which profiles this subject belongs to
+    Object.entries(profiles).forEach(([profileName, profileData]) => {
+      const isCoreSubject = profileData.materias_core && profileData.materias_core.includes(subject.codigo);
+      const isOptionalSubject = profileData.materias_optativas && profileData.materias_optativas.includes(subject.codigo);
+      
+      if (isCoreSubject || isOptionalSubject) {
+        profileTags.push(`<span class="tag perfil-tag" title="Perfil: ${profileName}">${profileName}</span>`);
+        
+        // Add tags for core or optional
+        if (profileName === perfilName) {
+          if (isCoreSubject) {
+            profileTags.push('<span class="tag core-tag">Core</span>');
+          } else if (isOptionalSubject) {
+            profileTags.push('<span class="tag opcional-tag">Opcional</span>');
+          }
+        }
+        
+        // Check if subject is in any emphasis of this profile
+        if (profileData.emphasis) {
+          profileData.emphasis.forEach(emphasis => {
+            const isEmphasisCore = emphasis.materias_core && emphasis.materias_core.includes(subject.codigo);
+            const isEmphasisOptional = emphasis.materias_optativas && emphasis.materias_optativas.includes(subject.codigo);
+            
+            if (isEmphasisCore || isEmphasisOptional) {
+              emphasisTags.push(`<span class="tag enfasis-tag" title="Énfasis: ${emphasis.nombre} (${profileName})">${emphasis.nombre}</span>`);
+            }
+          });
+        }
       }
-    }
+    });
     
     // Generate prerequisites info if available
     let prereqInfo = '';
-    if (m.prerequisitos && m.prerequisitos.length > 0) {
-      const prereqsList = m.prerequisitos.map(p => p.codigo).join(', ');
+    if (subject.prerequisitos && subject.prerequisitos.length > 0) {
+      const prereqsList = subject.prerequisitos.join(', ');
       prereqInfo = `<div class="prereq-info">Previas: ${prereqsList}</div>`;
-    }
-    
-    // Generate emphasis tags if available
-    const emphasisTags = [];
-    if (m.enfasis) {
-      Object.entries(m.enfasis).forEach(([profile, emphases]) => {
-        emphases.forEach(emphasis => {
-          emphasisTags.push(`<span class="tag enfasis-tag" title="Énfasis: ${emphasis} (${profile})">${emphasis}</span>`);
-        });
-      });
     }
     
     // Table view link for Ingeniería Biomédica
     let tableViewButton = '';
-    if (perfil === 'Ingeniería Biomédica' && enfasis) {
-      tableViewButton = `<a href="table-view.html?highlight=${m.codigo}&emphasis=${enfasis}" class="table-link" title="Ver en tabla de plan recomendado">📋</a>`;
+    if (perfilName === 'Ingeniería Biomédica' && enfasisName) {
+      tableViewButton = `<a href="table-view.html?highlight=${subject.codigo}&emphasis=${enfasisName}" class="table-link" title="Ver en tabla de plan recomendado">📋</a>`;
     }
     
     return `
       <article>
         <h2 style="margin:0;font-size:1.05rem;font-weight:700;">
-          <span class="codigo">${m.codigo || ''}</span> ${m.nombre} ${tableViewButton}
+          <span class="codigo">${subject.codigo || ''}</span> ${subject.nombre} ${tableViewButton}
         </h2>
 
         <div class="muted">
-          <span style="margin-right:.75rem;">Semestre: <b>${m.semestre}</b></span>
-          <span>Créditos: <b>${m.creditos}</b></span>
-          ${m.exam_only ? '<span class="exam-only-tag">Libre</span>' : ''}
+          <span style="margin-right:.75rem;">Semestre: <b>${subject.semestre}</b></span>
+          <span>Créditos: <b>${subject.creditos}</b></span>
+          ${subject.exam_only ? '<span class="exam-only-tag">Libre</span>' : ''}
           ${dictationText}
         </div>
 
         <div style="margin-top:0.5rem;">
-          ${m.perfiles ? m.perfiles.map(p => `<span class="tag perfil-tag" title="Perfil: ${p}">${p}</span>`).join(' ') : ''}
-          ${controlTags.join(' ')}
+          ${profileTags.join(' ')}
           ${emphasisTags.join(' ')}
         </div>
         
