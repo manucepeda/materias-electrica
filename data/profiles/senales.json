@@ -61,11 +61,11 @@
     "2": ["CDIVV", "GAL2", "F2", "P1"],
     "3": ["CVec", "PyE", "F3", "MecNewt", "FExp1"],
     "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
-    "5": ["FVC", "SyS", "IntroMicro", "PIE", "ElecFund"],
+    "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
     "6": ["MetNum", "SyC", "TFourier", "SalMod", "FAAPRP"],
-    "7": ["MedElect", "OpAA", "OpBasica", "OpSenales", "OpTelec"],
+    "7": ["Medel", "OpAA", "OpBasica", "OpSenales", "OpTelec"],
     "8": ["Pas", "Redes1", "OpSenales", "OpInf", "OpElectro"],
     "9": ["ProyFin10", "OpInd", "Electro", "OpSenalesAA", "OpSenales"],
-    "10": ["ProyFin25", "LRI", "InstEl", "Ec", "OpIyS"]
+    "10": ["ProyFin25", "LRI", "InsInd", "Ec", "OpIyS"]
   }
 }

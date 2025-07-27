@@ -1,82 +1,234 @@
 # Materias de Eléctrica
 
-Listado estático, filtrable y grafo interactivo de materias y prerrequisitos de Ingeniería Eléctrica de la UDELAR. Hosteable gratis (GitHub Pages / Netlify / Vercel).
+Aplicación web para visualizar y filtrar las materias de la carrera de Ingeniería Eléctrica de la FING, UdelaR.
 
-## Características
+## 🚀 Nueva Arquitectura Modular
 
-- **Listado filtrable** de materias por nombre, semestre, créditos, perfil y énfasis.
-- **Grafo interactivo** de materias organizadas por semestres.
-- Visualización de prerrequisitos y dependencias entre materias.
-- Seguimiento del progreso académico con conteo de créditos.
-- Interfaz para marcar materias como aprobadas o exoneradas.
-- Soporte para perfiles de especialización:
-  - **Electrónica** (con énfasis en: Electrónica Biomédica, Sistemas Embebidos, Circuitos y Sistemas Electrónicos)
-  - **Control** (con materias core, opcionales y sugeridas)
-  - **Sistemas Eléctricos de Potencia**
-  - **Ingeniería Biomédica** (con énfasis en: Electrónica, Ingeniería Clínica, Señales, Informática)
+La aplicación ha sido **completamente refactorizada** con una arquitectura limpia y modular que facilita el mantenimiento y la extensión.
 
-## Estructura
+### ✅ Características principales
 
-- `index.html`: Vista de listado filtrable de materias.
-- `graph.html`: Vista del grafo interactivo de materias por semestre.
-- `data/materias_with_prereqs.json`: Datos de todas las materias con sus perfiles, énfasis y prerequisitos.
-- `data/materias.json`: Versión simplificada de los datos (para compatibilidad).
-- `app.js`: Lógica para la vista de listado.
-- `graph.js`: Lógica para la vista de grafo.
-- `styles.css`: Estilos compartidos entre ambas vistas.
-- `server.py`: Servidor HTTP simple para desarrollo local.
+- **Arquitectura modular** con separación clara de responsabilidades
+- **Fácil extensión** para agregar nuevos perfiles (solo configuración + JSON)
+- **Código limpio** y bien documentado
+- **Perfil "Señales y Aprendizaje Automático"** totalmente funcional
+- **Sistema dinámico** de carga de perfiles
+- **Filtros avanzados** y búsqueda inteligente
+- **Sin dependencias** - Vanilla JavaScript
+- **Eliminación completa** de código hardcodeado
 
-## Uso
+## 📁 Estructura del Proyecto
 
-### Ejecución local
-
-1. Clona este repositorio
-2. Ejecuta el servidor web local:
-
-```bash
-python server.py
+```
+materias-electrica/
+├── index.html              # Vista principal (grafo interactivo)
+├── listado.html            # Vista de listado de materias
+├── table-view.html         # Vista de tabla (para perfiles específicos)
+├── js/                     # Módulos JavaScript
+│   ├── config.js           # Configuración central de perfiles
+│   ├── profile-manager.js  # Gestión de carga de perfiles
+│   ├── ui-manager.js       # Manejo de interfaz de usuario
+│   ├── subject-filter.js   # Filtros y búsqueda
+│   ├── graph-new.js       # Aplicación principal (grafo)
+│   ├── app-new.js         # Aplicación principal (listado)
+│   └── profile-notes-new.js # Notas de perfiles
+├── data/
+│   ├── ucs.json           # Datos de materias
+│   └── profiles/          # Perfiles de carrera
+│       ├── electronica.json
+│       ├── control.json
+│       ├── potencia.json
+│       ├── biomedica.json
+│       └── senales.json
+├── styles.css             # Estilos principales
+├── styles-profile-notes.css # Estilos para notas
+└── ARCHITECTURE.md        # Documentación técnica completa
 ```
 
-O utiliza cualquier servidor web simple como:
+## 🎯 Perfiles Disponibles
 
-```bash
-# Python 3
-python -m http.server
+| Perfil | Énfasis | Notas Especiales | Plan Recomendado |
+|--------|---------|------------------|------------------|
+| **Electrónica** | ✅ (3 opciones) | ❌ | ✅ |
+| **Control** | ❌ | ❌ | ✅ |
+| **Sistemas Eléctricos de Potencia** | ❌ | ✅ | ✅ |
+| **Ingeniería Biomédica** | ✅ (4 opciones) | ❌ | ✅ |
+| **Señales y Aprendizaje Automático** | ❌ | ✅ | ✅ |
 
-# Python 2
-python -m SimpleHTTPServer
+## 🛠️ Cómo Usar
+
+### Vista Principal (Grafo)
+1. Abrir `index.html`
+2. Seleccionar un perfil
+3. Seleccionar énfasis (si aplica)
+4. Explorar el grafo interactivo
+5. Hacer clic en materias para marcar aprobadas/exoneradas
+6. Ver plan recomendado
+
+### Vista de Listado
+1. Abrir `listado.html`
+2. Usar filtros múltiples
+3. Buscar por texto
+4. Ver detalles de materias
+
+## 🔧 Para Desarrolladores
+
+### Agregar un Nuevo Perfil
+
+**Paso 1**: Crear archivo JSON en `data/profiles/nuevo-perfil.json`
+
+```json
+{
+  "nombre": "Nuevo Perfil",
+  "descripcion": "Descripción del nuevo perfil",
+  "materias_core": ["CODIGO1", "CODIGO2"],
+  "materias_optativas": ["OPT1", "OPT2"],
+  "plan_recomendado": {
+    "1": ["CODIGO1", "GAL1", "F1"],
+    "2": ["CODIGO2", "GAL2", "F2"]
+  },
+  "notas_importantes": [
+    {
+      "id": "nota_especial",
+      "titulo": "Nota Especial", 
+      "descripcion": "Información importante para este perfil."
+    }
+  ]
+}
 ```
 
-3. Abre [http://localhost:8000](http://localhost:8000) en tu navegador.
+**Paso 2**: Actualizar `js/config.js`
 
-### En el grafo interactivo
+```javascript
+export const PROFILE_CONFIG = {
+  // ... perfiles existentes ...
+  'Nuevo Perfil': {
+    file: 'data/profiles/nuevo-perfil.json',
+    hasEmphasis: false,
+    hasTableView: false,
+    hasNotes: true
+  }
+};
+```
 
-1. Selecciona un perfil de especialización en el menú desplegable.
-2. Para perfiles con énfasis (Electrónica o Ing. Biomédica), puedes seleccionar un énfasis específico.
-3. Haz clic en una materia para marcarla como:
-   - Sin marcar → Aprobada (curso) → Exonerada → Sin marcar (ciclo)
-4. Verás estadísticas de tu progreso en el panel superior.
-5. Filtros adicionales disponibles:
-   - Semestre de dictado (par/impar)
-   - Créditos (menos o más de 10)
-   - Materias libres
+**Paso 3**: (Opcional) Agregar mapeo de notas
 
-### Perfiles especiales
+```javascript
+export const SUBJECT_NOTE_MAPPING = {
+  // ... mapeos existentes ...
+  'Nuevo Perfil': {
+    'CODIGO1': 'nota_especial'
+  }
+};
+```
 
-- **Control**: Las materias se clasifican en:
-  - Core (obligatorias del perfil)
-  - Opcionales (optativas del perfil)
-  - Sugeridas (recomendadas pero no obligatorias)
+**¡Listo!** El perfil aparecerá automáticamente en la aplicación.
 
-## Datos y Plan de Estudios
+### Estructura de Datos
 
-Los datos están basados en el Plan de Estudios de Ingeniería Eléctrica de la Facultad de Ingeniería (UDELAR).
+```json
+{
+  "nombre": "string (requerido)",
+  "descripcion": "string (requerido)",
+  "materias_core": ["array de códigos"],
+  "materias_optativas": ["array de códigos"],
+  "materias_sugeridas": ["array de códigos (opcional)"],
+  "plan_recomendado": {
+    "1": ["códigos del semestre 1"],
+    "2": ["códigos del semestre 2"]
+  },
+  "emphasis": [
+    {
+      "nombre": "string",
+      "materias_core": ["array"],
+      "materias_optativas": ["array"],
+      "plan_recomendado": {}
+    }
+  ],
+  "notas_importantes": [
+    {
+      "id": "identificador",
+      "titulo": "Título",
+      "descripcion": "Descripción"
+    }
+  ]
+}
+```
 
-## Contribuciones
+## 🚨 Migración
 
-Las contribuciones son bienvenidas. Puedes abrir issues o enviar pull requests para mejoras o correcciones.
+### ✅ Usa Ahora
+- `index.html` (actualizado con nueva arquitectura)
+- `listado.html` (nueva vista de listado)
+- Todos los archivos en `js/`
+- Perfiles JSON en `data/profiles/`
 
-## Licencia
+### ❌ Archivos Obsoletos
+- `app.js` (reemplazado por sistema modular)
+- `graph.js` (reemplazado por `js/graph-new.js`)
+- `profile-notes.js` (reemplazado por `js/profile-notes-new.js`)
+- `index-new.html` y `graph-new.html` (archivos temporales)
 
-Este proyecto está bajo la licencia MIT. Ver el archivo LICENSE para más detalles.
+## 🌐 Compatibilidad
+
+### Navegadores Soportados
+- ✅ Chrome 60+
+- ✅ Firefox 60+
+- ✅ Safari 12+
+- ✅ Edge 79+
+
+### Tecnologías
+- ✅ **Vanilla JavaScript** (ES6+ modules)
+- ✅ **CSS Grid/Flexbox**
+- ✅ **Fetch API**
+- ✅ **Sin build process**
+- ✅ **Sin dependencias externas**
+
+## 📊 Datos
+
+Los datos de materias están en `data/ucs.json` y siguen el plan de estudios oficial de Ingeniería Eléctrica de FING, UdelaR.
+
+Cada perfil tiene su archivo JSON independiente con:
+- Materias core y optativas
+- Planes recomendados por semestre
+- Énfasis específicos (cuando aplica)
+- Notas importantes
+
+## 🤝 Contribuir
+
+1. **Fork** el proyecto
+2. **Crear** una rama para tu feature
+3. **Agregar** tu perfil siguiendo la documentación
+4. **Probar** la funcionalidad
+5. **Enviar** un pull request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver `LICENSE` para más detalles.
+
+## 🎉 Beneficios de la Nueva Arquitectura
+
+### Para Desarrolladores
+- ✅ **Código modular** y fácil de entender
+- ✅ **Documentación completa** en `ARCHITECTURE.md`
+- ✅ **Estructura clara** de responsabilidades
+- ✅ **Testing** simplificado
+- ✅ **Extensión** trivial de funcionalidades
+
+### Para Usuarios
+- ✅ **Interfaz mejorada** y más responsive
+- ✅ **Rendimiento optimizado**
+- ✅ **Funcionalidades avanzadas** (filtros, búsqueda, etc.)
+- ✅ **Todos los perfiles funcionando** correctamente
+- ✅ **Experiencia consistente** entre vistas
+
+### Para Mantenimiento
+- ✅ **Transferencia de ownership** facilitada
+- ✅ **Onboarding** de nuevos desarrolladores simplificado
+- ✅ **Debugging** y troubleshooting mejorados
+- ✅ **Escalabilidad** asegurada
+
+---
+
+**🏆 La aplicación está lista para producción con una arquitectura limpia que cualquier desarrollador puede entender y extender fácilmente.**
 
