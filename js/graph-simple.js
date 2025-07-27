@@ -36,7 +36,7 @@ class GraphApp {
     this.profiles = {};
     this.approvedSubjects = new Set();
     this.exoneratedSubjects = new Set();
-    this.showRecommendedPath = false;
+    this.showRecommendedPath = true;
     this.currentProfile = null;
     this.currentEmphasis = null;
   }
@@ -193,9 +193,6 @@ class GraphApp {
       tableViewLink.style.display = (config && config.hasTableView) ? 'inline' : 'none';
     }
 
-    // Create recommended path toggle if profile has plan_recomendado
-    this.createRecommendedPathToggle();
-    
     this.renderGraph();
   }
 
@@ -205,77 +202,8 @@ class GraphApp {
       this.currentEmphasis = emphasisSelect.value;
       console.log('Emphasis changed to:', this.currentEmphasis);
       
-      // Recreate recommended path toggle since emphasis changed
-      this.createRecommendedPathToggle();
-      
       this.renderGraph();
     }
-  }
-
-  createRecommendedPathToggle() {
-    // Remove existing toggle
-    this.hideRecommendedPathToggle();
-
-    if (!this.currentProfile || !this.profiles[this.currentProfile]) {
-      return;
-    }
-
-    const profile = this.profiles[this.currentProfile];
-    let hasPlanRecomendado = false;
-
-    // Check if profile has plan_recomendado at root level (for profiles without emphasis)
-    if (profile.plan_recomendado) {
-      hasPlanRecomendado = true;
-    }
-    // Check if profile has emphasis with plan_recomendado (for profiles with emphasis)
-    else if (profile.emphasis && this.currentEmphasis) {
-      const selectedEmphasis = profile.emphasis.find(emp => emp.nombre === this.currentEmphasis);
-      if (selectedEmphasis && selectedEmphasis.plan_recomendado) {
-        hasPlanRecomendado = true;
-      }
-    }
-
-    if (!hasPlanRecomendado) {
-      return;
-    }
-
-    const container = document.querySelector('.additional-filters');
-    if (!container) return;
-
-    const toggleContainer = document.createElement('div');
-    toggleContainer.className = 'filter-group';
-    toggleContainer.id = 'recommendedPathToggleContainer';
-
-    const toggleButton = document.createElement('button');
-    toggleButton.id = 'recommendedPathToggle';
-    toggleButton.className = 'recommended-path-toggle';
-    toggleButton.textContent = 'Mostrar Plan de Estudio Recomendado';
-    toggleButton.style.display = 'block';
-    toggleButton.addEventListener('click', () => this.toggleRecommendedPath());
-
-    toggleContainer.appendChild(toggleButton);
-    container.appendChild(toggleContainer);
-  }
-
-  hideRecommendedPathToggle() {
-    const existingContainer = document.getElementById('recommendedPathToggleContainer');
-    if (existingContainer) {
-      existingContainer.remove();
-    }
-    this.showRecommendedPath = false;
-  }
-
-  toggleRecommendedPath() {
-    this.showRecommendedPath = !this.showRecommendedPath;
-    const button = document.getElementById('recommendedPathToggle');
-    
-    if (button) {
-      button.textContent = this.showRecommendedPath ? 
-        'Mostrar Vista Normal' : 
-        'Mostrar Plan de Estudio Recomendado';
-    }
-
-    this.renderGraph();
   }
 
   renderGraph() {
@@ -319,7 +247,8 @@ class GraphApp {
       }
     }
 
-    if (this.showRecommendedPath && planRecomendado) {
+    // Always show recommended path if available, otherwise show subjects by profile
+    if (planRecomendado) {
       this.renderRecommendedPath(profile, planRecomendado);
     } else {
       this.renderSubjectsByProfile(profile);
