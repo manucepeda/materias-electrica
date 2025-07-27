@@ -104,8 +104,16 @@ export class TreeViewManager {
       emphasisSelect.addEventListener('change', () => this.handleEmphasisChange());
     }
 
-    // Global function for subject toggles
-    window.toggleSubjectApproval = (subjectCode) => this.toggleSubjectApproval(subjectCode);
+    // Event delegation for subject toggles
+    const subjectContainer = document.getElementById('subject-container');
+    if (subjectContainer) {
+      subjectContainer.addEventListener('click', (event) => {
+        const target = event.target;
+        if (target && target.dataset.subjectCode) {
+          this.toggleSubjectApproval(target.dataset.subjectCode);
+        }
+      });
+    }
   }
 
   /**
