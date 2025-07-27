@@ -1,8 +1,8 @@
 {
-  "nombre": "Sistemas Eléctricos de Potencia",
-  "descripcion": "Perfil de Sistemas Eléctricos de Potencia enfocado en generación, transmisión y distribución de energía eléctrica",
-  "materias_core": ["Electro", "Maquel", "Elepot", "iiee"],
-  "materias_optativas": ["Medel", "SyC"],
+  "nombre": "Señales y Aprendizaje Automático",
+  "descripcion": "Perfil de Señales y Aprendizaje Automático enfocado en procesamiento de señales, sistemas, y técnicas de aprendizaje automático",
+  "materias_core": ["SyS", "FAAPRP", "SyC", "SalMod"],
+  "materias_optativas": ["OpSenales", "OpAA", "OpTelec", "OpInf", "OpElectro", "OpDigit"],
   "materias_sugeridas": [],
   "notas_importantes": [
     {
@@ -41,9 +41,19 @@
       "descripcion": "Se deben cubrir al menos 5 créditos en el área de Ingeniería y Sociedad. Opciones: Ciencia, Tecnología y Sociedad, Cooperativismo, Historia del Uruguay Contemporáneo, Módulos de Extensión."
     },
     {
-      "id": "opcionales_potencia",
-      "titulo": "Opcionales Potencia",
-      "descripcion": "Opcionales recomendadas: Controladores Lógicos Programables, Estabilidad de sistemas eléctricos de potencia, Sistemas de Protección, Simulación de sistemas de energía eléctrica, Comportamiento mecánico de los materiales, Transitorios Electromagnéticos, Calidad de energía, Ensayos eléctricos, Generación eólica, Generación fotovoltaica, Generación de energía eléctrica."
+      "id": "opcionales_senales",
+      "titulo": "Opcionales de Señales",
+      "descripcion": "Opciones: Introducción a la Teoría de la Información, Tratamiento de Imágenes por Computadora, Procesamiento Digital de Señales de Audio, Optimización Bajo Incertidumbre, Estimación y Predicción en Series Temporales, Herramientas de representación tiempo-frecuencia, Aplicaciones de la Teoría de la Información al Procesamiento de Imágenes, Teoría de Códigos Avanzados."
+    },
+    {
+      "id": "opcionales_aprendizaje",
+      "titulo": "Opcionales de Aprendizaje Automático",
+      "descripcion": "Opciones: Taller de Aprendizaje Automático, Aprendizaje Profundo para Visión Artificial, Aprendizaje profundo para el análisis de imágenes biomédicas, Herramientas de aprendizaje automático."
+    },
+    {
+      "id": "opcionales_telecomunicaciones",
+      "titulo": "Opcionales de Telecomunicaciones",
+      "descripcion": "Opciones: Redes de datos 2, Comunicaciones Inalámbricas, Tecnologías de Redes y Servicios de Telecomunicaciones, Redes de acceso, Distribución y aplicaciones multimedia, Digitalización y codificación multimedia, Redes ópticas, Códigos para corrección de errores."
     }
   ],
   "plan_recomendado": {
@@ -51,11 +61,11 @@
     "2": ["CDIVV", "GAL2", "F2", "P1"],
     "3": ["CVec", "PyE", "F3", "MecNewt", "FExp1"],
     "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
-    "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
-    "6": ["MetNum", "SyC", "TFourier", "SyM", "Maquel"],
-    "7": ["Medel", "Micro", "Elepot", "RedesEl", "TMaq"],
-    "8": ["Pas", "Redes1", "iiee", "Redes1", "TEE", "TEP"],
-    "9": ["ProyFin10", "OpInd", "OP8", "OP8", "SMT"],
-    "10": ["ProyFin25", "LRI", "CTS", "Ec"]
+    "5": ["FVC", "SyS", "IntroMicro", "PIE", "ElecFund"],
+    "6": ["MetNum", "SyC", "TFourier", "SalMod", "FAAPRP"],
+    "7": ["MedElect", "OpAA", "OpBasica", "OpSenales", "OpTelec"],
+    "8": ["Pas", "Redes1", "OpSenales", "OpInf", "OpElectro"],
+    "9": ["ProyFin10", "OpInd", "Electro", "OpSenalesAA", "OpSenales"],
+    "10": ["ProyFin25", "LRI", "InstEl", "Ec", "OpIyS"]
   }
 }

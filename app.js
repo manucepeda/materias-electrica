@@ -14,7 +14,8 @@ const PROFILE_FILES = {
   'Electrónica': 'data/profiles/electronica.json',
   'Control': 'data/profiles/control.json',
   'Sistemas Eléctricos de Potencia': 'data/profiles/potencia.json',
-  'Ingeniería Biomédica': 'data/profiles/biomedica.json'
+  'Ingeniería Biomédica': 'data/profiles/biomedica.json',
+  'Señales y Aprendizaje Automático': 'data/profiles/senales.json'
 };
 
 async function load() {

@@ -19,14 +19,15 @@ const EMPHASIS_OPTIONS = {
 };
 
 // Profiles that don't have emphasis options
-const NO_EMPHASIS_PROFILES = ['Control', 'Sistemas Eléctricos de Potencia'];
+const NO_EMPHASIS_PROFILES = ['Control', 'Sistemas Eléctricos de Potencia', 'Señales y Aprendizaje Automático'];
 
 // Profile file mapping
 const PROFILE_FILES = {
   'Electrónica': 'data/profiles/electronica.json',
   'Control': 'data/profiles/control.json',
   'Sistemas Eléctricos de Potencia': 'data/profiles/potencia.json',
-  'Ingeniería Biomédica': 'data/profiles/biomedica.json'
+  'Ingeniería Biomédica': 'data/profiles/biomedica.json',
+  'Señales y Aprendizaje Automático': 'data/profiles/senales.json'
 };
 
 async function load() {
@@ -455,6 +456,56 @@ function renderGraph() {
               }
             }
           }
+          
+          // Add note association classes for profiles
+          let noteClasses = '';
+          if (selectedPerfil === 'Sistemas Eléctricos de Potencia') {
+            // Associate subjects with notes
+            if (subject.codigo === 'MI') {
+              noteClasses = 'subject-note-matematica_inicial';
+            } else if (subject.codigo === 'Tallerine') {
+              noteClasses = 'subject-note-tallerine';
+            } else if (subject.codigo === 'Pas') {
+              noteClasses = 'subject-note-pasantia';
+            } else if (['CTS', 'Ec'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_sociedad';
+            } else if (['OpInd'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_industrial';
+            } else if (['OP8', 'TEP', 'TEE'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-opcionales_potencia';
+            } else if (['CDIV', 'CDIVV', 'GAL1', 'GAL2', 'PyE', 'CVec', 'EcuDif'].includes(subject.codigo)) {
+              // Matemáticas
+              noteClasses = 'subject-note-fisica_matematicas';
+            } else if (['F1', 'F2', 'F3', 'ElecMag', 'FVC'].includes(subject.codigo)) {
+              // Físicas
+              noteClasses = 'subject-note-formacion_basica';
+            }
+          } else if (selectedPerfil === 'Señales y Aprendizaje Automático') {
+            // Associate subjects with notes for Señales y Aprendizaje Automático profile
+            if (subject.codigo === 'MI') {
+              noteClasses = 'subject-note-matematica_inicial';
+            } else if (subject.codigo === 'Tallerine') {
+              noteClasses = 'subject-note-tallerine';
+            } else if (subject.codigo === 'Pas') {
+              noteClasses = 'subject-note-pasantia';
+            } else if (['CTS', 'Ec', 'OpIyS'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_sociedad';
+            } else if (['OpInd'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_industrial';
+            } else if (['SalMod', 'PDS', 'COD', 'ProcImag'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-procesamiento_senales';
+            } else if (['FAAPRP', 'AuMac', 'CompVis'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-aprendizaje_automatico';
+            } else if (['OpSenales', 'OpAA', 'OpSenalesAA', 'OpTelec', 'Redes1'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-optativa_senales';
+            } else if (['CDIV', 'CDIVV', 'GAL1', 'GAL2', 'PyE', 'CVec', 'EcuDif'].includes(subject.codigo)) {
+              // Matemáticas
+              noteClasses = 'subject-note-fisica_matematicas';
+            } else if (['F1', 'F2', 'F3', 'ElecMag', 'FVC', 'OpBasica'].includes(subject.codigo)) {
+              // Físicas y básicas
+              noteClasses = 'subject-note-formacion_basica';
+            }
+          }
         }
         
         // Truncate the name for a more compact view
@@ -462,7 +513,7 @@ function renderGraph() {
         
         return `
           <div 
-            class="subject-btn ${statusClass}" 
+            class="subject-btn ${statusClass} ${noteClasses}" 
             data-code="${subject.codigo}"
             onclick="toggleSubjectApproval('${subject.codigo}')"
             title="${subject.nombre} (${subject.creditos} créditos)${prereqInfo ? '\n' + prereqInfo : ''}"
@@ -531,9 +582,59 @@ function renderRecommendedPath() {
           // Get the status of this subject
           const status = getSubjectStatus(subject);
           
+          // Add note association classes for profiles
+          let noteClasses = '';
+          if (selectedPerfil === 'Sistemas Eléctricos de Potencia') {
+            // Associate subjects with notes
+            if (subject.codigo === 'MI') {
+              noteClasses = 'subject-note-matematica_inicial';
+            } else if (subject.codigo === 'Tallerine') {
+              noteClasses = 'subject-note-tallerine';
+            } else if (subject.codigo === 'Pas') {
+              noteClasses = 'subject-note-pasantia';
+            } else if (['CTS', 'Ec'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_sociedad';
+            } else if (['OpInd'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_industrial';
+            } else if (['OP8', 'TEP', 'TEE'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-opcionales_potencia';
+            } else if (['CDIV', 'CDIVV', 'GAL1', 'GAL2', 'PyE', 'CVec', 'EcuDif'].includes(subject.codigo)) {
+              // Matemáticas
+              noteClasses = 'subject-note-fisica_matematicas';
+            } else if (['F1', 'F2', 'F3', 'ElecMag', 'FVC'].includes(subject.codigo)) {
+              // Físicas
+              noteClasses = 'subject-note-formacion_basica';
+            }
+          } else if (selectedPerfil === 'Señales y Aprendizaje Automático') {
+            // Associate subjects with notes for Señales y Aprendizaje Automático profile
+            if (subject.codigo === 'MI') {
+              noteClasses = 'subject-note-matematica_inicial';
+            } else if (subject.codigo === 'Tallerine') {
+              noteClasses = 'subject-note-tallerine';
+            } else if (subject.codigo === 'Pas') {
+              noteClasses = 'subject-note-pasantia';
+            } else if (['CTS', 'Ec', 'OpIyS'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_sociedad';
+            } else if (['OpInd'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-ingenieria_industrial';
+            } else if (['SalMod', 'PDS', 'COD', 'ProcImag'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-procesamiento_senales';
+            } else if (['FAAPRP', 'AuMac', 'CompVis'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-aprendizaje_automatico';
+            } else if (['OpSenales', 'OpAA', 'OpSenalesAA', 'OpTelec', 'Redes1'].includes(subject.codigo)) {
+              noteClasses = 'subject-note-optativa_senales';
+            } else if (['CDIV', 'CDIVV', 'GAL1', 'GAL2', 'PyE', 'CVec', 'EcuDif'].includes(subject.codigo)) {
+              // Matemáticas
+              noteClasses = 'subject-note-fisica_matematicas';
+            } else if (['F1', 'F2', 'F3', 'ElecMag', 'FVC', 'OpBasica'].includes(subject.codigo)) {
+              // Físicas y básicas
+              noteClasses = 'subject-note-formacion_basica';
+            }
+          }
+          
           return `
             <div 
-              class="subject-btn recommended-subject ${status}" 
+              class="subject-btn recommended-subject ${status} ${noteClasses}" 
               data-code="${subject.codigo}"
               onclick="toggleSubjectApproval('${subject.codigo}')"
               title="${subject.nombre} (${subject.creditos} créditos)"
@@ -555,6 +656,29 @@ function renderRecommendedPath() {
       <p>Total de créditos del plan: <strong>${totalPlanCredits}</strong></p>
     </div>
   `;
+  
+  // Add notes section for profiles after the graph
+  if ((selectedPerfil === 'Sistemas Eléctricos de Potencia' || selectedPerfil === 'Señales y Aprendizaje Automático') && profiles[selectedPerfil] && profiles[selectedPerfil].notas_importantes) {
+    html += `
+    <div class="profile-notes">
+      <h4>Información importante para el perfil de ${selectedPerfil}</h4>
+      <div class="notes-grid">
+        ${profiles[selectedPerfil].notas_importantes.map(nota => `
+          <div class="note-card" data-note-id="${nota.id}">
+            <div class="note-icon"><i class="icon-${nota.id}"></i></div>
+            <div class="note-content">
+              <h5>${nota.titulo}</h5>
+              <div class="note-description">${nota.descripcion}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="notes-help">
+        <p>Haga clic en una nota para resaltar las materias relacionadas en el plan de estudio</p>
+      </div>
+    </div>
+    `;
+  }
   
   treeContainer.innerHTML = html;
   updateTotalCredits();

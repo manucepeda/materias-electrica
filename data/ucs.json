@@ -863,14 +863,14 @@
     ]
   },
   {
-    "codigo": "BioRob",
-    "nombre": "BioRobótica",
-    "creditos": 8,
+    "codigo": "RedesEl",
+    "nombre": "Redes Eléctricas",
+    "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
       {
-        "codigo": "FRI",
+        "codigo": "Maquel",
         "requiere_curso": true,
         "requiere_exoneracion": false
       }
@@ -1052,5 +1052,159 @@
         "requiere_exoneracion": false
       }
     ]
+  },
+  {
+    "codigo": "TMaq",
+    "nombre": "Taller de Máquinas",
+    "creditos": 4,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "Maquel",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TEE",
+    "nombre": "Transporte de Energía Eléctrica",
+    "creditos": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "TEP",
+    "nombre": "Taller de Electrónica de Potencia",
+    "creditos": 4,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SMT",
+    "nombre": "Subestaciones de Media Tensión",
+    "creditos": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "FAAPRP",
+    "nombre": "Fundamentos de Aprendizaje Automático y Reconocimiento de Patrones",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SalMod",
+    "nombre": "Señales aleatorias y Modulación",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpAA",
+    "nombre": "Opcional Aprendizaje Automático",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpSenales",
+    "nombre": "Opcional Señales",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpTelec",
+    "nombre": "Opcional Telecomunicaciones",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpInf",
+    "nombre": "Opcional Informática",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpElectro",
+    "nombre": "Opcional Electrónica",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpDigit",
+    "nombre": "Opcional Sistemas Digitales",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpBasica",
+    "nombre": "Opcional Básica",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpSenalesAA",
+    "nombre": "Opcional Señales o Aprendizaje Automático",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpIyS",
+    "nombre": "Opcional Ingeniería y sociedad",
+    "creditos": 0,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
   }
 ]
