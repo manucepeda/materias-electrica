@@ -833,6 +833,50 @@
     "prerequisitos": []
   },
   {
+    "codigo": "ProyFin10",
+    "nombre": "Proyecto Fin de Carrera",
+    "creditos": 10,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "ProyFin25",
+    "nombre": "Proyecto Fin de Carrera",
+    "creditos": 25,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  { 
+    "codigo": "RSI",
+    "nombre": "Redes de Sensores Inalámbricos",
+    "creditos": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "Redes1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioRob",
+    "nombre": "BioRobótica",
+    "creditos": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "FRI",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
     "codigo": "Proy20",
     "nombre": "Proyecto",
     "creditos": 20,
@@ -920,9 +964,85 @@
     ]
   },
   {
+    "codigo": "OB1",
+    "nombre": "Optativa Básica",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpComp",
+    "nombre": "Optativa Computación",
+    "creditos": 12,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpTelecom",
+    "nombre": "Optativa Telecomunicaciones/Señales",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OpInd",
+    "nombre": "Optativa Industrial",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OP8",
+    "nombre": "Opcional Perfil 8",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "OP4",
+    "nombre": "Opcional Perfil 4",
+    "creditos": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
     "codigo": "FAA",
     "nombre": "Fundamentos de Aprendizaje Automático",
     "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "DisLog2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "CircRF",
+    "nombre": "Circuitos de Radiofrecuencia",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "DCI",
+    "nombre": "Diseño de Circuitos Integrados",
+    "creditos": 9,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
