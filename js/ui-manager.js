@@ -215,12 +215,13 @@ export class UIManager {
 
     // Add profile classification tags
     if (classification) {
-      if (classification === 'core') {
-        profileTags.push('<span class="tag-badge core-badge">Obl</span>');
-      } else if (classification === 'opcional') {
-        profileTags.push('<span class="tag-badge opcional-badge">Opcional</span>');
-      } else if (classification === 'sugerida') {
-        profileTags.push('<span class="tag-badge sugerida-badge">Sugerida</span>');
+      const classificationBadges = {
+        core: '<span class="tag-badge core-badge">Obl</span>',
+        opcional: '<span class="tag-badge opcional-badge">Opcional</span>',
+        sugerida: '<span class="tag-badge sugerida-badge">Sugerida</span>',
+      };
+      if (classificationBadges[classification]) {
+        profileTags.push(classificationBadges[classification]);
       }
     }
 
