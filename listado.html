@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malla Curricular Ingeniería Eléctrica - Listado de Materias</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="listado-styles.css">
 </head>
 <body>
     <header>
@@ -18,14 +19,21 @@
             </span>
         </div>
         
+        <div class="search-section">
+            <div class="main-search">
+                <div class="search-input-wrapper">
+                    <input type="text" id="search" placeholder="Buscar por nombre o código de materia..." autocomplete="off">
+                    <button id="clear-search" class="clear-btn" style="display: none;">&times;</button>
+                </div>
+                <div class="search-help">
+                    <small>Presiona "/" para enfocar la búsqueda | Esc para limpiar</small>
+                </div>
+            </div>
+        </div>
+        
         <div class="filters">
             <div class="filter-group">
-                <label for="search">Buscar:</label>
-                <input type="text" id="search" placeholder="Nombre o código...">
-            </div>
-            
-            <div class="filter-group">
-                <label for="semestre">Semestre:</label>
+                <label for="semestre">Semestre sugerido:</label>
                 <select id="semestre">
                     <option value="">Todos</option>
                     <option value="1">1</option>
@@ -62,9 +70,28 @@
             </div>
             
             <div class="filter-group">
-                <label for="perfil">Perfil:</label>
+                <label for="dictationSemester">Semestre de dictado:</label>
+                <select id="dictationSemester">
+                    <option value="all">Todos</option>
+                    <option value="1">Semestres impares</option>
+                    <option value="2">Semestres pares</option>
+                    <option value="both">Ambos semestres</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="examOnly">Tipo de materia:</label>
+                <select id="examOnly">
+                    <option value="all">Todas</option>
+                    <option value="false">Solo curriculares</option>
+                    <option value="true">Solo libres</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="perfil">Filtrar por perfil:</label>
                 <select id="perfil">
-                    <!-- Options will be populated dynamically -->
+                    <option value="">Todos los perfiles</option>
                 </select>
             </div>
             
@@ -74,20 +101,31 @@
                     <option value="">Seleccione un perfil primero</option>
                 </select>
             </div>
-            
-            <div class="filter-group">
-                <label for="dictationSemester">Semestre de dictado:</label>
-                <select id="dictationSemester">
-                    <option value="all">Todos</option>
-                    <option value="1">Semestres impares</option>
-                    <option value="2">Semestres pares</option>
-                    <option value="both">Ambos semestres</option>
-                </select>
-            </div>
         </div>
     </header>
 
     <main>
+        <div class="quick-stats" id="quickStats" style="display: none;">
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalSubjectsCount">0</span>
+                    <span class="stat-label">Materias totales</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="totalCreditsCount">0</span>
+                    <span class="stat-label">Créditos totales</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="examOnlyCount">0</span>
+                    <span class="stat-label">Materias libres</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" id="curricularCount">0</span>
+                    <span class="stat-label">Materias curriculares</span>
+                </div>
+            </div>
+        </div>
+        
         <div id="count"></div>
         <div id="grid" class="grid"></div>
     </main>
