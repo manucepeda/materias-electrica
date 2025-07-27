@@ -1,0 +1,118 @@
+/**
+ * Formularios - Materias Eléctrica
+ * Estilos para elementos de formulario y controles
+ */
+
+/* === INPUTS BASE === */
+input[type="text"],
+input[type="search"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: var(--espacio-sm) var(--espacio-base);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-base);
+  font-size: var(--texto-sm);
+  font-family: inherit;
+  background: var(--color-fondo-claro);
+  transition: all var(--transicion-rapida);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-acento);
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background: var(--color-fondo-gris);
+  color: var(--color-texto-claro);
+  cursor: not-allowed;
+}
+
+/* === SELECTORES === */
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--espacio-sm) center;
+  background-repeat: no-repeat;
+  background-size: 16px 12px;
+  padding-right: var(--espacio-xl);
+}
+
+/* === BUSCADOR === */
+.search-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+}
+
+.search-input {
+  width: 100%;
+  padding-right: var(--espacio-2xl);
+}
+
+.clear-search {
+  position: absolute;
+  right: var(--espacio-sm);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* === CHECKBOXES Y RADIOS === */
+input[type="checkbox"],
+input[type="radio"] {
+  width: auto;
+  margin-right: var(--espacio-xs);
+}
+
+/* === GRUPOS DE FORMULARIO === */
+.form-group {
+  margin-bottom: var(--espacio-base);
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: var(--espacio-xs);
+  font-weight: 500;
+  color: var(--color-texto);
+}
+
+.form-group.required label::after {
+  content: ' *';
+  color: var(--color-error);
+}
+
+/* === ESTADOS DE ERROR === */
+.form-group.error input,
+.form-group.error select,
+.form-group.error textarea {
+  border-color: var(--color-error);
+}
+
+.form-group.error .error-message {
+  color: var(--color-error);
+  font-size: var(--texto-xs);
+  margin-top: var(--espacio-xs);
+}
+
+/* === FIELDSETS === */
+fieldset {
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radio-base);
+  padding: var(--espacio-base);
+  margin: var(--espacio-base) 0;
+}
+
+legend {
+  padding: 0 var(--espacio-sm);
+  font-weight: 600;
+  color: var(--color-texto);
+}

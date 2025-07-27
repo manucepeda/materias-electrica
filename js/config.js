@@ -1,9 +1,9 @@
 /**
- * Configuration module for the Materias Eléctrica application
- * Centralizes all profile configuration and dynamic profile loading
+ * Módulo de configuración para la aplicación Materias Eléctrica
+ * Centraliza toda la configuración de perfiles y carga dinámica de perfiles
  */
 
-// Profile configuration with dynamic loading capabilities
+// Configuración de perfiles con capacidades de carga dinámica
 export const PROFILE_CONFIG = {
   'Electrónica': {
     file: 'data/profiles/electronica.json',
