@@ -1,9 +1,8 @@
 [
-  {
+{
     "codigo": "CDIV",
     "nombre": "Cálculo dif. e integral en una variable",
     "creditos": 13,
-    "semestre": 1,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": []
@@ -12,7 +11,6 @@
     "codigo": "GAL1",
     "nombre": "GAL 1",
     "creditos": 9,
-    "semestre": 1,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": []
@@ -21,16 +19,14 @@
     "codigo": "F1",
     "nombre": "Física 1",
     "creditos": 10,
-    "semestre": 1,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": []
   },
   {
-    "codigo": "Tallerineine",
-    "nombre": "Tallerineine",
+    "codigo": "Tallerine",
+    "nombre": "Tallerine",
     "creditos": 10,
-    "semestre": 1,
     "dictation_semester": "both",
     "exam_only": false,
     "prerequisitos": []
@@ -39,7 +35,6 @@
     "codigo": "MI",
     "nombre": "Matemática inicial",
     "creditos": 4,
-    "semestre": 1,
     "dictation_semester": "both",
     "exam_only": false,
     "prerequisitos": []
@@ -48,7 +43,6 @@
     "codigo": "CDIVV",
     "nombre": "Cálculo dif. e integral en varias variables",
     "creditos": 13,
-    "semestre": 2,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -63,7 +57,6 @@
     "codigo": "GAL2",
     "nombre": "GAL 2",
     "creditos": 9,
-    "semestre": 2,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -78,7 +71,6 @@
     "codigo": "F2",
     "nombre": "Física 2",
     "creditos": 10,
-    "semestre": 2,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -93,7 +85,6 @@
     "codigo": "P1",
     "nombre": "Programación 1",
     "creditos": 10,
-    "semestre": 2,
     "dictation_semester": "both",
     "exam_only": false,
     "prerequisitos": []
@@ -102,7 +93,6 @@
     "codigo": "CVec",
     "nombre": "Cálculo Vectorial",
     "creditos": 10,
-    "semestre": 3,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -117,7 +107,6 @@
     "codigo": "PyE",
     "nombre": "Probabilidad y Estadística",
     "creditos": 10,
-    "semestre": 3,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -132,7 +121,6 @@
     "codigo": "F3",
     "nombre": "Física 3",
     "creditos": 10,
-    "semestre": 3,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -152,7 +140,6 @@
     "codigo": "MecNewt",
     "nombre": "Mecánica Newtoniana",
     "creditos": 10,
-    "semestre": 3,
     "dictation_semester": "both",
     "exam_only": true,
     "prerequisitos": [
@@ -172,7 +159,6 @@
     "codigo": "FExp1",
     "nombre": "Física Experimental 1",
     "creditos": 5,
-    "semestre": 3,
     "dictation_semester": "1",
     "exam_only": false,
     "prerequisitos": [
@@ -187,7 +173,6 @@
     "codigo": "EcuDif",
     "nombre": "Ecuaciones Diferenciales",
     "creditos": 10,
-    "semestre": 4,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -202,7 +187,6 @@
     "codigo": "ElecMag",
     "nombre": "Electromagnetismo",
     "creditos": 10,
-    "semestre": 4,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -222,7 +206,6 @@
     "codigo": "FExp2",
     "nombre": "Física Experimental 2",
     "creditos": 5,
-    "semestre": 4,
     "dictation_semester": "2",
     "exam_only": false,
     "prerequisitos": [
@@ -237,7 +220,6 @@
     "codigo": "TeoCirc",
     "nombre": "Teoría de Circuitos",
     "creditos": 8,
-    "semestre": 4,
     "dictation_semester": "2",
     "exam_only": false,
     "prerequisitos": [
@@ -257,7 +239,6 @@
     "codigo": "DisLog",
     "nombre": "Diseño Lógico",
     "creditos": 12,
-    "semestre": 4,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -272,7 +253,6 @@
     "codigo": "FVC",
     "nombre": "Funciones de Variable Compleja",
     "creditos": 5,
-    "semestre": 5,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -287,7 +267,6 @@
     "codigo": "SyS",
     "nombre": "Señales y Sistemas",
     "creditos": 11,
-    "semestre": 5,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -307,7 +286,6 @@
     "codigo": "Micro",
     "nombre": "Intro. A los Microcesadores",
     "creditos": 11,
-    "semestre": 5,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -322,7 +300,6 @@
     "codigo": "PIE",
     "nombre": "Programación para Ingeniería Eléctrica",
     "creditos": 7,
-    "semestre": 5,
     "dictation_semester": "1",
     "exam_only": false,
     "prerequisitos": [
@@ -337,7 +314,6 @@
     "codigo": "ElecFund",
     "nombre": "Electrónica Fundamental",
     "creditos": 11,
-    "semestre": 5,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -352,7 +328,6 @@
     "codigo": "MetNum",
     "nombre": "Métodos numéricos",
     "creditos": 10,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -372,7 +347,6 @@
     "codigo": "SyC",
     "nombre": "Sistemas y Control",
     "creditos": 12,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -392,7 +366,6 @@
     "codigo": "TFourier",
     "nombre": "Taller Fourier",
     "creditos": 8,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": false,
     "prerequisitos": [
@@ -407,7 +380,6 @@
     "codigo": "SyM",
     "nombre": "Señales aleatorias y Modulación",
     "creditos": 8,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -427,7 +399,6 @@
     "codigo": "Redes1",
     "nombre": "Redes de Datos I",
     "creditos": 8,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -442,7 +413,6 @@
     "codigo": "EA1",
     "nombre": "Electrónica Avanzada 1",
     "creditos": 10,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -457,7 +427,6 @@
     "codigo": "Medel",
     "nombre": "Medidas Eléctricas",
     "creditos": 10,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -472,7 +441,6 @@
     "codigo": "CD",
     "nombre": "Comunicaciones Digitales",
     "creditos": 11,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -487,7 +455,6 @@
     "codigo": "AntYProp",
     "nombre": "Antenas y Propagación",
     "creditos": 10,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -507,7 +474,6 @@
     "codigo": "Electro",
     "nombre": "Electrotécnica",
     "creditos": 10,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -522,7 +488,6 @@
     "codigo": "Maquel",
     "nombre": "Máquinas Eléctricas",
     "creditos": 10,
-    "semestre": 6,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -542,7 +507,6 @@
     "codigo": "Elepot",
     "nombre": "Electrónica de Potencia",
     "creditos": 10,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -562,7 +526,6 @@
     "codigo": "EA2",
     "nombre": "Electrónica Avanzada 2",
     "creditos": 8,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -577,7 +540,6 @@
     "codigo": "PROYDIS",
     "nombre": "Proyecto y Diseño",
     "creditos": 5,
-    "semestre": 8,
     "dictation_semester": "2",
     "exam_only": false,
     "prerequisitos": []
@@ -586,7 +548,6 @@
     "codigo": "TIB1",
     "nombre": "Taller Ing. Biológica 1",
     "creditos": 8,
-    "semestre": 7,
     "dictation_semester": "1",
     "exam_only": false,
     "prerequisitos": [
@@ -601,7 +562,6 @@
     "codigo": "TIB2",
     "nombre": "Taller Ing. Biológica 2",
     "creditos": 8,
-    "semestre": 8,
     "dictation_semester": "2",
     "exam_only": false,
     "prerequisitos": [
@@ -616,7 +576,6 @@
     "codigo": "InsInd",
     "nombre": "Instrumentación industrial",
     "creditos": 8,
-    "semestre": 8,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -631,7 +590,6 @@
     "codigo": "IntroPLC",
     "nombre": "Introducción a los PLC",
     "creditos": 5,
-    "semestre": 8,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
@@ -646,7 +604,6 @@
     "codigo": "SCTD",
     "nombre": "Control en tiempo discreto",
     "creditos": 8,
-    "semestre": 9,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -661,7 +618,6 @@
     "codigo": "FRI",
     "nombre": "Fundamentos de robótica industrial",
     "creditos": 8,
-    "semestre": 9,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -676,7 +632,6 @@
     "codigo": "CNL",
     "nombre": "Análisis y control de sistemas no lineales",
     "creditos": 8,
-    "semestre": 9,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -691,7 +646,6 @@
     "codigo": "FRA",
     "nombre": "Fundamentos de robótica autónoma",
     "creditos": 8,
-    "semestre": 9,
     "dictation_semester": "1",
     "exam_only": true,
     "prerequisitos": [
@@ -706,12 +660,274 @@
     "codigo": "iiee",
     "nombre": "Instalaciones Eléctricas",
     "creditos": 8,
-    "semestre": 10,
     "dictation_semester": "2",
     "exam_only": true,
     "prerequisitos": [
       {
         "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "EPST",
+    "nombre": "Estimación y Predicción en Series Temporales",
+    "creditos": 10,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "TIC",
+    "nombre": "Tratamiento de Imágenes por Computadora",
+    "creditos": 10,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioInf",
+    "nombre": "Informática en Biología y Medicina",
+    "creditos": 10,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SO",
+    "nombre": "Sistemas Operativos",
+    "creditos": 12,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioElec2",
+    "nombre": "Bioelectrónica II",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioElec3",
+    "nombre": "Bioelectrónica III",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioSen",
+    "nombre": "Sensores Biomédicos",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioSen",
+    "nombre": "Sensores Biomédicos",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioMat",
+    "nombre": "Biomateriales",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioMed",
+    "nombre": "Biomedicina",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "BioElec",
+    "nombre": "Bioelectrónica",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Sisem",
+    "nombre": "Sistemas Embedidos para tiempo Real ",
+    "creditos": 10,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "FCuant",
+    "nombre": "Fisiología Cuantitativa",
+    "creditos": 10,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "SemBio",
+    "nombre": "Seminario de Ingeniería Biomédica",
+    "creditos": 4,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Pas",
+    "nombre": "Pasantía",
+    "creditos": 10,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "IngBio",
+    "nombre": "Ingeniería Biomédica",
+    "creditos": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "AIMDs",
+    "nombre": "Diseño de Sistemas Médicos Implantables Activos",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Proy15",
+    "nombre": "Proyecto",
+    "creditos": 15,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Proy20",
+    "nombre": "Proyecto",
+    "creditos": 20,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "IPRL",
+    "nombre": "Introducción a la Prevención de Riesgos Laborales",
+    "creditos": 6,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+ {
+    "codigo": "IM",
+    "nombre": "Imágenes Médicas",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  
+  {
+    "codigo": "IMed",
+    "nombre": "Informática Médica",
+    "creditos": 5,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "IC",
+    "nombre": "Ingeniería Clínica",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "LRI",
+    "nombre": "Legislación y Relaciones Industriales",
+    "creditos": 6,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "CTS",
+    "nombre": "Ciencia, Tecnología y Sociedad",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "Ec",
+    "nombre": "Economía",
+    "creditos": 7,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "IIO",
+    "nombre": "Introducción a la Investigación de Operaciones",
+    "creditos": 10,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisitos": []
+  },
+  {
+    "codigo": "DisLog2",
+    "nombre": "Diseño Lógico 2",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "DisLog",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FAA",
+    "nombre": "Fundamentos de Aprendizaje Automático",
+    "creditos": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisitos": [
+      {
+        "codigo": "DisLog2",
         "requiere_curso": true,
         "requiere_exoneracion": false
       }
