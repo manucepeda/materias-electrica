@@ -1,0 +1,209 @@
+/**
+ * Tree View Styles - Uses the original subject-btn styling from styles.css
+ * Focused on semester layout with minimal custom styling
+ */
+
+/* Tree Container */
+.tree-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Plan Header */
+.recommended-path-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: linear(135deg, rgb(50, 50, 255));
+  color: white;
+  border-radius: 12px;
+}
+
+.recommended-path-header h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.recommended-path-header p {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 0.95rem;
+}
+
+.plan-description {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Semester Rows */
+.semester-row {
+  margin-bottom: 25px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.semester-label {
+  background: #f8fafc;
+  padding: 12px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #374151;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.semester-credits {
+  font-size: 0.9rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.semester-subjects {
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+/* Profile Notes */
+.profile-notes {
+  margin-top: 40px;
+  padding: 25px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.profile-notes h4 {
+  margin: 0 0 20px 0;
+  color: #374151;
+  font-size: 1.2rem;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.note-card:hover {
+  border-color: #3b82f6;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.15);
+}
+
+.note-content h5 {
+  margin: 0 0 8px 0;
+  color: #1f2937;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.note-description {
+  font-size: 0.9rem;
+  color: #4b5563;
+  line-height: 1.4;
+}
+
+/* Subject Categories (fallback view) */
+.profile-header {
+  text-align: center;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.profile-header h3 {
+  margin: 0 0 10px 0;
+  color: #374151;
+}
+
+.profile-header p {
+  margin: 5px 0;
+  color: #6b7280;
+}
+
+.subject-category {
+  margin-bottom: 30px;
+}
+
+.subject-category h4 {
+  margin: 0 0 15px 0;
+  padding: 10px 15px;
+  background: #374151;
+  color: white;
+  border-radius: 6px;
+  font-size: 1.1rem;
+}
+
+.subject-category.core h4 {
+  background: #dc2626;
+}
+
+.subject-category.opcional h4 {
+  background: #059669;
+}
+
+.subject-category.sugerida h4 {
+  background: #d97706;
+}
+
+.subjects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tree-container {
+    padding: 15px;
+  }
+  
+  .semester-subjects,
+  .subjects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  }
+  
+  .semester-label {
+    padding: 10px 15px;
+    font-size: 1rem;
+  }
+  
+  .notes-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .recommended-path-header {
+    padding: 15px;
+  }
+  
+  .recommended-path-header h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .semester-subjects,
+  .subjects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
