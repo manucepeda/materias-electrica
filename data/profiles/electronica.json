@@ -15,9 +15,9 @@
         "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
         "6": ["MetNum", "SyC", "TFourier", "SyM", "EA1"],
         "7": ["Medel", "OpB1", "Sisem", "Electro", "EA2"],
-        "8": ["iiee", "IngBio", "PAS", "Redes1", "AIMDs", "LRI"],
-        "9": ["Proy10", "SemBio", "OpComp", "OpTelecom", "CTS", "OP4"],
-        "10": ["Proy25", "OpInd", "Ec", "OP8"]
+        "8": ["iiee", "IngBio", "Pas", "Redes1", "AIMDs", "LRI"],
+        "9": ["ProyFin10", "SemBio", "OpComp", "OpTelecom", "CTS", "OP4"],
+        "10": ["ProyFin25", "OpInd", "Ec", "OP8"]
       }
     },
     {
@@ -32,10 +32,10 @@
         "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
         "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
         "6": ["MetNum", "SyC", "TFourier", "SyM", "EA1"],
-        "7": ["Medel", "OpB1", "Sisem", "Electro", "EA2"],
-        "8": ["iiee", "RSI", "PAS", "Redes1", "AIMDs", "LRI"],
-        "9": ["Proy10", "OpComp", "DisLog2", "OpTelecom", "CTS"],
-        "10": ["Proy25", "OpInd", "Ec", "OP8"]
+        "7": ["Medel", "OB1", "Sisem", "Electro", "EA2"],
+        "8": ["iiee", "RSI", "Pas", "Redes1", "AIMDs", "LRI"],
+        "9": ["ProyFin10", "OpComp", "DisLog2", "OpTelecom", "CTS"],
+        "10": ["ProyFin25", "OpInd", "Ec", "OP8"]
       }
     },
     {
@@ -51,9 +51,9 @@
         "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
         "6": ["MetNum", "SyC", "TFourier", "SyM", "EA1"],
         "7": ["Medel", "DisLog2", "Sisem", "Electro", "EA2"],
-        "8": ["iiee", "CircRF", "PAS", "Redes1", "DCI", "LRI"],
-        "9": ["Proy10", "OB8", "Elepot", "CD", "CTS"],
-        "10": ["Proy25", "OpInd", "Ec", "AIMDs"]
+        "8": ["iiee", "CircRF", "Pas", "Redes1", "DCI", "LRI"],
+        "9": ["ProyFin10", "OP8", "Elepot", "CD", "CTS"],
+        "10": ["ProyFin25", "OpInd", "Ec", "AIMDs"]
       }
     }
   ]
