@@ -1,0 +1,98 @@
+/**
+ * Tipografía - Materias Eléctrica
+ * Estilos de texto, títulos y elementos tipográficos
+ */
+
+/* === TÍTULOS === */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: var(--texto-4xl);
+  margin-bottom: var(--espacio-sm);
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-size: var(--texto-2xl);
+  margin-bottom: var(--espacio-base);
+  color: var(--color-secundario);
+  font-weight: 500;
+}
+
+h3 {
+  font-size: var(--texto-xl);
+  margin-bottom: var(--espacio-sm);
+}
+
+h4 {
+  font-size: var(--texto-lg);
+  margin-bottom: var(--espacio-sm);
+}
+
+h5 {
+  font-size: var(--texto-base);
+  margin-bottom: var(--espacio-xs);
+}
+
+h6 {
+  font-size: var(--texto-sm);
+  margin-bottom: var(--espacio-xs);
+}
+
+/* === PÁRRAFOS Y TEXTO === */
+p {
+  margin: 0 0 var(--espacio-base) 0;
+  line-height: 1.6;
+}
+
+.texto-pequeno {
+  font-size: var(--texto-sm);
+}
+
+.texto-grande {
+  font-size: var(--texto-lg);
+}
+
+.texto-mono {
+  font-family: var(--fuente-mono);
+}
+
+/* === SUBTÍTULOS === */
+.subtitle {
+  font-size: var(--texto-lg);
+  color: var(--color-secundario);
+  margin-bottom: var(--espacio-base);
+}
+
+/* === ESTILOS DE TEXTO === */
+.texto-centrado {
+  text-align: center;
+}
+
+.texto-izquierda {
+  text-align: left;
+}
+
+.texto-derecha {
+  text-align: right;
+}
+
+.peso-normal {
+  font-weight: 400;
+}
+
+.peso-medio {
+  font-weight: 500;
+}
+
+.peso-semi {
+  font-weight: 600;
+}
+
+.peso-negrita {
+  font-weight: 700;
+}

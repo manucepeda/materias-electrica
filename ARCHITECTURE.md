@@ -1,41 +1,41 @@
-# Materias Eléctrica - Clean Architecture Documentation
+# Materias Eléctrica - Documentación de Arquitectura Limpia
 
-## 🏗️ Overview
+## 🏗️ Visión General
 
-This application has been completely refactored with a clean, modular architecture that facilitates maintenance and extensibility. The new structure eliminates hardcoded implementations and makes adding new profiles straightforward.
+Esta aplicación ha sido completamente refactorizada con una arquitectura limpia y modular que facilita el mantenimiento y la extensibilidad. La nueva estructura elimina implementaciones hardcodeadas y permite agregar nuevos perfiles fácilmente.
 
-## 🎯 Key Improvements
+## 🎯 Mejoras Clave
 
-✅ **Modular Architecture**: Clear separation of responsibilities  
-✅ **Dynamic Profile Loading**: Profiles load automatically from JSON files  
-✅ **Eliminated Hardcoding**: No more hardcoded profile-specific logic  
-✅ **Easy Extension**: Adding new profiles requires only configuration  
-✅ **Clean Code**: Well-documented, maintainable codebase  
-✅ **Señales Profile Fixed**: Now working correctly  
+✅ **Arquitectura modular**: Separación clara de responsabilidades  
+✅ **Carga dinámica de perfiles**: Los perfiles se cargan automáticamente desde archivos JSON  
+✅ **Sin hardcodeo**: Ya no hay lógica específica de perfiles hardcodeada  
+✅ **Fácil extensión**: Agregar nuevos perfiles solo requiere configuración  
+✅ **Código limpio**: Base de código bien documentada y mantenible  
+✅ **Perfil Señales corregido**: Ahora funciona correctamente  
 
-## 📁 Module Structure
+## 📁 Estructura de Módulos
 
 ```
 js/
-├── config.js              # Central configuration and profile mapping
-├── profile-manager.js     # Profile data loading and management
-├── ui-manager.js          # UI interactions and rendering
-├── subject-filter.js      # Filtering and searching functionality
-├── graph-app.js          # Main graph view application
-├── list-app.js           # Main list view application
-└── profile-notes.js      # Profile notes and tooltips
+├── config.js              # Configuración central y mapeo de perfiles
+├── profile-manager.js     # Carga y gestión de datos de perfiles
+├── ui-manager.js          # Interacciones y renderizado de UI
+├── subject-filter.js      # Filtrado y búsqueda de materias
+├── graph-app.js           # Aplicación principal de vista de grafo
+├── list-app.js            # Aplicación principal de vista de listado
+└── profile-notes.js       # Notas y tooltips de perfiles
 ```
 
-## 🔧 How to Add a New Profile
+## 🔧 Cómo agregar un nuevo perfil
 
-### Step 1: Create the Profile JSON File
+### Paso 1: Crear el archivo JSON del perfil
 
-Create a new JSON file in `data/profiles/profile-name.json`:
+Crea un nuevo archivo JSON en `data/profiles/profile-name.json`:
 
 ```json
 {
-  "nombre": "Profile Name",
-  "descripcion": "Detailed profile description",
+  "nombre": "Nombre del Perfil",
+  "descripcion": "Descripción detallada del perfil",
   "materias_core": ["SUBJ1", "SUBJ2", "SUBJ3"],
   "materias_optativas": ["OPT1", "OPT2", "OPT3"],
   "materias_sugeridas": ["SUG1", "SUG2"],
@@ -46,8 +46,8 @@ Create a new JSON file in `data/profiles/profile-name.json`:
   },
   "emphasis": [
     {
-      "nombre": "Emphasis Name",
-      "descripcion": "Emphasis description",
+      "nombre": "Nombre del Énfasis",
+      "descripcion": "Descripción del énfasis",
       "materias_core": ["EMPH1", "EMPH2"],
       "materias_optativas": ["EOPT1", "EOPT2"],
       "plan_recomendado": {
@@ -59,8 +59,8 @@ Create a new JSON file in `data/profiles/profile-name.json`:
   "notas_importantes": [
     {
       "id": "special_note",
-      "titulo": "Special Note Title",
-      "descripcion": "Important information about this profile."
+      "titulo": "Título de Nota Especial",
+      "descripcion": "Información importante sobre este perfil."
     }
   ]
 }
@@ -75,50 +75,50 @@ Create a new JSON file in `data/profiles/profile-name.json`:
   "notas_importantes": [
     {
       "id": "note_id",
-      "titulo": "Note Title",
-      "descripcion": "Note description"
+      "titulo": "Título de la Nota",
+      "descripcion": "Descripción de la nota"
     }
   ]
 }
 ```
 
-**Required fields:**
-- `nombre`: Profile name (must match the key in PROFILE_CONFIG)
-- `descripcion`: Profile description
-- `materias_core`: Array of core subject codes
-- `materias_optativas`: Array of optional subject codes
+**Campos obligatorios:**
+- `nombre`: Nombre del perfil (debe coincidir con la clave en PROFILE_CONFIG)
+- `descripcion`: Descripción del perfil
+- `materias_core`: Array de códigos de materias obligatorias
+- `materias_optativas`: Array de códigos de materias optativas
 
-**Optional fields:**
-- `materias_sugeridas`: Array of suggested subject codes
-- `plan_recomendado`: Recommended study plan by semester
-- `emphasis`: Array of emphasis options for the profile
-- `notas_importantes`: Important notes for the profile
+**Campos opcionales:**
+- `materias_sugeridas`: Array de códigos de materias sugeridas
+- `plan_recomendado`: Plan de estudios recomendado por semestre
+- `emphasis`: Array de énfasis para el perfil
+- `notas_importantes`: Notas importantes para el perfil
 
-### Step 2: Update Configuration
+### Paso 2: Actualizar la configuración
 
-Add your profile to `js/config.js` in the `PROFILE_CONFIG` object:
+Agrega tu perfil en `js/config.js` dentro del objeto `PROFILE_CONFIG`:
 
 ```javascript
 export const PROFILE_CONFIG = {
-  // ... existing profiles ...
-  'Profile Name': {
+  // ... perfiles existentes ...
+  'Nombre del Perfil': {
     file: 'data/profiles/profile-name.json',
-    hasEmphasis: true,           // Set to false if no emphasis options
-    emphasis: ['Emphasis Name'], // List emphasis names
-    hasTableView: false,         // Set to true if needs table view
-    hasNotes: true              // Set to true if has special notes
+    hasEmphasis: true,           // false si no tiene énfasis
+    emphasis: ['Nombre del Énfasis'], // Lista de nombres de énfasis
+    hasTableView: false,         // true si necesita vista de tabla
+    hasNotes: true               // true si tiene notas especiales
   }
 };
 ```
 
-### Step 3: (Optional) Add Note Mappings
+### Paso 3: (Opcional) Agregar mapeo de notas
 
-If your profile has special notes, add subject mappings in `SUBJECT_NOTE_MAPPING`:
+Si tu perfil tiene notas especiales, agrega el mapeo de materias en `SUBJECT_NOTE_MAPPING`:
 
 ```javascript
 export const SUBJECT_NOTE_MAPPING = {
-  // ... existing mappings ...
-  'Profile Name': {
+  // ... mapeos existentes ...
+  'Nombre del Perfil': {
     'SUBJ1': 'special_note',
     'SUBJ2': 'another_note',
     'OPT1': 'optional_note'
@@ -126,54 +126,54 @@ export const SUBJECT_NOTE_MAPPING = {
 };
 ```
 
-### Step 4: Test Your Profile
+### Paso 4: Probar tu perfil
 
-1. ✅ Profile appears in dropdown selectors
-2. ✅ Subjects filter correctly by profile
-3. ✅ Emphasis options work (if applicable)
-4. ✅ Recommended plan displays (if provided)
-5. ✅ Special notes highlight subjects (if configured)
+1. ✅ El perfil aparece en los selectores desplegables
+2. ✅ Las materias se filtran correctamente por perfil
+3. ✅ Las opciones de énfasis funcionan (si aplica)
+4. ✅ El plan recomendado se muestra (si está definido)
+5. ✅ Las notas especiales resaltan materias (si están configuradas)
 
-## 🧩 Module Details
+## 🧩 Detalle de módulos
 
 ### config.js
-**Central configuration hub**
-- Profile mapping and metadata
-- Subject-to-note mappings  
-- Validation functions
-- Feature flags per profile
+**Centro de configuración**
+- Mapeo de perfiles y metadatos
+- Mapeo de materias a notas  
+- Funciones de validación
+- Flags de funcionalidades por perfil
 
 ### profile-manager.js  
-**Profile data management**
-- Dynamic JSON loading
-- Caching and error handling
-- Data validation
-- API for profile access
+**Gestión de datos de perfiles**
+- Carga dinámica de JSON
+- Caché y manejo de errores
+- Validación de datos
+- API para acceso a perfiles
 
 ### ui-manager.js
-**User interface control**
-- Dynamic selector population
-- Emphasis option management
-- UI state management
-- Element visibility control
+**Control de interfaz de usuario**
+- Poblado dinámico de selectores
+- Gestión de opciones de énfasis
+- Manejo de estado de UI
+- Control de visibilidad de elementos
 
 ### subject-filter.js
-**Filtering and search**
-- Multi-criteria filtering
-- Text-based search
-- Profile/emphasis filtering
-- Performance optimization
+**Filtrado y búsqueda**
+- Filtrado multicriterio
+- Búsqueda por texto
+- Filtrado por perfil/énfasis
+- Optimización de rendimiento
 
-## 📋 Data Schema
+## 📋 Esquema de datos
 
-### Profile JSON Structure
+### Estructura del JSON de perfil
 ```json
 {
-  "nombre": "string (required)",
-  "descripcion": "string (required)",
-  "materias_core": ["string"] "(required)",
-  "materias_optativas": ["string"] "(required)",
-  "materias_sugeridas": ["string"] "(optional)",
+  "nombre": "string (obligatorio)",
+  "descripcion": "string (obligatorio)",
+  "materias_core": ["string"] "(obligatorio)",
+  "materias_optativas": ["string"] "(obligatorio)",
+  "materias_sugeridas": ["string"] "(opcional)",
   "plan_recomendado": {
     "1": ["SUBJ1", "SUBJ2"],
     "2": ["SUBJ3", "SUBJ4"]
@@ -197,166 +197,166 @@ export const SUBJECT_NOTE_MAPPING = {
 }
 ```
 
-## 🔍 Data Validation
+## 🔍 Validación de datos
 
-The system automatically validates profile data:
+El sistema valida automáticamente los datos de perfil:
 
-**Required Fields:**
-- ✅ `nombre`: Profile display name
-- ✅ `descripcion`: Profile description  
-- ✅ `materias_core`: Core subject codes array
-- ✅ `materias_optativas`: Optional subject codes array
+**Campos obligatorios:**
+- ✅ `nombre`: Nombre visible del perfil
+- ✅ `descripcion`: Descripción del perfil  
+- ✅ `materias_core`: Array de códigos de materias obligatorias
+- ✅ `materias_optativas`: Array de códigos de materias optativas
 
-**Optional Fields:**
-- 🔄 `materias_sugeridas`: Suggested subjects
-- 🔄 `emphasis`: Emphasis definitions
-- 🔄 `plan_recomendado`: Recommended study plan
-- 🔄 `notas_importantes`: Special notes
+**Campos opcionales:**
+- 🔄 `materias_sugeridas`: Materias sugeridas
+- 🔄 `emphasis`: Definiciones de énfasis
+- 🔄 `plan_recomendado`: Plan de estudios recomendado
+- 🔄 `notas_importantes`: Notas especiales
 
-## 🐛 Troubleshooting
+## 🐛 Solución de problemas
 
-### Profile Not Appearing
-1. ✅ Check `PROFILE_CONFIG` entry exists
-2. ✅ Verify JSON file path is correct
-3. ✅ Validate JSON syntax online
-4. ✅ Check browser console for errors
+### El perfil no aparece
+1. ✅ Verifica que exista la entrada en `PROFILE_CONFIG`
+2. ✅ Revisa que la ruta del archivo JSON sea correcta
+3. ✅ Valida la sintaxis del JSON online
+4. ✅ Revisa la consola del navegador por errores
 
-### Subjects Not Filtering
-1. ✅ Verify subject codes in arrays
-2. ✅ Check for typos in subject codes
-3. ✅ Ensure subjects exist in `ucs.json`
-4. ✅ Clear browser cache
+### Las materias no se filtran
+1. ✅ Verifica los códigos de materias en los arrays
+2. ✅ Revisa errores de tipeo en los códigos
+3. ✅ Asegúrate que las materias existan en `ucs.json`
+4. ✅ Limpia la caché del navegador
 
-### Recommended Plan Not Working
-1. ✅ Check `plan_recomendado` structure
-2. ✅ Verify semester keys are strings ("1", "2", etc.)
-3. ✅ Ensure all subject codes are valid
-4. ✅ Check for missing subjects
+### El plan recomendado no funciona
+1. ✅ Revisa la estructura de `plan_recomendado`
+2. ✅ Verifica que las claves de semestre sean strings ("1", "2", etc.)
+3. ✅ Asegúrate que todos los códigos de materias sean válidos
+4. ✅ Revisa si faltan materias
 
-### Notes Not Highlighting
-1. ✅ Check `SUBJECT_NOTE_MAPPING` entry
-2. ✅ Verify note IDs match `notas_importantes`
-3. ✅ Ensure `hasNotes: true` in config
-4. ✅ Check CSS classes are applied
+### Las notas no se resaltan
+1. ✅ Verifica la entrada en `SUBJECT_NOTE_MAPPING`
+2. ✅ Revisa que los IDs de notas coincidan con `notas_importantes`
+3. ✅ Asegúrate que `hasNotes: true` esté en la config
+4. ✅ Revisa que se apliquen las clases CSS
 
-## 🚀 Migration from Old System
+## 🚀 Migración desde el sistema anterior
 
-### What Changed
+### Qué cambió
 ```
-OLD SYSTEM → NEW SYSTEM
-app.js → js/list-app.js + modules
-graph.js → js/graph-app.js + modules  
+SISTEMA VIEJO → SISTEMA NUEVO
+app.js → js/list-app.js + módulos
+graph.js → js/graph-app.js + módulos  
 profile-notes.js → js/profile-notes.js
-Hardcoded logic → Configuration-driven
+Lógica hardcodeada → Basado en configuración
 ```
 
-### Files to Use Now
-- ✅ `index.html` (updated to use new modules)
-- ✅ `graph.html` (updated to use new modules)
-- ✅ All files in `js/` directory
-- ✅ Profile JSONs in `data/profiles/`
+### Archivos a usar ahora
+- ✅ `index.html` (actualizado para usar los nuevos módulos)
+- ✅ `graph.html` (actualizado para usar los nuevos módulos)
+- ✅ Todos los archivos en el directorio `js/`
+- ✅ JSONs de perfiles en `data/profiles/`
 
-### Files to Retire
-- ❌ `app.js` (old monolithic file)
-- ❌ `graph.js` (old monolithic file)
-- ❌ `index-new.html` (temporary testing file)
-- ❌ `graph-new.html` (temporary testing file)
+### Archivos a retirar
+- ❌ `app.js` (archivo monolítico viejo)
+- ❌ `graph.js` (archivo monolítico viejo)
+- ❌ `index-new.html` (archivo de testing temporal)
+- ❌ `graph-new.html` (archivo de testing temporal)
 
-## 📊 Performance Optimizations
+## 📊 Optimizaciones de rendimiento
 
-### Loading Strategy
-- ⚡ Profiles load on-demand
-- ⚡ Profile data cached after first load
-- ⚡ Efficient subject filtering
-- ⚡ Minimal DOM manipulation
+### Estrategia de carga
+- ⚡ Los perfiles se cargan bajo demanda
+- ⚡ Los datos de perfil se cachean tras la primera carga
+- ⚡ Filtrado eficiente de materias
+- ⚡ Manipulación mínima del DOM
 
-### Best Practices Applied
-- 🎯 Event delegation for performance
-- 🎯 Debounced search input
-- 🎯 Batch DOM updates
-- 🎯 Memory leak prevention
+### Buenas prácticas aplicadas
+- 🎯 Delegación de eventos para rendimiento
+- 🎯 Búsqueda con debounce
+- 🎯 Actualizaciones de DOM en batch
+- 🎯 Prevención de memory leaks
 
-## 🎨 Customization Guide
+## 🎨 Guía de personalización
 
-### Adding Features
-1. Create new module in `js/`
-2. Export required functions
-3. Import where needed
-4. Update config if necessary
+### Agregar funcionalidades
+1. Crea un nuevo módulo en `js/`
+2. Exporta las funciones necesarias
+3. Importa donde sea necesario
+4. Actualiza la config si corresponde
 
-### Styling
-- Main styles: `styles.css`
-- Profile notes: `profile-notes.css`
-- Responsive design included
-- CSS custom properties for theming
+### Estilos
+- Estilos principales: `styles.css`
+- Notas de perfil: `profile-notes.css`
+- Diseño responsive incluido
+- Custom properties CSS para temas
 
-## 📚 Technology Stack
+## 📚 Stack tecnológico
 
-### Frontend Only
-- ✅ **Vanilla JavaScript** (ES6+ modules)
-- ✅ **CSS Grid/Flexbox** for layouts
-- ✅ **Fetch API** for data loading
-- ✅ **Modern DOM APIs**
+### Solo frontend
+- ✅ **JavaScript Vanilla** (ES6+ módulos)
+- ✅ **CSS Grid/Flexbox** para layouts
+- ✅ **Fetch API** para carga de datos
+- ✅ **APIs modernas de DOM**
 
-### No Dependencies
-- ❌ No frameworks required
-- ❌ No build process needed
-- ❌ No package managers
-- ❌ No transpilation required
+### Sin dependencias
+- ❌ No requiere frameworks
+- ❌ No necesita build process
+- ❌ No necesita package managers
+- ❌ No requiere transpilar
 
-### Browser Support
+### Soporte de navegador
 - ✅ Chrome 60+
 - ✅ Firefox 60+  
 - ✅ Safari 12+
 - ✅ Edge 79+
 
-## 🔄 Future Enhancements
+## 🔄 Mejoras futuras
 
-Ready for:
-- 📈 Profile inheritance systems
-- 📈 Dynamic subject data sources
-- 📈 Advanced search with filters
-- 📈 Export/import functionality
-- 📈 Progressive Web App features
-- 📈 Offline functionality
-- 📈 Multi-language support
+Listo para:
+- 📈 Sistemas de herencia de perfiles
+- 📈 Fuentes de datos de materias dinámicas
+- 📈 Búsqueda avanzada con filtros
+- 📈 Funcionalidad de exportar/importar
+- 📈 Características de Progressive Web App
+- 📈 Funcionalidad offline
+- 📈 Soporte multilenguaje
 
-## ✅ Señales Profile Fix
+## ✅ Fix del perfil Señales
 
-The "Señales y Aprendizaje Automático" profile issue has been resolved:
+El problema con el perfil "Señales y Aprendizaje Automático" fue resuelto:
 
-- ✅ **Fixed**: Import paths in modules
-- ✅ **Fixed**: Profile loading mechanism  
-- ✅ **Fixed**: Note mappings and highlighting
-- ✅ **Fixed**: Plan recomendado display
-- ✅ **Working**: All filtering and search features
-- ✅ **Working**: Special notes and tooltips
+- ✅ **Corregido**: Rutas de importación en módulos
+- ✅ **Corregido**: Mecanismo de carga de perfil  
+- ✅ **Corregido**: Mapeo de notas y resaltado
+- ✅ **Corregido**: Visualización de plan recomendado
+- ✅ **Funciona**: Todos los filtros y búsqueda
+- ✅ **Funciona**: Notas especiales y tooltips
 
-## 🎉 Result
+## 🎉 Resultado
 
-**Clean, maintainable, extensible architecture** that:
-- ✅ Eliminates all hardcoded implementations
-- ✅ Makes adding profiles trivial (just config + JSON)
-- ✅ Provides excellent maintainability  
-- ✅ Offers easy ownership transfer
-- ✅ Includes comprehensive documentation
-- ✅ Fixes all existing issues
+**Arquitectura limpia, mantenible y extensible** que:
+- ✅ Elimina implementaciones hardcodeadas
+- ✅ Hace trivial agregar perfiles (solo config + JSON)
+- ✅ Proporciona excelente mantenibilidad  
+- ✅ Permite fácil transferencia de ownership
+- ✅ Incluye documentación completa
+- ✅ Corrige todos los problemas existentes
 
 ---
 
-**🏆 The codebase is now production-ready with clean architecture that any developer can understand and extend easily.**
-- Minimal DOM manipulation
-- Optimized event handling
+**🏆 La base de código está lista para producción con arquitectura limpia que cualquier desarrollador puede entender y extender fácilmente.**
+- Manipulación mínima del DOM
+- Manejo de eventos optimizado
 
-## Browser Support
+## Soporte de navegador
 
-The application uses modern JavaScript features:
-- ES6 modules
+La aplicación usa características modernas de JavaScript:
+- Módulos ES6
 - Async/await
-- Modern array methods
-- CSS Grid and Flexbox
+- Métodos modernos de arrays
+- CSS Grid y Flexbox
 
-Supported browsers:
+Navegadores soportados:
 - Chrome 60+
 - Firefox 60+
 - Safari 12+
