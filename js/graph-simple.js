@@ -133,6 +133,11 @@ class GraphApp {
     console.log('Profile data:', this.profiles[selectedProfile]);
 
     // Reset subject approval state when changing profiles
+    const confirmClear = window.confirm('Changing profiles will clear your approved and exonerated subjects. Do you want to proceed?');
+    if (!confirmClear) {
+        profileSelect.value = this.currentProfile; // Revert profile selection
+        return;
+    }
     this.approvedSubjects.clear();
     this.exoneratedSubjects.clear();
 
