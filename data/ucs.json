@@ -135,7 +135,7 @@
     "exam_only": true,
     "Previas": [
       {
-        "codigo": "F2",
+        "codigo": "F1",
         "requiere_curso": true,
         "requiere_exoneracion": false
       },
@@ -154,9 +154,19 @@
     "exam_only": true,
     "Previas": [
       {
-        "codigo": "F1",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
+        "type": "OR",
+        "options": [
+          {
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       },
       {
         "codigo": "CDIVV",
@@ -173,9 +183,19 @@
     "exam_only": false,
     "Previas": [
       {
-        "codigo": "F2",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
+        "type": "OR",
+        "options": [
+          {
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       }
     ]
   },
@@ -206,9 +226,19 @@
     "exam_only": true,
     "Previas": [
       {
-        "codigo": "F2",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
+        "type": "OR",
+        "options": [
+          {
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       },
       {
         "codigo": "CVec",
@@ -230,9 +260,19 @@
         "requiere_exoneracion": true
       },
       {
-        "codigo": "F3",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
+        "type": "OR",
+        "options": [
+          {
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       }
     ]
   },
@@ -249,9 +289,19 @@
         "requiere_exoneracion": false
       },
       {
-        "codigo": "F2",
-        "requiere_curso": true,
-        "requiere_exoneracion": false
+        "type": "OR",
+        "options": [
+          {
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       }
     ]
   },

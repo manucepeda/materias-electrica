@@ -44,7 +44,42 @@ export class TreeViewManager {
     if (!ucsResponse.ok) {
       throw new Error('Failed to load subjects data');
     }
-    this.allSubjects = await ucsResponse.json();
+    // Parse and normalize prerequisites
+    const ucsRaw = await ucsResponse.json();
+    this.allSubjects = ucsRaw.map(subject => {
+      // Map Previas (array of objects) to prerequisitos (array of codes and logic)
+      let prerequisitos = [];
+      if (Array.isArray(subject.Previas)) {
+        prerequisitos = subject.Previas
+          .filter(p => p && (p.codigo || p.type === 'OR'))
+          .map(p => {
+            if (p.type === 'OR' && p.options) {
+              // Handle OR conditions
+              return {
+                type: 'OR',
+                options: p.options.map(opt => ({
+                  codigo: opt.codigo,
+                  requiere_curso: opt.requiere_curso,
+                  requiere_exoneracion: opt.requiere_exoneracion
+                }))
+              };
+            } else if (p.codigo) {
+              // Handle regular prerequisites
+              return {
+                codigo: p.codigo,
+                requiere_curso: p.requiere_curso,
+                requiere_exoneracion: p.requiere_exoneracion
+              };
+            }
+            return null;
+          })
+          .filter(p => p !== null);
+      }
+      return {
+        ...subject,
+        prerequisitos
+      };
+    });
 
     // Load all profiles
     for (const [profileName, config] of Object.entries(this.PROFILE_CONFIG)) {
@@ -104,12 +139,16 @@ export class TreeViewManager {
       emphasisSelect.addEventListener('change', () => this.handleEmphasisChange());
     }
 
-    // Event delegation for subject toggles
-    const subjectContainer = document.getElementById('subject-container');
-    if (subjectContainer) {
-      subjectContainer.addEventListener('click', (event) => {
-        const target = event.target;
-        if (target && target.dataset.subjectCode) {
+    // Event delegation for subject toggles (now on #tree)
+    const treeContainer = document.getElementById('tree');
+    if (treeContainer) {
+      treeContainer.addEventListener('click', (event) => {
+        let target = event.target;
+        // Traverse up to .subject-btn if needed
+        while (target && !target.classList.contains('subject-btn') && target !== treeContainer) {
+          target = target.parentElement;
+        }
+        if (target && target.classList.contains('subject-btn') && target.dataset.subjectCode) {
           this.toggleSubjectApproval(target.dataset.subjectCode);
         }
       });
@@ -290,8 +329,8 @@ export class TreeViewManager {
           }
           
           html += `
-            <div class="subject-btn ${status} ${!isAvailable ? 'unavailable' : ''}" 
-                 onclick="toggleSubjectApproval('${subject.codigo}')"
+            <div class="subject-btn ${status} ${!isAvailable ? 'unavailable' : ''}"
+                 data-subject-code="${subject.codigo}"
                  title="${subject.nombre} - ${subject.creditos} créditos">
               <span class="code">${subject.codigo}</span>
               ${subject.nombre}
@@ -397,8 +436,8 @@ export class TreeViewManager {
             const isAvailable = this.isSubjectAvailable(subject);
             
             html += `
-              <div class="subject-btn ${status} ${!isAvailable ? 'unavailable' : ''}" 
-                   onclick="toggleSubjectApproval('${subject.codigo}')"
+              <div class="subject-btn ${status} ${!isAvailable ? 'unavailable' : ''}"
+                   data-subject-code="${subject.codigo}"
                    title="${subject.nombre} - ${subject.creditos} créditos">
                 <span class="code">${subject.codigo}</span>
                 ${subject.nombre}
@@ -438,34 +477,76 @@ export class TreeViewManager {
    * Check if subject is available (prerequisites met)
    */
   isSubjectAvailable(subject) {
-    if (!subject.Previas || subject.Previas.length === 0) {
+    if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
       return true;
     }
     
-    return subject.Previas.every(prereq => {
-      // Handle both string and object prerequisites
-      if (typeof prereq === 'string') {
-        return this.approvedSubjects.has(prereq) || this.exoneratedSubjects.has(prereq);
-      } else if (prereq.codigo) {
-        const prereqCode = prereq.codigo;
-        const isApproved = this.approvedSubjects.has(prereqCode);
-        const isExonerated = this.exoneratedSubjects.has(prereqCode);
-        
-        // Check specific requirements
-        if (prereq.requiere_exoneracion) {
-          return isExonerated;
-        } else if (prereq.requiere_curso) {
-          return isApproved || isExonerated;
-        } else {
-          // Default: any approval works
-          return isApproved || isExonerated;
-        }
-      } else if (prereq.creditos_minimos) {
-        // Handle credit-based prerequisites (always true for now, could be enhanced)
-        return true;
+    // All prereqs must be satisfied (AND logic between different prereqs)
+    return subject.prerequisitos.every(prereq => {
+      // Handle OR conditions
+      if (prereq.type === 'OR' && prereq.options) {
+        // At least one option must be satisfied (OR logic)
+        return prereq.options.some(option => this.checkPrerequisiteRequirement(option));
       }
-      return false;
+      
+      // Handle regular prerequisites
+      if (prereq.codigo) {
+        return this.checkPrerequisiteRequirement(prereq);
+      }
+      
+      return true;
     });
+  }
+
+  /**
+   * Check if a single prerequisite requirement is met
+   */
+  checkPrerequisiteRequirement(prereq) {
+    if (!prereq.codigo) return true;
+    
+    // If only exoneration is required (requiere_exoneracion is true, requiere_curso is false)
+    if (prereq.requiere_exoneracion === true && prereq.requiere_curso !== true) {
+      return this.exoneratedSubjects.has(prereq.codigo);
+    }
+    
+    // If only course approval is required (requiere_curso is true, requiere_exoneracion is false)
+    if (prereq.requiere_curso === true && prereq.requiere_exoneracion !== true) {
+      // Course approval (blue) or exoneration (green) both satisfy course requirement
+      return this.approvedSubjects.has(prereq.codigo) || this.exoneratedSubjects.has(prereq.codigo);
+    }
+    
+    // If both flags are true, need both course approval AND exoneration
+    if (prereq.requiere_curso === true && prereq.requiere_exoneracion === true) {
+      return this.exoneratedSubjects.has(prereq.codigo);
+    }
+    
+    // Default fallback - treat as requiring either
+    return this.approvedSubjects.has(prereq.codigo) || this.exoneratedSubjects.has(prereq.codigo);
+  }
+
+  /**
+   * Get missing prerequisites description for display
+   */
+  getMissingPrerequisites(subject) {
+    const missingParts = [];
+    
+    (subject.prerequisitos || []).forEach(prereq => {
+      if (prereq.type === 'OR' && prereq.options) {
+        // For OR conditions, check if none of the options are satisfied
+        const satisfied = prereq.options.some(option => this.checkPrerequisiteRequirement(option));
+        if (!satisfied) {
+          const optionNames = prereq.options.map(opt => opt.codigo).join(' O ');
+          missingParts.push(`(${optionNames})`);
+        }
+      } else if (prereq.codigo) {
+        // For regular prerequisites
+        if (!this.checkPrerequisiteRequirement(prereq)) {
+          missingParts.push(prereq.codigo);
+        }
+      }
+    });
+    
+    return missingParts.join(', ');
   }
 
   /**
@@ -477,31 +558,9 @@ export class TreeViewManager {
 
     // Check if subject is available
     if (!this.isSubjectAvailable(subject)) {
-      // Create a more helpful error message
-      const missingPrereqs = [];
-      if (subject.Previas) {
-        subject.Previas.forEach(prereq => {
-          if (typeof prereq === 'string') {
-            if (!this.approvedSubjects.has(prereq) && !this.exoneratedSubjects.has(prereq)) {
-              missingPrereqs.push(prereq);
-            }
-          } else if (prereq.codigo) {
-            const prereqCode = prereq.codigo;
-            const isApproved = this.approvedSubjects.has(prereqCode);
-            const isExonerated = this.exoneratedSubjects.has(prereqCode);
-            
-            if (prereq.requiere_exoneracion && !isExonerated) {
-              missingPrereqs.push(`${prereqCode} (requiere exoneración)`);
-            } else if (prereq.requiere_curso && !isApproved && !isExonerated) {
-              missingPrereqs.push(`${prereqCode} (requiere curso)`);
-            } else if (!prereq.requiere_exoneracion && !prereq.requiere_curso && !isApproved && !isExonerated) {
-              missingPrereqs.push(prereqCode);
-            }
-          }
-        });
-      }
-      
-      alert(`No se puede aprobar ${subjectCode}. Faltan materias Previas: ${missingPrereqs.join(', ')}`);
+      // Show missing prerequisites
+      const missing = this.getMissingPrerequisites(subject);
+      alert(`No se puede aprobar ${subjectCode}. Faltan materias previas: ${missing}`);
       return;
     }
 
@@ -509,6 +568,7 @@ export class TreeViewManager {
     if (this.exoneratedSubjects.has(subjectCode)) {
       // From exonerated to available
       this.exoneratedSubjects.delete(subjectCode);
+      this.unapproveDependents(subjectCode);
     } else if (this.approvedSubjects.has(subjectCode)) {
       // From approved to exonerated
       this.approvedSubjects.delete(subjectCode);
@@ -520,6 +580,72 @@ export class TreeViewManager {
 
     this.saveApprovals();
     this.render();
+  }
+
+  /**
+   * Unapprove all subjects that depend on a given subject (recursively)
+   */
+  unapproveDependents(subjectCode) {
+    // Find all subjects that have subjectCode as a prerequisite and are currently approved/exonerated
+    const dependents = this.allSubjects.filter(s => {
+      if (!s.prerequisitos || s.prerequisitos.length === 0) return false;
+      return s.prerequisitos.some(prereq => {
+        if (prereq.type === 'OR' && prereq.options) {
+          // Check if subjectCode is in any of the OR options
+          return prereq.options.some(option => option.codigo === subjectCode);
+        }
+        return prereq.codigo === subjectCode;
+      });
+    });
+    
+    for (const dep of dependents) {
+      // Only unapprove if this dependent is no longer available after removing subjectCode
+      const wouldBeAvailable = this.wouldSubjectBeAvailable(dep, subjectCode);
+      
+      if (!wouldBeAvailable) {
+        // Remove approval/exoneration if present
+        let changed = false;
+        if (this.approvedSubjects.has(dep.codigo)) {
+          this.approvedSubjects.delete(dep.codigo);
+          changed = true;
+        }
+        if (this.exoneratedSubjects.has(dep.codigo)) {
+          this.exoneratedSubjects.delete(dep.codigo);
+          changed = true;
+        }
+        // Recursively unapprove further dependents
+        if (changed) {
+          this.unapproveDependents(dep.codigo);
+        }
+      }
+    }
+  }
+
+  /**
+   * Check if a subject would be available if we remove a specific prerequisite
+   */
+  wouldSubjectBeAvailable(subject, removedSubjectCode) {
+    if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
+      return true;
+    }
+    
+    return subject.prerequisitos.every(prereq => {
+      if (prereq.type === 'OR' && prereq.options) {
+        // For OR conditions, check if at least one option is still satisfied
+        return prereq.options.some(option => {
+          if (option.codigo === removedSubjectCode) {
+            return false; // This option would be removed
+          }
+          return this.checkPrerequisiteRequirement(option);
+        });
+      } else if (prereq.codigo) {
+        if (prereq.codigo === removedSubjectCode) {
+          return false; // This prerequisite would be removed
+        }
+        return this.checkPrerequisiteRequirement(prereq);
+      }
+      return true;
+    });
   }
 
   /**
@@ -601,7 +727,6 @@ export class TreeViewManager {
         const subject = this.allSubjects.find(s => s.codigo === code);
         return total + (subject ? parseInt(subject.creditos) || 0 : 0);
       }, 0);
-
       totalCreditsEl.textContent = exoneratedCredits;
     }
   }

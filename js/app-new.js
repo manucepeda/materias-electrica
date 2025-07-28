@@ -407,9 +407,16 @@ class ListadoApp {
       if (!subject.Previas || subject.Previas.length === 0) return false;
       
       return subject.Previas.some(prereq => {
+        // Handle OR conditions
+        if (prereq.type === 'OR' && prereq.options) {
+          return prereq.options.some(option => option.codigo === subjectCode);
+        }
+        // Handle string prerequisites
         if (typeof prereq === 'string') {
           return prereq === subjectCode;
-        } else if (prereq.codigo) {
+        } 
+        // Handle object prerequisites
+        else if (prereq.codigo) {
           return prereq.codigo === subjectCode;
         }
         return false;
@@ -580,9 +587,53 @@ class ListadoApp {
     }
 
     const prereqItems = subject.Previas.map(prereq => {
+      // Handle OR conditions
+      if (prereq.type === 'OR' && prereq.options) {
+        const orOptions = prereq.options.map(option => {
+          const prereqSubject = this.allSubjects.find(s => s.codigo === option.codigo);
+          const subjectName = prereqSubject ? prereqSubject.nombre : 'Materia no encontrada';
+          
+          let requirementType = '';
+          let requirementClass = '';
+          if (option.requiere_exoneracion) {
+            requirementType = 'Exoneración requerida';
+            requirementClass = 'exon-required';
+          } else if (option.requiere_curso) {
+            requirementType = 'Curso aprobado requerido';
+            requirementClass = 'course-required';
+          } else {
+            requirementType = 'Aprobada';
+            requirementClass = 'approved-required';
+          }
+          
+          return `
+            <div class="prereq-option ${requirementClass}">
+              <div class="prereq-main">
+                <span class="prereq-code">${option.codigo}</span>
+                <span class="prereq-name">${subjectName}</span>
+              </div>
+              <div class="prereq-requirement">${requirementType}</div>
+            </div>
+          `;
+        }).join('');
+        
+        return `
+          <div class="prereq-item or-condition">
+            <div class="or-label">UNA DE:</div>
+            <div class="or-options">
+              ${orOptions}
+            </div>
+          </div>
+        `;
+      }
+      
+      // Handle string prerequisites (legacy support)
       if (typeof prereq === 'string') {
         return `<span class="prereq-item simple">${prereq}</span>`;
-      } else if (prereq.codigo) {
+      } 
+      
+      // Handle regular object prerequisites
+      else if (prereq.codigo) {
         const prereqSubject = this.allSubjects.find(s => s.codigo === prereq.codigo);
         const subjectName = prereqSubject ? prereqSubject.nombre : 'Materia no encontrada';
         
