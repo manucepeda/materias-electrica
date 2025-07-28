@@ -8,9 +8,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--space-4);
-  margin: var(--space-6) 0;
-  padding: var(--space-4);
+  gap: var(--space-3);
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
   background: var(--color-surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);
@@ -27,8 +27,8 @@
 }
 
 .legend-box {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
   flex-shrink: 0;
@@ -58,9 +58,9 @@
 .status-panel {
   display: flex;
   justify-content: center;
-  gap: var(--space-6);
-  margin: var(--space-6) 0;
-  padding: var(--space-4);
+  gap: var(--space-4);
+  margin: var(--space-4) 0;
+  padding: var(--space-3);
   background: var(--color-surface);
   border-radius: var(--radius-lg);
   border: 1px solid var(--color-border);

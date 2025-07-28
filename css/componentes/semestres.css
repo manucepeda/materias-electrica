@@ -8,10 +8,10 @@
   position: relative;
   display: flex;
   align-items: flex-start;
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
   border-bottom: 1px dashed var(--color-border);
-  padding: var(--space-3) 0 var(--space-4) 100px;
-  min-height: 120px;
+  padding: var(--space-3) 0 var(--space-5) 110px;
+  min-height: 100px;
   transition: var(--transition-all);
 }
 
@@ -44,7 +44,7 @@
 .semester-subjects {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-2);
+  gap: var(--space-3);
   width: 100%;
   align-items: flex-start;
 }

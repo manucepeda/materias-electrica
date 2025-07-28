@@ -9,8 +9,8 @@
   border: 1px solid var(--color-subject-available-border);
   border-radius: var(--radius-base);
   padding: var(--space-2);
-  width: 120px;
-  min-height: 75px;
+  width: 135px;
+  min-height: 80px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -23,6 +23,8 @@
   text-decoration: none;
   color: inherit;
   font-family: var(--font-family-base);
+  text-align: center;
+  line-height: var(--line-height-tight);
 }
 
 .subject-btn:hover {

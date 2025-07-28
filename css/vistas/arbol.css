@@ -94,9 +94,9 @@
   background: #e2e8f0;  /* Gray for available/default */
   border: 1px solid #94a3b8;
   border-radius: 6px;
-  padding: 0.5rem;
-  width: 150px;
-  min-height: 90px;
+  padding: var(--space-2);
+  width: 140px;
+  min-height: 85px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -104,8 +104,10 @@
   cursor: pointer;
   transition: all 0.2s;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  font-size: 0.85rem;
+  font-size: var(--text-xs);
   overflow: hidden;
+  text-align: center;
+  line-height: var(--line-height-tight);
 }
 
 .subject-btn:hover {
@@ -295,29 +297,6 @@
   }
   
   .semester-row {
-    padding-left: 120px;
-    gap: var(--space-3);
-  }
-  
-  .semester-label {
-    min-width: 100px;
-    font-size: var(--text-base);
-    padding: var(--space-3) var(--space-4);
-  }
-  
-  .subject-btn {
-    width: 160px;
-    min-height: 100px;
-    padding: var(--space-3);
-  }
-}
-
-@media (max-width: 768px) {
-  .tree-container {
-    padding: var(--space-3);
-  }
-  
-  .semester-row {
     padding-left: 100px;
     gap: var(--space-2);
   }
@@ -329,9 +308,32 @@
   }
   
   .subject-btn {
-    width: 140px;
-    min-height: 90px;
+    width: 130px;
+    min-height: 80px;
+    padding: var(--space-2);
+  }
+}
+
+@media (max-width: 768px) {
+  .tree-container {
+    padding: var(--space-3);
+  }
+  
+  .semester-row {
+    padding-left: 90px;
+    gap: var(--space-2);
+  }
+  
+  .semester-label {
+    min-width: 70px;
     font-size: var(--text-xs);
+    padding: var(--space-2);
+  }
+  
+  .subject-btn {
+    width: 120px;
+    min-height: 75px;
+    font-size: 0.7rem;
   }
   
   .recommended-path-header,
@@ -345,13 +347,14 @@
   .semester-row {
     padding-left: 0;
     flex-direction: column;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
   
   .semester-label {
     position: static;
     width: 100%;
     text-align: center;
+    margin-bottom: var(--space-2);
   }
   
   .semester-subjects {
@@ -359,7 +362,8 @@
   }
   
   .subject-btn {
-    width: 120px;
-    min-height: 80px;
+    width: 110px;
+    min-height: 70px;
+    font-size: 0.65rem;
   }
 }
