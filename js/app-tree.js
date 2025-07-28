@@ -47,6 +47,13 @@ class MaterialsApp {
 document.addEventListener('DOMContentLoaded', async () => {
   const app = new MaterialsApp();
   await app.init();
+  
+  // Make toggleSubjectApproval globally accessible
+  window.toggleSubjectApproval = (subjectCode) => {
+    if (app.treeViewManager) {
+      app.treeViewManager.toggleSubjectApproval(subjectCode);
+    }
+  };
 });
 
 // Export for potential external use

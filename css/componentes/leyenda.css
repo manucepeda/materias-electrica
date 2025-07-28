@@ -1,0 +1,212 @@
+/**
+ * Legend/Status - Materias Eléctrica
+ * Legend and status display components
+ */
+
+/* === LEGEND COMPONENT === */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-medium);
+}
+
+.legend-box {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+
+.legend-box.available {
+  background: var(--color-subject-available);
+  border-color: var(--color-subject-available-border);
+}
+
+.legend-box.unavailable {
+  background: var(--color-subject-unavailable);
+  border-color: var(--color-subject-unavailable-border);
+}
+
+.legend-box.approved {
+  background: var(--color-subject-approved);
+  border-color: var(--color-subject-approved-border);
+}
+
+.legend-box.exonerated {
+  background: var(--color-subject-exonerated);
+  border-color: var(--color-subject-exonerated-border);
+}
+
+/* === STATUS PANEL === */
+.status-panel {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.status-item {
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.status-number {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: block;
+}
+
+.status-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+}
+
+/* === CONTROL LEGEND === */
+.control-legend {
+  margin: var(--space-4) 0;
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.control-legend .legend-title {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--space-2);
+  font-size: var(--text-base);
+}
+
+/* === STATS BAR === */
+.stats-bar {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-8);
+  margin: var(--space-6) 0;
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-background-page) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.stats-item {
+  text-align: center;
+  padding: var(--space-2);
+}
+
+.stats-number {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-primary);
+  display: block;
+  line-height: 1;
+}
+
+.stats-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-2);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* === QUICK STATS === */
+.quick-stats {
+  margin: var(--space-6) 0;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--color-primary-lightest) 0%, var(--color-surface) 100%);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-item {
+  text-align: center;
+  padding: var(--space-3);
+  background: var(--color-surface);
+  border-radius: var(--radius-base);
+  border: 1px solid var(--color-border-light);
+  transition: var(--transition-all);
+  min-width: 120px;
+}
+
+.stat-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.stat-number {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  display: block;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-1);
+  font-weight: var(--font-weight-medium);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 768px) {
+  .legend {
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+  
+  .legend-item {
+    font-size: var(--text-xs);
+  }
+  
+  .status-panel,
+  .stats-bar {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  
+  .stats-number {
+    font-size: var(--text-2xl);
+  }
+  
+  .legend-box {
+    width: 16px;
+    height: 16px;
+  }
+}

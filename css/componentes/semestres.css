@@ -1,0 +1,145 @@
+/**
+ * Semester Layout - Materias Eléctrica
+ * Styling for semester organization and layout
+ */
+
+/* === SEMESTER CONTAINER === */
+.semester-row {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+  border-bottom: 1px dashed var(--color-border);
+  padding: var(--space-3) 0 var(--space-4) 100px;
+  min-height: 120px;
+  transition: var(--transition-all);
+}
+
+.semester-row:hover {
+  background-color: var(--color-background-page);
+}
+
+.semester-row:last-child {
+  border-bottom: none;
+}
+
+/* === SEMESTER LABEL === */
+.semester-label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  background: var(--color-primary-lightest);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-sm);
+  min-width: 80px;
+  text-align: center;
+  font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
+}
+
+/* === SEMESTER SUBJECTS === */
+.semester-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  width: 100%;
+  align-items: flex-start;
+}
+
+/* === SEMESTER CREDITS === */
+.semester-credits {
+  font-size: var(--text-sm);
+  color: var(--color-text-primary);
+  margin-top: var(--space-2);
+  font-weight: var(--font-weight-semibold);
+  background: var(--color-primary-lightest);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border-light);
+}
+
+/* === RECOMMENDED PATH STYLES === */
+.recommended-path-header {
+  margin-bottom: var(--space-8);
+  padding: var(--space-6);
+  background: linear-gradient(135deg, var(--color-info-light) 0%, var(--color-primary-lightest) 100%);
+  border-radius: var(--radius-lg);
+  border-left: 4px solid var(--color-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.recommended-path-header h3 {
+  margin: 0 0 var(--space-2) 0;
+  color: var(--color-primary);
+  font-size: var(--text-xl);
+}
+
+.recommended-path-header p {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.recommended-semester {
+  border: none;
+  background-color: var(--color-background-page);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  box-shadow: var(--shadow-sm);
+}
+
+/* === MAIN GRID LAYOUT === */
+#grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 1024px) {
+  .semester-row {
+    padding-left: 90px;
+    gap: var(--space-2);
+  }
+  
+  .semester-label {
+    min-width: 70px;
+    font-size: var(--text-sm);
+    padding: var(--space-1) var(--space-2);
+  }
+}
+
+@media (max-width: 768px) {
+  #grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .semester-row {
+    padding-left: 80px;
+    gap: var(--space-2);
+  }
+  
+  .semester-label {
+    min-width: 65px;
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .recommended-path-header {
+    padding: var(--space-4);
+  }
+  
+  .recommended-path-header h3 {
+    font-size: var(--text-lg);
+  }
+  
+  .recommended-path-header p {
+    font-size: var(--text-sm);
+  }
+}

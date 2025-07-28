@@ -3,6 +3,261 @@
  * Estilos específicos para la vista de tabla de materias
  */
 
+/* === TABLE VIEW STYLES === */
+
+/* Controls */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4);
+  background: var(--color-background-subtle);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-width: 150px;
+}
+
+.filter-group label {
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+}
+
+.filter-group select {
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-background);
+  font-size: var(--text-sm);
+  transition: var(--transition-all);
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(0, 51, 102, 0.1);
+}
+
+/* Show/Hide Controls */
+.show-hide-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.show-hide-container label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  transition: var(--transition-all);
+}
+
+.show-hide-container label:hover {
+  background: rgba(0, 51, 102, 0.05);
+}
+
+.show-hide-container input[type="checkbox"] {
+  margin: 0;
+}
+
+/* Results Information */
+.results-info {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3);
+  background: var(--color-background-subtle);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-primary);
+}
+
+.results-info p {
+  margin: 0;
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+/* Main Table */
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-background);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  margin-bottom: var(--space-6);
+}
+
+.main-table th,
+.main-table td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+
+.main-table th {
+  background: var(--color-primary);
+  color: var(--color-text-inverse);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.main-table tbody tr:hover {
+  background: rgba(0, 51, 102, 0.02);
+}
+
+.main-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Subject Code Column */
+.main-table .codigo {
+  font-family: var(--font-mono);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  min-width: 80px;
+}
+
+/* Subject Name Column */
+.main-table .nombre {
+  font-weight: var(--font-weight-medium);
+  min-width: 200px;
+}
+
+/* Semester Column */
+.main-table .semestre {
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  min-width: 80px;
+}
+
+/* Credits Column */
+.main-table .creditos {
+  text-align: center;
+  font-weight: var(--font-weight-semibold);
+  min-width: 80px;
+}
+
+/* Tags Column */
+.main-table .tags {
+  min-width: 150px;
+}
+
+.main-table .tags .tag {
+  margin: 0 var(--space-1) var(--space-1) 0;
+  font-size: 0.75rem;
+  padding: 0.15rem 0.5rem;
+}
+
+/* Prerequisites Column */
+.main-table .prerrequisitos {
+  min-width: 180px;
+  font-size: var(--text-sm);
+}
+
+.main-table .prerrequisitos .prereq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-table .prerrequisitos .prereq-item {
+  margin-bottom: var(--space-1);
+  padding: 0.1rem 0.3rem;
+  background: var(--color-background-subtle);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+}
+
+/* Status Column */
+.main-table .estado {
+  text-align: center;
+  min-width: 100px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.status-available {
+  background: var(--color-success-light);
+  color: var(--color-success-dark);
+}
+
+.status-unavailable {
+  background: var(--color-error-light);
+  color: var(--color-error-dark);
+}
+
+.status-approved {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.status-exonerated {
+  background: var(--color-warning-light);
+  color: var(--color-warning-dark);
+}
+
+/* Responsive Design for Table */
+@media (max-width: 768px) {
+  .controls {
+    flex-direction: column;
+  }
+  
+  .filter-group {
+    min-width: 100%;
+  }
+  
+  .show-hide-container {
+    justify-content: flex-start;
+  }
+  
+  .main-table {
+    font-size: var(--text-sm);
+  }
+  
+  .main-table th,
+  .main-table td {
+    padding: var(--space-2);
+  }
+  
+  /* Hide less important columns on mobile */
+  .main-table .prerrequisitos,
+  .main-table .tags {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-table .creditos {
+    display: none;
+  }
+}
+
 /* Layout principal de tabla */
 .tabla-container {
   display: flex;
