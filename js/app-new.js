@@ -404,9 +404,9 @@ class ListadoApp {
    */
   getRelatedSubjects(subjectCode) {
     const relatedSubjects = this.allSubjects.filter(subject => {
-      if (!subject.prerequisitos || subject.prerequisitos.length === 0) return false;
+      if (!subject.Previas || subject.Previas.length === 0) return false;
       
-      return subject.prerequisitos.some(prereq => {
+      return subject.Previas.some(prereq => {
         if (typeof prereq === 'string') {
           return prereq === subjectCode;
         } else if (prereq.codigo) {
@@ -500,7 +500,6 @@ class ListadoApp {
     const dictationText = this.getDictationSemesterText(subject.dictation_semester);
     const examOnlyText = subject.exam_only ? 'Materia libre' : 'Materia curricular';
     const profileTags = this.getProfileTags(subject.codigo);
-    const relatedSubjects = this.getRelatedSubjects(subject.codigo);
 
     return `
       <article class="subject-card" data-subject-code="${subject.codigo}">
@@ -550,24 +549,12 @@ class ListadoApp {
         <div class="prerequisites-section">
           <div class="prereq-header">
             <span class="meta-icon">🔗</span>
-            <span class="section-title">Prerequisitos</span>
+            <span class="section-title">Previas</span>
           </div>
           <div class="prereq-content">
             ${prerequisitesText}
           </div>
         </div>
-
-        ${relatedSubjects ? `
-          <div class="related-section">
-            <div class="prereq-header">
-              <span class="meta-icon">🎯</span>
-              <span class="section-title">Habilita para cursar</span>
-            </div>
-            <div class="related-content">
-              ${relatedSubjects}
-            </div>
-          </div>
-        ` : ''}
 
         ${profileTags ? `
           <div class="profile-tags">
@@ -588,11 +575,11 @@ class ListadoApp {
    * Get formatted prerequisites text
    */
   getPrerequisitesText(subject) {
-    if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
-      return '<span class="no-prereq">Sin prerequisitos</span>';
+    if (!subject.Previas || subject.Previas.length === 0) {
+      return '<span class="no-prereq">Sin Previas</span>';
     }
 
-    const prereqItems = subject.prerequisitos.map(prereq => {
+    const prereqItems = subject.Previas.map(prereq => {
       if (typeof prereq === 'string') {
         return `<span class="prereq-item simple">${prereq}</span>`;
       } else if (prereq.codigo) {

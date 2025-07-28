@@ -238,7 +238,6 @@
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   padding: 1.75rem;
-  border-left: 4px solid #003366;
   transition: all 0.3s ease;
   display: flex;
   flex-direction: column;

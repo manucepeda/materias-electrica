@@ -175,8 +175,8 @@ export class UIManager {
 
     // Generate prerequisites info if available
     let prereqInfo = '';
-    if (subject.prerequisitos && subject.prerequisitos.length > 0) {
-      const prereqsList = subject.prerequisitos.join(', ');
+    if (subject.Previas && subject.Previas.length > 0) {
+      const prereqsList = subject.Previas.join(', ');
       prereqInfo = `<div class="prereq-info">Previas: ${prereqsList}</div>`;
     }
 

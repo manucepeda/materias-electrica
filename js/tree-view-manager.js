@@ -438,13 +438,34 @@ export class TreeViewManager {
    * Check if subject is available (prerequisites met)
    */
   isSubjectAvailable(subject) {
-    if (!subject.prerequisitos || subject.prerequisitos.length === 0) {
+    if (!subject.Previas || subject.Previas.length === 0) {
       return true;
     }
     
-    return subject.prerequisitos.every(prereq => 
-      this.approvedSubjects.has(prereq) || this.exoneratedSubjects.has(prereq)
-    );
+    return subject.Previas.every(prereq => {
+      // Handle both string and object prerequisites
+      if (typeof prereq === 'string') {
+        return this.approvedSubjects.has(prereq) || this.exoneratedSubjects.has(prereq);
+      } else if (prereq.codigo) {
+        const prereqCode = prereq.codigo;
+        const isApproved = this.approvedSubjects.has(prereqCode);
+        const isExonerated = this.exoneratedSubjects.has(prereqCode);
+        
+        // Check specific requirements
+        if (prereq.requiere_exoneracion) {
+          return isExonerated;
+        } else if (prereq.requiere_curso) {
+          return isApproved || isExonerated;
+        } else {
+          // Default: any approval works
+          return isApproved || isExonerated;
+        }
+      } else if (prereq.creditos_minimos) {
+        // Handle credit-based prerequisites (always true for now, could be enhanced)
+        return true;
+      }
+      return false;
+    });
   }
 
   /**
@@ -456,7 +477,31 @@ export class TreeViewManager {
 
     // Check if subject is available
     if (!this.isSubjectAvailable(subject)) {
-      alert(`No se puede aprobar ${subjectCode}. Faltan materias previas: ${subject.prerequisitos.filter(p => !this.approvedSubjects.has(p) && !this.exoneratedSubjects.has(p)).join(', ')}`);
+      // Create a more helpful error message
+      const missingPrereqs = [];
+      if (subject.Previas) {
+        subject.Previas.forEach(prereq => {
+          if (typeof prereq === 'string') {
+            if (!this.approvedSubjects.has(prereq) && !this.exoneratedSubjects.has(prereq)) {
+              missingPrereqs.push(prereq);
+            }
+          } else if (prereq.codigo) {
+            const prereqCode = prereq.codigo;
+            const isApproved = this.approvedSubjects.has(prereqCode);
+            const isExonerated = this.exoneratedSubjects.has(prereqCode);
+            
+            if (prereq.requiere_exoneracion && !isExonerated) {
+              missingPrereqs.push(`${prereqCode} (requiere exoneración)`);
+            } else if (prereq.requiere_curso && !isApproved && !isExonerated) {
+              missingPrereqs.push(`${prereqCode} (requiere curso)`);
+            } else if (!prereq.requiere_exoneracion && !prereq.requiere_curso && !isApproved && !isExonerated) {
+              missingPrereqs.push(prereqCode);
+            }
+          }
+        });
+      }
+      
+      alert(`No se puede aprobar ${subjectCode}. Faltan materias Previas: ${missingPrereqs.join(', ')}`);
       return;
     }
 

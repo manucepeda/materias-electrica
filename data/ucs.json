@@ -5,7 +5,7 @@
     "creditos": 13,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "GAL1",
@@ -13,7 +13,7 @@
     "creditos": 9,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "F1",
@@ -21,7 +21,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "Tallerine",
@@ -29,7 +29,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "MI",
@@ -37,7 +37,7 @@
     "creditos": 4,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "CDIVV",
@@ -45,7 +45,7 @@
     "creditos": 13,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CDIV",
         "requiere_curso": true,
@@ -59,7 +59,7 @@
     "creditos": 9,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "GAL1",
         "requiere_curso": true,
@@ -73,7 +73,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "F1",
         "requiere_curso": true,
@@ -92,7 +92,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "CVec",
@@ -100,7 +100,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CDIVV",
         "requiere_curso": true,
@@ -119,7 +119,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CDIVV",
         "requiere_curso": true,
@@ -133,7 +133,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "F2",
         "requiere_curso": true,
@@ -152,7 +152,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "F1",
         "requiere_curso": true,
@@ -171,7 +171,7 @@
     "creditos": 5,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "F2",
         "requiere_curso": true,
@@ -185,7 +185,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CVec",
         "requiere_curso": true,
@@ -204,7 +204,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "F2",
         "requiere_curso": true,
@@ -223,7 +223,7 @@
     "creditos": 5,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "FExp1",
         "requiere_curso": true,
@@ -242,7 +242,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CVec",
         "requiere_curso": true,
@@ -261,7 +261,7 @@
     "creditos": 12,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "P1",
         "requiere_curso": true,
@@ -275,7 +275,7 @@
     "creditos": 5,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "EcuDif",
         "requiere_curso": true,
@@ -289,7 +289,7 @@
     "creditos": 11,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "TeoCirc",
         "requiere_curso": true,
@@ -308,7 +308,7 @@
     "creditos": 11,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "DisLog",
         "requiere_curso": true,
@@ -322,7 +322,7 @@
     "creditos": 7,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "P1",
         "requiere_curso": true,
@@ -336,7 +336,7 @@
     "creditos": 11,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "TeoCirc",
         "requiere_curso": true,
@@ -355,7 +355,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "CDIVV",
         "requiere_curso": true,
@@ -379,7 +379,7 @@
     "creditos": 12,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -398,7 +398,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -412,7 +412,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -431,7 +431,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Micro",
         "requiere_curso": true,
@@ -450,7 +450,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -464,7 +464,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -483,7 +483,7 @@
     "creditos": 11,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyM",
         "requiere_curso": true,
@@ -497,7 +497,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecMag",
         "requiere_curso": true,
@@ -516,7 +516,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "TeoCirc",
         "requiere_curso": true,
@@ -535,7 +535,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "TeoCirc",
         "requiere_curso": true,
@@ -554,7 +554,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -573,7 +573,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "EA1",
         "requiere_curso": true,
@@ -587,7 +587,7 @@
     "creditos": 5,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 120
       }
@@ -599,7 +599,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -618,7 +618,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "TIB1",
         "requiere_curso": true,
@@ -632,7 +632,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Medel",
         "requiere_curso": true,
@@ -651,7 +651,7 @@
     "creditos": 5,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Micro",
         "requiere_curso": true,
@@ -670,7 +670,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyC",
         "requiere_curso": true,
@@ -684,7 +684,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyC",
         "requiere_curso": true,
@@ -698,7 +698,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyC",
         "requiere_curso": true,
@@ -712,7 +712,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyC",
         "requiere_curso": true,
@@ -726,7 +726,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Electro",
         "requiere_curso": true,
@@ -740,7 +740,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "PyE",
         "requiere_curso": true,
@@ -759,7 +759,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -778,7 +778,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -797,7 +797,7 @@
     "creditos": 12,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "P1",
         "requiere_curso": true,
@@ -816,7 +816,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -830,7 +830,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "BioElec2",
         "requiere_curso": true,
@@ -844,7 +844,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -863,7 +863,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 120
       }
@@ -875,7 +875,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 120
       }
@@ -887,7 +887,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -901,7 +901,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Micro",
         "requiere_curso": true,
@@ -915,7 +915,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -927,7 +927,7 @@
     "creditos": 4,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -939,7 +939,7 @@
     "creditos": 10,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 200
       }
@@ -951,7 +951,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -968,7 +968,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -987,7 +987,7 @@
     "creditos": 15,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 320
       }
@@ -999,7 +999,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 330
       }
@@ -1011,7 +1011,7 @@
     "creditos": 25,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 350
       }
@@ -1023,7 +1023,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Redes1",
         "requiere_curso": true,
@@ -1042,7 +1042,7 @@
     "creditos": 10,
     "dictation_semester": "2",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Maquel",
         "requiere_curso": true,
@@ -1061,7 +1061,7 @@
     "creditos": 20,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 330
       }
@@ -1073,7 +1073,7 @@
     "creditos": 6,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 100
       }
@@ -1085,7 +1085,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -1099,7 +1099,7 @@
     "creditos": 5,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "P1",
         "requiere_curso": true,
@@ -1113,7 +1113,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -1125,7 +1125,7 @@
     "creditos": 6,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 180
       }
@@ -1137,7 +1137,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 100
       }
@@ -1149,7 +1149,7 @@
     "creditos": 7,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 100
       }
@@ -1161,7 +1161,7 @@
     "creditos": 10,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "GAL2",
         "requiere_curso": true,
@@ -1180,7 +1180,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "DisLog",
         "requiere_curso": true,
@@ -1194,7 +1194,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": []
+    "Previas": []
   },
   {
     "codigo": "OpComp",
@@ -1202,7 +1202,7 @@
     "creditos": 12,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -1214,7 +1214,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -1226,7 +1226,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 150
       }
@@ -1238,7 +1238,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 200
       }
@@ -1250,7 +1250,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 200
       }
@@ -1262,7 +1262,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "PyE",
         "requiere_curso": true,
@@ -1281,7 +1281,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -1300,7 +1300,7 @@
     "creditos": 9,
     "dictation_semester": "1",
     "exam_only": true,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "DisLog2",
         "requiere_curso": true,
@@ -1319,7 +1319,7 @@
     "creditos": 4,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Maquel",
         "requiere_curso": true,
@@ -1333,7 +1333,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Electro",
         "requiere_curso": true,
@@ -1352,7 +1352,7 @@
     "creditos": 4,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -1371,7 +1371,7 @@
     "creditos": 8,
     "dictation_semester": "2",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "Electro",
         "requiere_curso": true,
@@ -1390,7 +1390,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "PyE",
         "requiere_curso": true,
@@ -1409,7 +1409,7 @@
     "creditos": 8,
     "dictation_semester": "1",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -1428,7 +1428,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "FAAPRP",
         "requiere_curso": true,
@@ -1445,7 +1445,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -1462,7 +1462,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyM",
         "requiere_curso": true,
@@ -1479,7 +1479,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "P1",
         "requiere_curso": true,
@@ -1496,7 +1496,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "ElecFund",
         "requiere_curso": true,
@@ -1513,7 +1513,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "DisLog",
         "requiere_curso": true,
@@ -1530,7 +1530,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 100
       }
@@ -1542,7 +1542,7 @@
     "creditos": 8,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "codigo": "SyS",
         "requiere_curso": true,
@@ -1564,7 +1564,7 @@
     "creditos": 0,
     "dictation_semester": "both",
     "exam_only": false,
-    "prerequisitos": [
+    "Previas": [
       {
         "creditos_minimos": 100
       }
