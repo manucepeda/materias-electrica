@@ -44,6 +44,21 @@
       "id": "opcionales_control",
       "titulo": "Opcionales Control",
       "descripcion": "Opcionales recomendadas: Sistemas de Control en Tiempo Discreto, Fundamentos de Robótica Industrial, Control No Lineal, Filtros y Reguladores Adaptativos, Sistemas de Tiempo Real, Lógica Difusa, Redes Neuronales, Control Predictivo."
+    },
+    {
+      "id": "fisica_termica",
+      "titulo": "Opcional Básica",
+      "descripcion": "Se sugiere fuertemente cursar Física Térmica como opcional básica para el perfil"
+    },
+    {
+      "id": "opcional_ingindustrial",
+      "titulo": "Opcional Ingeniería Industrial",
+      "descripcion": "Se sugiere fuertemente tomar introducción a la Investigación de Operaciones como opcional de Ingeniería Industrial en el perfil de Control"
+    },
+    {
+      "id": "opcional_control",
+      "titulo": "Opcionales Control",
+      "descripcion": "La forma de completar créditos es libre por parte del alumno. Se sugiere se tomen paquetes coherentes, orientados al control industrial, la robótica, los sistemas eléctricos, la eletrónica, el análisis de sistemas, el aprendizaje automático, etc. Mirar materias optativas sugeridas."
     }
   ],
   "plan_recomendado": {
