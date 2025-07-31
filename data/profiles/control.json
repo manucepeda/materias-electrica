@@ -4,63 +4,6 @@
   "materias_core": ["SyC", "InsInd", "IntroPLC"],
   "materias_optativas": ["SCTD", "FRI", "CNL", "FRA"],
   "materias_sugeridas": ["MetNum", "Medel", "Elepot"],
-  "notas_importantes": [
-    {
-      "id": "fisica_matematicas",
-      "titulo": "Asignaturas de Física y Matemáticas",
-      "descripcion": "Prácticamente todas las asignaturas de las materias Física y Matemáticas pueden cursarse en Facultad de Ciencias, en el marco de las Licenciaturas de Física y Matemática. Existen algunas reválidas automáticas aprobadas por la Facultad."
-    },
-    {
-      "id": "matematica_inicial",
-      "titulo": "Matemática Inicial",
-      "descripcion": "Curso fuertemente recomendado al comienzo de la carrera en función del resultado de la Prueba Diagnóstica al Ingreso."
-    },
-    {
-      "id": "tallerine",
-      "titulo": "Taller de Introducción a la Ingeniería Eléctrica",
-      "descripcion": "Sin ser obligatorio, el TallerInE es fuertemente recomendado en el semestre de ingreso. Se dicta en ambos semestres. Alternativas: Taller de Diseño, Comunicación y Representación Gráfica, Módulos de Extensión o Módulos de Taller."
-    },
-    {
-      "id": "formacion_basica",
-      "titulo": "Formación Básica",
-      "descripcion": "Se deben cubrir al menos 160 créditos en áreas de formación básica (Física + Matemática + Química). Opcionales: Física Térmica, Vibraciones y Ondas, Óptica, Principios de Química General, Introducción a la Física Moderna, Matemática Discreta."
-    },
-    {
-      "id": "pasantia",
-      "titulo": "Pasantía",
-      "descripcion": "La Pasantía es una actividad fuertemente recomendada para todos los alumnos y puede ser realizada en cualquier semestre, incluso fuera del periodo de clases."
-    },
-    {
-      "id": "ingenieria_industrial",
-      "titulo": "Ingeniería Industrial",
-      "descripcion": "Se debe cubrir un mínimo de 5 créditos en el área de Ingeniería Industrial. Opciones: Administración General para Ingenieros, Control de Calidad, Costos para Ingeniería, Introducción a la Ingeniería Industrial, Investigación de Operaciones, Prevención de Riesgos Laborales, Práctica de Administración."
-    },
-    {
-      "id": "ingenieria_sociedad",
-      "titulo": "Ingeniería y Sociedad",
-      "descripcion": "Se deben cubrir al menos 5 créditos en el área de Ingeniería y Sociedad. Opciones: Ciencia, Tecnología y Sociedad, Cooperativismo, Historia del Uruguay Contemporáneo, Módulos de Extensión."
-    },
-    {
-      "id": "opcionales_control",
-      "titulo": "Opcionales Control",
-      "descripcion": "Opcionales recomendadas: Sistemas de Control en Tiempo Discreto, Fundamentos de Robótica Industrial, Control No Lineal, Filtros y Reguladores Adaptativos, Sistemas de Tiempo Real, Lógica Difusa, Redes Neuronales, Control Predictivo."
-    },
-    {
-      "id": "fisica_termica",
-      "titulo": "Opcional Básica",
-      "descripcion": "Se sugiere fuertemente cursar Física Térmica como opcional básica para el perfil"
-    },
-    {
-      "id": "opcional_ingindustrial",
-      "titulo": "Opcional Ingeniería Industrial",
-      "descripcion": "Se sugiere fuertemente tomar introducción a la Investigación de Operaciones como opcional de Ingeniería Industrial en el perfil de Control"
-    },
-    {
-      "id": "opcional_control",
-      "titulo": "Opcionales Control",
-      "descripcion": "La forma de completar créditos es libre por parte del alumno. Se sugiere se tomen paquetes coherentes, orientados al control industrial, la robótica, los sistemas eléctricos, la eletrónica, el análisis de sistemas, el aprendizaje automático, etc. Mirar materias optativas sugeridas."
-    }
-  ],
   "plan_recomendado": {
     "1": ["CDIV", "GAL1", "F1", "Tallerine", "MI"],
     "2": ["CDIVV", "GAL2", "F2", "P1"],
