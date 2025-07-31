@@ -93,9 +93,7 @@ export class EnhancedPrerequisiteManager {
       });
     } else if (requirement.tipo === 'AND' && requirement.condiciones) {
       requirement.condiciones.forEach(condicion => {
-        if (condicion.codigo) {
-          codes.push(condicion.codigo);
-        }
+        codes.push(...this.extractCodesFromRequirement(condicion));
       });
     }
 

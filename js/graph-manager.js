@@ -155,12 +155,13 @@ export class GraphManager {
     if (!profileSelect) return;
     
     this.currentProfile = profileSelect.value;
-    this.currentEmphasis = null;
+    this.currentEmphasis = null; // Reset emphasis when profile changes
     
     if (!this.currentProfile) {
       if (emphasisSelect) {
         emphasisSelect.disabled = true;
         emphasisSelect.innerHTML = '<option value="">Seleccione un perfil primero</option>';
+        emphasisSelect.value = '';
       }
       if (statusPanel) statusPanel.classList.remove('active');
       this.render();
@@ -170,6 +171,8 @@ export class GraphManager {
     // Update emphasis selector
     if (emphasisSelect) {
       this.uiManager.updateEmphasisSelector(this.currentProfile, emphasisSelect);
+      // Reset emphasis selection when profile changes
+      emphasisSelect.value = '';
     }
 
     // Show status panel for profiles
@@ -224,6 +227,22 @@ export class GraphManager {
       return;
     }
 
+    // Check if profile has emphasis and no emphasis is selected
+    const profileConfig = this.PROFILE_CONFIG[this.currentProfile];
+    if (profileConfig && profileConfig.hasEmphasis && !this.currentEmphasis) {
+      container.innerHTML = `
+        <div class="emphasis-required-message">
+          <div class="message-icon">⚠️</div>
+          <h3>Selecciona un énfasis para continuar</h3>
+          <p>El perfil <strong>${this.currentProfile}</strong> tiene múltiples énfasis disponibles. Para mostrar el plan de estudios específico, debes seleccionar uno de los énfasis.</p>
+          <p>📋 <strong>Énfasis disponibles:</strong> ${profileConfig.emphasis.join(', ')}</p>
+          <p>👆 Utiliza el selector de "Énfasis" arriba para elegir tu especialización.</p>
+        </div>
+      `;
+      if (statusPanel) statusPanel.classList.remove('active');
+      return;
+    }
+
     // Get filtered subjects
     const filteredSubjects = this.getFilteredSubjects();
     
@@ -266,34 +285,62 @@ export class GraphManager {
     // Filter by profile and emphasis
     if (this.currentProfile && this.profiles[this.currentProfile]) {
       const profileData = this.profiles[this.currentProfile];
+      const profileCodes = new Set();
       
       // Handle profile data structure with emphasis
       if (profileData.emphasis && Array.isArray(profileData.emphasis)) {
         if (this.currentEmphasis) {
           // Filter by specific emphasis
           const emphasisData = profileData.emphasis.find(e => e.nombre === this.currentEmphasis);
-          if (emphasisData && emphasisData.plan_recomendado) {
-            // Get all subject codes from the recommended plan
-            const profileCodes = new Set();
-            Object.values(emphasisData.plan_recomendado).forEach(semesterSubjects => {
-              semesterSubjects.forEach(code => profileCodes.add(code));
-            });
-            subjects = subjects.filter(subject => profileCodes.has(subject.codigo));
-          }
-        } else {
-          // Show all subjects from all emphasis for this profile
-          const profileCodes = new Set();
-          profileData.emphasis.forEach(emphasis => {
-            if (emphasis.plan_recomendado) {
-              Object.values(emphasis.plan_recomendado).forEach(semesterSubjects => {
-                semesterSubjects.forEach(code => profileCodes.add(code));
+          if (emphasisData) {
+            // Get subjects from emphasis plan
+            if (emphasisData.plan_recomendado) {
+              Object.values(emphasisData.plan_recomendado).forEach(semesterSubjects => {
+                if (Array.isArray(semesterSubjects)) {
+                  semesterSubjects.forEach(code => profileCodes.add(code));
+                }
               });
             }
+            // Also include core and optional subjects from emphasis
+            if (emphasisData.materias_core) {
+              emphasisData.materias_core.forEach(code => profileCodes.add(code));
+            }
+            if (emphasisData.materias_optativas) {
+              emphasisData.materias_optativas.forEach(code => profileCodes.add(code));
+            }
+          }
+        } else {
+          // No emphasis selected for a profile with emphasis - return empty for now
+          // The render method will show the emphasis selection message
+          return [];
+        }
+      } else {
+        // Profile without emphasis - use direct structure
+        if (profileData.plan_recomendado) {
+          // Direct plan_recomendado structure
+          Object.values(profileData.plan_recomendado).forEach(semesterSubjects => {
+            if (Array.isArray(semesterSubjects)) {
+              semesterSubjects.forEach(code => profileCodes.add(code));
+            }
           });
-          subjects = subjects.filter(subject => profileCodes.has(subject.codigo));
+        }
+        
+        // Also add core, optional, and suggested subjects if they exist
+        if (profileData.materias_core) {
+          profileData.materias_core.forEach(code => profileCodes.add(code));
+        }
+        if (profileData.materias_optativas) {
+          profileData.materias_optativas.forEach(code => profileCodes.add(code));
+        }
+        if (profileData.materias_sugeridas) {
+          profileData.materias_sugeridas.forEach(code => profileCodes.add(code));
         }
       }
-      // If no emphasis structure, show all subjects (fallback)
+      
+      // Filter subjects by profile codes
+      if (profileCodes.size > 0) {
+        subjects = subjects.filter(subject => profileCodes.has(subject.codigo));
+      }
     }
     
     // Apply additional filters
@@ -328,10 +375,12 @@ export class GraphManager {
   groupSubjectsBySemester(subjects) {
     const grouped = {};
     
-    // If we have a current profile and emphasis, use the plan_recomendado structure
-    if (this.currentProfile && this.currentEmphasis && this.profiles[this.currentProfile]) {
+    // If we have a current profile, use the plan_recomendado structure
+    if (this.currentProfile && this.profiles[this.currentProfile]) {
       const profileData = this.profiles[this.currentProfile];
-      if (profileData.emphasis) {
+      
+      // Handle profiles with emphasis
+      if (profileData.emphasis && this.currentEmphasis) {
         const emphasisData = profileData.emphasis.find(e => e.nombre === this.currentEmphasis);
         if (emphasisData && emphasisData.plan_recomendado) {
           // Group by the plan_recomendado semesters
@@ -346,6 +395,23 @@ export class GraphManager {
           }
           return grouped;
         }
+      }
+      
+      // Handle profiles without emphasis
+      if (profileData.plan_recomendado) {
+        // Direct plan_recomendado structure
+        for (const [semester, subjectCodes] of Object.entries(profileData.plan_recomendado)) {
+          grouped[semester] = [];
+          if (Array.isArray(subjectCodes)) {
+            subjectCodes.forEach(code => {
+              const subject = subjects.find(s => s.codigo === code);
+              if (subject) {
+                grouped[semester].push(subject);
+              }
+            });
+          }
+        }
+        return grouped;
       }
     }
     

@@ -164,12 +164,14 @@ class ListApp {
    */
   async handleProfileChange(profileName) {
     this.currentProfile = profileName;
+    this.currentEmphasis = null; // Reset emphasis when profile changes
     this.profileData = null;
     
     // Update emphasis selector
     const emphasisSelect = document.getElementById('emphasis');
     if (emphasisSelect) {
       this.uiManager.updateEmphasisSelector(profileName, emphasisSelect);
+      emphasisSelect.value = ''; // Reset emphasis selection
     }
     
     // Load profile data if selected
@@ -185,7 +187,6 @@ class ListApp {
     }
     
     // Update filters and re-render
-    this.subjectFilter.setProfileFilter(profileName, this.currentEmphasis);
     this.applyFilters();
   }
 
@@ -194,7 +195,6 @@ class ListApp {
    */
   handleEmphasisChange(emphasisName) {
     this.currentEmphasis = emphasisName;
-    this.subjectFilter.setProfileFilter(this.currentProfile, emphasisName);
     this.applyFilters();
   }
 
@@ -207,18 +207,112 @@ class ListApp {
     const searchQuery = searchInput ? searchInput.value : '';
     this.subjectFilter.setSearchQuery(searchQuery);
 
-    // Apply filters
-    this.filteredSubjects = this.subjectFilter.applyFilters(
-      this.allSubjects, 
-      null, // We handle profile filtering internally
-      this.profileData
-    );
+    // Start with all subjects
+    let filteredSubjects = [...this.allSubjects];
+
+    // Apply search filter
+    if (searchQuery) {
+      filteredSubjects = this.subjectFilter.filterBySearch(filteredSubjects, searchQuery);
+    }
+
+    // Apply credit filter
+    const creditSelect = document.getElementById('creditos');
+    if (creditSelect && creditSelect.value) {
+      filteredSubjects = this.subjectFilter.filterByCredits(filteredSubjects, creditSelect.value);
+    }
+
+    // Apply dictation semester filter
+    const dictationSelect = document.getElementById('dictationSemester');
+    if (dictationSelect && dictationSelect.value !== 'all') {
+      filteredSubjects = this.subjectFilter.filterByDictationSemester(filteredSubjects, dictationSelect.value);
+    }
+
+    // Apply profile and emphasis filter
+    if (this.currentProfile && this.profileData) {
+      filteredSubjects = this.filterByProfileAndEmphasis(filteredSubjects);
+    }
+
+    this.filteredSubjects = filteredSubjects;
 
     // Render results
     this.renderSubjects();
     
     // Update results count
     this.uiManager.updateResultsCount(this.allSubjects.length, this.filteredSubjects.length);
+  }
+
+  /**
+   * Filter subjects by profile and emphasis
+   */
+  filterByProfileAndEmphasis(subjects) {
+    if (!this.profileData) return subjects;
+
+    const profileCodes = new Set();
+
+    // Handle profiles with emphasis
+    if (this.profileData.emphasis && Array.isArray(this.profileData.emphasis)) {
+      if (this.currentEmphasis) {
+        // Filter by specific emphasis
+        const emphasisData = this.profileData.emphasis.find(e => e.nombre === this.currentEmphasis);
+        if (emphasisData) {
+          // Add subjects from emphasis plan
+          if (emphasisData.plan_recomendado) {
+            Object.values(emphasisData.plan_recomendado).forEach(semesterSubjects => {
+              if (Array.isArray(semesterSubjects)) {
+                semesterSubjects.forEach(code => profileCodes.add(code));
+              }
+            });
+          }
+          // Add core and optional subjects from emphasis
+          if (emphasisData.materias_core) {
+            emphasisData.materias_core.forEach(code => profileCodes.add(code));
+          }
+          if (emphasisData.materias_optativas) {
+            emphasisData.materias_optativas.forEach(code => profileCodes.add(code));
+          }
+        }
+      } else {
+        // Show all subjects from all emphasis
+        this.profileData.emphasis.forEach(emphasis => {
+          if (emphasis.plan_recomendado) {
+            Object.values(emphasis.plan_recomendado).forEach(semesterSubjects => {
+              if (Array.isArray(semesterSubjects)) {
+                semesterSubjects.forEach(code => profileCodes.add(code));
+              }
+            });
+          }
+          if (emphasis.materias_core) {
+            emphasis.materias_core.forEach(code => profileCodes.add(code));
+          }
+          if (emphasis.materias_optativas) {
+            emphasis.materias_optativas.forEach(code => profileCodes.add(code));
+          }
+        });
+      }
+    } else {
+      // Profile without emphasis
+      if (this.profileData.plan_recomendado) {
+        Object.values(this.profileData.plan_recomendado).forEach(semesterSubjects => {
+          if (Array.isArray(semesterSubjects)) {
+            semesterSubjects.forEach(code => profileCodes.add(code));
+          }
+        });
+      }
+      
+      // Add core, optional, and suggested subjects
+      if (this.profileData.materias_core) {
+        this.profileData.materias_core.forEach(code => profileCodes.add(code));
+      }
+      if (this.profileData.materias_optativas) {
+        this.profileData.materias_optativas.forEach(code => profileCodes.add(code));
+      }
+      if (this.profileData.materias_sugeridas) {
+        this.profileData.materias_sugeridas.forEach(code => profileCodes.add(code));
+      }
+    }
+
+    // Filter subjects by profile codes
+    return subjects.filter(subject => profileCodes.has(subject.codigo));
   }
 
   /**
@@ -233,16 +327,12 @@ class ListApp {
       return;
     }
 
-    // Render subject cards
+    // Render subject cards directly in the container
     const cardsHTML = this.filteredSubjects.map(subject => 
       this.uiManager.renderSubjectCard(subject, this.profileData)
     ).join('');
 
-    container.innerHTML = `
-      <div class="subjects-grid">
-        ${cardsHTML}
-      </div>
-    `;
+    container.innerHTML = cardsHTML;
 
     // Add click handlers for subject cards
     this.addSubjectCardHandlers();

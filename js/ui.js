@@ -37,8 +37,7 @@ export class UIManager {
   updateEmphasisSelector(profileName, emphasisElement) {
     if (!emphasisElement) return;
 
-    // Always keep emphasis selector visible and enabled
-    emphasisElement.disabled = false;
+    // Always keep emphasis selector visible
     emphasisElement.style.display = '';
     emphasisElement.classList.remove('hidden');
 
@@ -53,17 +52,18 @@ export class UIManager {
       
       if (emphasisList.length > 0) {
         emphasisElement.innerHTML = `
-          <option value="">Todos los énfasis</option>
+          <option value="">Seleccione un énfasis</option>
           ${emphasisList.map(emphasis =>
             `<option value="${emphasis}">${emphasis}</option>`
           ).join('')}
         `;
+        emphasisElement.disabled = false;
       } else {
         emphasisElement.innerHTML = '<option value="">Sin énfasis disponibles</option>';
         emphasisElement.disabled = true;
       }
     } else {
-      emphasisElement.innerHTML = '<option value="">Sin énfasis disponibles</option>';
+      emphasisElement.innerHTML = '<option value="">No requiere énfasis</option>';
       emphasisElement.disabled = true;
     }
   }
