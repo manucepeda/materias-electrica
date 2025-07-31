@@ -1,3 +1,4 @@
+
 /**
  * Consolidated CSS - Materias Eléctrica
  * Clean, consolidated styles for the curriculum visualization app
@@ -374,7 +375,7 @@ header h2 {
 
 /* Tree view filters - horizontal layout */
 body:has(#tree) .filters:not(.additional-filters) {
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
@@ -811,7 +812,7 @@ main {
   text-align: center;
   padding: var(--space-8);
   margin: var(--space-6) auto;
-  max-width: 500px;
+  max-width: 900px;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
@@ -1624,11 +1625,10 @@ footer p:last-child {
 }
 
 .modal-content {
-  background: var(--color-background-primary);
   border-radius: var(--radius-lg);
   max-width: 600px;
   width: 100%;
-  max-height: 90vh;
+  max-height: 170vh;
   overflow-y: auto;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
 }
@@ -1915,4 +1915,27 @@ footer p:last-child {
   .note-card-description {
     font-size: var(--text-sm);
   }
+}
+
+
+/* Emphasis required banner (yellow, compact) */
+.emphasis-required-banner {
+  background: #ffe873;
+  color: #664d03;
+  border: 1px solid #ffe873;
+  border-radius: 4px;
+  padding: 0.4em 0.8em;
+  margin: 0.8em auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3em;
+  font-size: 0.75rem;
+  max-width: 750px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.emphasis-required-banner .emphasis-icon {
+  font-size: 1.1em;
+  margin-bottom: 0.2em;
 }

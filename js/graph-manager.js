@@ -231,12 +231,9 @@ export class GraphManager {
     const profileConfig = this.PROFILE_CONFIG[this.currentProfile];
     if (profileConfig && profileConfig.hasEmphasis && !this.currentEmphasis) {
       container.innerHTML = `
-        <div class="emphasis-required-message">
-          <div class="message-icon">Atención</div>
-          <h3>Selecciona un énfasis para continuar</h3>
-          <p>El perfil <strong>${this.currentProfile}</strong> tiene múltiples énfasis disponibles. Para mostrar el plan de estudios específico, debes seleccionar uno de los énfasis.</p>
-          <p><strong>Énfasis disponibles:</strong> ${profileConfig.emphasis.join(', ')}</p>
-          <p>Utiliza el selector de "Énfasis" arriba para elegir tu especialización.</p>
+        <div class="emphasis-required-banner">
+          <div class="emphasis-icon">⚠️</div>
+          <div>Selecciona un énfasis: <strong>${profileConfig.emphasis.join(', ')}</strong></div>
         </div>
       `;
       if (statusPanel) statusPanel.classList.remove('active');

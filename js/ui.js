@@ -63,7 +63,7 @@ export class UIManager {
         emphasisElement.disabled = true;
       }
     } else {
-      emphasisElement.innerHTML = '<option value="">No requiere énfasis</option>';
+      emphasisElement.innerHTML = '<option value="">No tiene énfasis</option>';
       emphasisElement.disabled = true;
     }
   }
