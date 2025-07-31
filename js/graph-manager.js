@@ -450,7 +450,7 @@ export class GraphManager {
     if (!subject.prerequisites || subject.prerequisites.length === 0) {
       return '';
     }
-    return `\\nPrevias: ${subject.prerequisites.length} requisitos`;
+    return `<br>Previas: ${subject.prerequisites.length} requisitos`;
   }
 
   /**
