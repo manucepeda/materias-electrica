@@ -1,6 +1,6 @@
 # 🎓 Gestión de Curriculum - Editor de Unidades Curriculares
 
-Una aplicación web intuitiva para gestionar unidades curriculares y sus prerequisitos complejos.
+Una aplicación web intuitiva para gestionar unidades curriculares y sus previas complejos.
 
 ## 🌟 Características
 
@@ -10,15 +10,15 @@ Una aplicación web intuitiva para gestionar unidades curriculares y sus prerequ
 - Eliminar materias con confirmación
 - Búsqueda rápida por código o nombre
 
-### 🔗 **Sistema de Prerequisitos Avanzado**
-- **Prerequisitos Simples**: Una materia específica (curso o examen)
+### 🔗 **Sistema de Previas Avanzado**
+- **Previas Simples**: Una materia específica (curso o examen)
 - **Grupos AND (Todas)**: Debe cumplir todas las condiciones
 - **Grupos OR (Alguna)**: Debe cumplir al menos una opción
 - **Combinaciones Complejas**: Múltiples niveles de agrupación
 
 ### 🛡️ **Validaciones Inteligentes**
 - Verificación de códigos duplicados
-- Validación de prerequisitos existentes
+- Validación de previas existentes
 - Prevención de dependencias circulares
 - Validación de formatos de datos
 
@@ -53,7 +53,7 @@ Visita: `http://localhost:8080/index.html`
    - **Semestre de Dictado**: Cuándo se dicta (ambos, 1, 2)
    - **Solo Examen**: Si la materia solo tiene examen final
 
-### Definir Prerequisitos
+### Definir Previas
 
 #### Prerequisito Simple
 Para una materia que requiere una sola condición:
@@ -80,7 +80,7 @@ DEBE TENER ALGUNA (OR)
 └── Opción 3: Tallerine - Curso
 ```
 
-### Ejemplos de Prerequisitos Complejos
+### Ejemplos de Previas Complejos
 
 #### Caso Real: Taller de Programación
 ```
@@ -173,7 +173,7 @@ DEBE TENER TODAS (AND)
 }
 ```
 
-### 3. Materias con Múltiples Prerequisitos
+### 3. Materias con Múltiples Previas
 ```json
 {
   "codigo": "BD1",
@@ -193,7 +193,7 @@ DEBE TENER TODAS (AND)
 
 ### Validaciones Implementadas
 - ✅ Códigos únicos
-- ✅ Prerequisitos existentes
+- ✅ Previas existentes
 - ✅ No auto-referencia
 - ✅ Formatos de datos correctos
 - ✅ Dependencias circulares (básico)
@@ -232,9 +232,9 @@ brew install python3
 - Asegurar que contenga un array de objetos
 - Verificar la estructura de cada materia
 
-### Prerequisitos no se guardan
+### Previas no se guardan
 - Verificar que todos los campos obligatorios estén completos
-- Asegurar que los códigos de prerequisitos existan
+- Asegurar que los códigos de previas existan
 - Revisar la consola del navegador para errores
 
 ## 📧 Soporte
@@ -246,7 +246,7 @@ Para problemas o mejoras, revisar:
 
 ## 🎯 Próximas Funcionalidades
 
-- [ ] Visualización gráfica de prerequisitos
+- [ ] Visualización gráfica de previas
 - [ ] Validación avanzada de dependencias circulares
 - [ ] Historial de cambios
 - [ ] Exportación a otros formatos

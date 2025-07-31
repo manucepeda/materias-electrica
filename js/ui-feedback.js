@@ -49,7 +49,7 @@ export class PrerequisiteUIFeedback {
         </div>
         <div class="explanation-content">
           <p class="success-message">
-            Esta materia está disponible para cursar. Todos los prerequisitos han sido cumplidos.
+            Esta materia está disponible para cursar. Todos los previas han sido cumplidos.
           </p>
           <div class="action-buttons">
             <button class="btn-primary" onclick="this.markAsPlanned('${subject.codigo}')">
@@ -97,7 +97,7 @@ export class PrerequisiteUIFeedback {
           
           ${recommendedPath.pendingPrerequisites.length > 0 ? `
             <div class="pending-section">
-              <h4>⏳ Prerequisitos pendientes:</h4>
+              <h4>⏳ Previas pendientes:</h4>
               <div class="subject-list pending">
                 ${recommendedPath.pendingPrerequisites.map(subj => 
                   `<div class="subject-item pending">
@@ -181,7 +181,7 @@ export class PrerequisiteUIFeedback {
     if (!subject.prerequisites || subject.prerequisites.length === 0) {
       return `
         <div class="prereq-card no-prereq">
-          <span class="prereq-status">✅ Sin prerequisitos</span>
+          <span class="prereq-status">✅ Sin previas</span>
         </div>
       `;
     }
@@ -241,7 +241,7 @@ export class PrerequisiteUIFeedback {
     const treeHTML = `
       <div class="prerequisite-tree">
         <div class="tree-header">
-          <h4>📊 Árbol de Prerequisitos: ${subject.nombre}</h4>
+          <h4>📊 Árbol de Previas: ${subject.nombre}</h4>
         </div>
         
         <div class="tree-content">

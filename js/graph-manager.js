@@ -232,11 +232,11 @@ export class GraphManager {
     if (profileConfig && profileConfig.hasEmphasis && !this.currentEmphasis) {
       container.innerHTML = `
         <div class="emphasis-required-message">
-          <div class="message-icon">⚠️</div>
+          <div class="message-icon">Atención</div>
           <h3>Selecciona un énfasis para continuar</h3>
           <p>El perfil <strong>${this.currentProfile}</strong> tiene múltiples énfasis disponibles. Para mostrar el plan de estudios específico, debes seleccionar uno de los énfasis.</p>
-          <p>📋 <strong>Énfasis disponibles:</strong> ${profileConfig.emphasis.join(', ')}</p>
-          <p>👆 Utiliza el selector de "Énfasis" arriba para elegir tu especialización.</p>
+          <p><strong>Énfasis disponibles:</strong> ${profileConfig.emphasis.join(', ')}</p>
+          <p>Utiliza el selector de "Énfasis" arriba para elegir tu especialización.</p>
         </div>
       `;
       if (statusPanel) statusPanel.classList.remove('active');
@@ -357,8 +357,25 @@ export class GraphManager {
     
     const creditFilter = document.getElementById('creditFilter');
     if (creditFilter && creditFilter.value !== 'all') {
-      const credits = parseInt(creditFilter.value);
-      subjects = subjects.filter(subject => subject.creditos === credits);
+      const creditValue = creditFilter.value;
+      subjects = subjects.filter(subject => {
+        const credits = parseInt(subject.creditos || 0);
+        
+        switch(creditValue) {
+          case '1-5':
+            return credits >= 1 && credits <= 5;
+          case '6-10':
+            return credits >= 6 && credits <= 10;
+          case '11-15':
+            return credits >= 11 && credits <= 15;
+          case '16+':
+            return credits >= 16;
+          default:
+            // For backwards compatibility with specific credit values
+            const targetCredits = parseInt(creditValue);
+            return !isNaN(targetCredits) && credits === targetCredits;
+        }
+      });
     }
 
     const examOnlyFilter = document.getElementById('examOnlyFilter');
@@ -566,41 +583,94 @@ export class GraphManager {
    * Show prerequisites modal for unavailable subjects
    */
   showPrerequisitesModal(subject) {
-    const missingPrereqs = this.prerequisiteManager.getMissingPrerequisites(subject.codigo);
+    const isAvailable = this.prerequisiteManager.isSubjectAvailable(subject.codigo);
+    const explanation = this.prerequisiteManager.getUnavailabilityExplanation(subject.codigo);
+    const recommendedPath = this.prerequisiteManager.getRecommendedPath(subject.codigo);
     
     let modalContent = `
       <div class="modal-overlay" onclick="this.remove()">
-        <div class="modal-content" onclick="event.stopPropagation()">
+        <div class="modal-content prerequisite-modal" onclick="event.stopPropagation()">
           <div class="modal-header">
-            <h3>Requisitos para ${subject.codigo}</h3>
+            <h3>${subject.codigo} - ${subject.nombre}</h3>
             <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
           </div>
           <div class="modal-body">
-            <h4>${subject.nombre}</h4>
-            <p><strong>Créditos:</strong> ${subject.creditos}</p>
-            
-            <div class="missing-prereqs">
-              <h5>Materias que necesitas aprobar primero:</h5>
-              <ul class="prereq-list">
-    `;
-    
-    missingPrereqs.forEach(prereqCode => {
-      const prereqSubject = this.allSubjects.find(s => s.codigo === prereqCode);
-      if (prereqSubject) {
-        modalContent += `
-          <li class="prereq-item-modal">
-            <span class="prereq-code-modal">${prereqCode}</span>
-            <span class="prereq-name-modal">${prereqSubject.nombre}</span>
-            <span class="prereq-credits-modal">${prereqSubject.creditos} cr.</span>
-          </li>
-        `;
-      }
-    });
-    
-    modalContent += `
-              </ul>
+            <div class="subject-info-section">
+              <div class="subject-credits">
+                <strong>Créditos:</strong> ${subject.creditos}
+              </div>
+              <div class="subject-dictation">
+                <strong>Dictado:</strong> ${this.uiManager.formatDictationSemester(subject.dictation_semester)}
+              </div>
             </div>
             
+            <div class="availability-status ${isAvailable ? 'available' : 'unavailable'}">
+              <div class="status-indicator">
+                <span class="status-icon">${isAvailable ? 'Disponible' : 'No disponible'}</span>
+                <span class="status-text">
+                  ${isAvailable ? 'Esta materia está disponible para cursar' : 'No puedes cursar esta materia aún'}
+                </span>
+              </div>
+            </div>`;
+
+    if (!isAvailable) {
+      const missingPrereqs = this.prerequisiteManager.getMissingPrerequisites(subject.codigo);
+      
+      modalContent += `
+            <div class="requirements-section">
+              <h4>¿Qué necesitas para cursar esta materia?</h4>
+              <div class="explanation-text">${explanation.replace(/\n/g, '<br>')}</div>
+            </div>
+            
+            <div class="missing-prereqs-section">
+              <h5>Materias que debes completar primero:</h5>
+              <ul class="prereq-list">`;
+      
+      missingPrereqs.forEach(prereqCode => {
+        const prereqSubject = this.allSubjects.find(s => s.codigo === prereqCode);
+        if (prereqSubject) {
+          const prereqAvailable = this.prerequisiteManager.isSubjectAvailable(prereqCode);
+          modalContent += `
+                <li class="prereq-item ${prereqAvailable ? 'available' : 'unavailable'}">
+                  <div class="prereq-info">
+                    <span class="prereq-code">${prereqCode}</span>
+                    <span class="prereq-name">${prereqSubject.nombre}</span>
+                    <span class="prereq-credits">${prereqSubject.creditos} cr.</span>
+                  </div>
+                  <span class="prereq-status">
+                    ${prereqAvailable ? 'Disponible ahora' : 'Bloqueada'}
+                  </span>
+                </li>`;
+        }
+      });
+      
+      modalContent += `
+              </ul>
+            </div>`;
+
+      // Show what you can do now
+      if (recommendedPath.availableNow.length > 0) {
+        modalContent += `
+            <div class="actionable-section">
+              <h5>Puedes cursar ahora (para avanzar hacia esta materia):</h5>
+              <ul class="available-list">`;
+        
+        recommendedPath.availableNow.forEach(availSubject => {
+          modalContent += `
+                <li class="available-item">
+                  <span class="available-code">${availSubject.codigo}</span>
+                  <span class="available-name">${availSubject.nombre}</span>
+                  <span class="available-credits">${availSubject.creditos} cr.</span>
+                </li>`;
+        });
+        
+        modalContent += `
+              </ul>
+            </div>`;
+      }
+    }
+    
+    modalContent += `
             <div class="modal-footer">
               <button class="btn-primary" onclick="this.closest('.modal-overlay').remove()">
                 Entendido

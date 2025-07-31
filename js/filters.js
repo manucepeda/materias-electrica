@@ -93,15 +93,28 @@ export class SubjectFilter {
   }
 
   /**
-   * Filtrar materias por créditos específicos
+   * Filtrar materias por créditos específicos o rangos
    */
   filterByCredits(subjects, creditValue) {
     if (!creditValue) return subjects;
     
-    const targetCredits = parseInt(creditValue);
     return subjects.filter(subject => {
       const credits = parseInt(subject.creditos || 0);
-      return credits === targetCredits;
+      
+      switch(creditValue) {
+        case '1-5':
+          return credits >= 1 && credits <= 5;
+        case '6-10':
+          return credits >= 6 && credits <= 10;
+        case '11-15':
+          return credits >= 11 && credits <= 15;
+        case '16+':
+          return credits >= 16;
+        default:
+          // For backwards compatibility with specific credit values
+          const targetCredits = parseInt(creditValue);
+          return credits === targetCredits;
+      }
     });
   }
 

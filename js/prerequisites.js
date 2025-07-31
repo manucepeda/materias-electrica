@@ -174,7 +174,7 @@ export class EnhancedPrerequisiteManager {
 
     const prerequisites = this.prerequisiteCache.get(subjectCode);
     if (!prerequisites || prerequisites.length === 0) {
-      return `${subject.nombre} no tiene prerequisitos.`;
+      return `${subject.nombre} no tiene previas.`;
     }
 
     const unsatisfiedRequirements = prerequisites.filter(req => !this.isRequirementSatisfied(req));
@@ -303,6 +303,60 @@ export class EnhancedPrerequisiteManager {
       pendingPrerequisites: pending.filter(s => s).sort((a, b) => (a.semestre || 99) - (b.semestre || 99)),
       isTargetAvailable: this.isSubjectAvailable(targetSubjectCode)
     };
+  }
+
+  /**
+   * Get missing prerequisites for a subject (list of subject codes that need to be completed)
+   */
+  getMissingPrerequisites(subjectCode) {
+    const missing = [];
+    const prerequisites = this.prerequisiteCache.get(subjectCode);
+    
+    if (!prerequisites || prerequisites.length === 0) {
+      return missing;
+    }
+
+    prerequisites.forEach(req => {
+      missing.push(...this.extractMissingFromRequirement(req));
+    });
+
+    // Remove duplicates and sort
+    return [...new Set(missing)].sort();
+  }
+
+  /**
+   * Extract missing subject codes from a requirement structure
+   */
+  extractMissingFromRequirement(requirement) {
+    const missing = [];
+
+    switch (requirement.tipo) {
+      case 'SIMPLE':
+        if (!this.checkSimpleRequirement(requirement)) {
+          missing.push(requirement.codigo);
+        }
+        break;
+      
+      case 'OR':
+        // If none of the options are satisfied, all are missing
+        if (!requirement.opciones.some(opcion => this.isRequirementSatisfied(opcion))) {
+          requirement.opciones.forEach(opcion => {
+            missing.push(...this.extractMissingFromRequirement(opcion));
+          });
+        }
+        break;
+      
+      case 'AND':
+        // All unsatisfied conditions are missing
+        requirement.condiciones.forEach(condicion => {
+          if (!this.checkSimpleRequirement(condicion)) {
+            missing.push(condicion.codigo);
+          }
+        });
+        break;
+    }
+
+    return missing.filter(code => code); // Remove undefined/null values
   }
 
   /**

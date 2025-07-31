@@ -23,7 +23,7 @@
                     <button id="clear-search" class="clear-btn" style="display: none;">&times;</button>
                 </div>
                 <div class="search-help">
-                    <small>Presiona "/" para enfocar la búsqueda | Esc para limpiar</small>
+                    <small>Presiona "/" para buscar | Esc para limpiar | Haz clic en una materia para ver sus previas</small>
                 </div>
             </div>
         </div>
@@ -33,31 +33,10 @@
                 <label for="creditos">Créditos:</label>
                 <select id="creditos">
                     <option value="">Todos</option>
-                    <option value="5">5 créditos</option>
-                    <option value="6">6 créditos</option>
-                    <option value="7">7 créditos</option>
-                    <option value="8">8 créditos</option>
-                    <option value="9">9 créditos</option>
-                    <option value="10">10 créditos</option>
-                    <option value="12">12 créditos</option>
-                    <option value="15">15 créditos</option>
-                </select>
-            </div>
-            
-            <div class="filter-group">
-                <label for="semestre">Semestre:</label>
-                <select id="semestre">
-                    <option value="">Todos</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
+                    <option value="1-5">1-5 créditos</option>
+                    <option value="6-10">6-10 créditos</option>
+                    <option value="11-15">11-15 créditos</option>
+                    <option value="16+">16+ créditos</option>
                 </select>
             </div>
             
@@ -76,7 +55,7 @@
             </div>
             
             <div class="filter-group">
-                <label for="dictationSemester">Semestre de dictado:</label>
+                <label for="dictationSemester">Dictado:</label>
                 <select id="dictationSemester">
                     <option value="all">Todos</option>
                     <option value="1">Semestres impares</option>
@@ -98,7 +77,6 @@
 
     <footer>
         <p>Datos según plan de estudios Ingeniería Eléctrica FING UdelaR</p>
-        <p>"Las nubes pasan, el azul queda" - 💙</p>
     </footer>
 
     <script type="module" src="js/list-app.js"></script>

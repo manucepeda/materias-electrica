@@ -1,6 +1,6 @@
 # 🎓 Curriculum Manager - Editor de Unidades Curriculares
 
-Una aplicación web completa para gestionar unidades curriculares con prerequisitos complejos, **ahora con guardado directo al servidor**.
+Una aplicación web completa para gestionar unidades curriculares con previas complejos, **ahora con guardado directo al servidor**.
 
 ## ⭐ Novedades
 
@@ -18,7 +18,7 @@ Una aplicación web completa para gestionar unidades curriculares con prerequisi
 - Búsqueda rápida por código o nombre
 - **Guardado automático** en el servidor
 
-### 🔗 **Sistema de Prerequisitos Avanzado**
+### 🔗 **Sistema de Previas Avanzado**
 Maneja la estructura compleja mostrada en tu captura de pantalla:
 
 - **"DEBE TENER TODAS" (AND)**: Todas las condiciones son obligatorias
@@ -71,7 +71,7 @@ DEBE TENER ALGUNA:
    - Período de dictado
    - ¿Solo examen?
 
-2. **Prerequisitos:**
+2. **Previas:**
    - **Agregar Grupo "DEBE TENER TODAS"**: Para requisitos obligatorios
    - **Agregar Grupo "DEBE TENER ALGUNA"**: Para opciones alternativas
    - **Dentro de cada grupo**: Agregar condiciones simples o complejas
@@ -85,7 +85,7 @@ DEBE TENER ALGUNA:
 
 ## 🗂️ Estructura de Datos
 
-### Formato JSON de Prerequisitos
+### Formato JSON de Previas
 
 ```json
 {
@@ -145,7 +145,7 @@ El backend crea automáticamente respaldos antes de cada guardado:
 ## 🛡️ Validaciones
 
 - ✅ Códigos únicos (no duplicados)
-- ✅ Prerequisitos válidos (materias existentes)
+- ✅ Previas válidas (materias existentes)
 - ✅ Campos obligatorios completos
 - ✅ Formatos de datos correctos
 

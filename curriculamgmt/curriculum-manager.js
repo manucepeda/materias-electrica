@@ -1,6 +1,6 @@
 /**
  * Curriculum Manager - Gestión de Unidades Curriculares
- * Maneja la carga, edición y guardado de unidades curriculares con prerequisitos complejos
+ * Maneja la carga, edición y guardado de unidades curriculares con previas complejos
  */
 
 class CurriculumManager {
@@ -161,7 +161,7 @@ class CurriculumManager {
         window.resetForm = () => this.resetForm();
         window.closeModal = () => this.closeModal();
 
-        // Funciones para prerequisitos
+        // Funciones para previas
         window.addAndGroup = () => this.addPrerequisiteGroup('AND');
         window.addOrGroup = () => this.addPrerequisiteGroup('OR');
         window.addSimplePrerequisite = () => this.addSimplePrerequisite();
@@ -269,7 +269,7 @@ class CurriculumManager {
                         <span class="semester">Semestre ${subject.semestre}</span>
                         <span class="dictation">Dictado: ${this.formatDictationSemester(subject.dictation_semester)}</span>
                         ${subject.exam_only ? '<span class="exam-only">Solo examen</span>' : ''}
-                        ${subject.prerequisites && subject.prerequisites.length > 0 ? '<span class="has-prereq">Tiene prerequisitos</span>' : ''}
+                        ${subject.prerequisites && subject.prerequisites.length > 0 ? '<span class="has-prereq">Tiene previas</span>' : ''}
                     </div>
                 </div>
                 <div class="subject-actions">
@@ -358,7 +358,7 @@ class CurriculumManager {
             }
         }
 
-        // Validar prerequisitos
+        // Validar previas
         const prereqValidation = this.validatePrerequisites(data.prerequisites);
         if (!prereqValidation.valid) {
             return prereqValidation;
@@ -650,7 +650,7 @@ class CurriculumManager {
     collectPrerequisites() {
         const prerequisites = [];
         
-        // Prerequisitos simples
+        // Previas simples
         document.querySelectorAll('.simple-prerequisite').forEach(prereqEl => {
             const codigo = prereqEl.querySelector('.prereq-codigo').value.trim();
             const description = prereqEl.querySelector('.prereq-description').value.trim();
@@ -669,7 +669,7 @@ class CurriculumManager {
             }
         });
         
-        // Grupos de prerequisitos
+        // Grupos de previas
         document.querySelectorAll('.prerequisite-group').forEach(groupEl => {
             const type = groupEl.dataset.type;
             const groupDescription = groupEl.querySelector('.group-desc-input').value.trim();

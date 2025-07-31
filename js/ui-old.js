@@ -129,7 +129,7 @@ export class UIManager {
   }
 
   /**
-   * Renders a subject card (clean, professional version)
+   * Renders a subject card
    */
   renderSubjectCard(subject, profileData = null) {
     const noteClass = getSubjectNoteClass(this.currentProfile, subject.codigo);
@@ -184,10 +184,44 @@ export class UIManager {
         </div>
       </div>
     `;
+      
+    const dictationTag = subject.dictation_semester
+      ? `<span class="dictation-tag">${this.formatDictationSemester(subject.dictation_semester)}</span>`
+      : '';
+    
+    return `
+      <div class="subject-card subject-card-clickable ${noteClass}" data-subject="${subject.codigo}">
+        <div class="subject-header">
+          <div class="subject-title">
+            <span class="subject-code">${subject.codigo}</span>
+            <span class="subject-name-title">${subject.nombre}</span>
+          </div>
+          <div class="credits-badge">
+            <span class="credit-icon">⭐</span>
+            <span>${subject.creditos}</span>
+          </div>
+        </div>
+        
+        <div class="subject-meta">
+          ${dictationTag}
+          ${subject.exam_only ? '<span class="exam-only-tag">📝 Solo Examen</span>' : ''}
+        </div>
+        
+        ${prereqInfo}
+        ${profileTags ? `<div class="subject-tags">${profileTags}</div>` : ''}
+        
+        <div class="subject-actions">
+          <button class="btn-view-details" onclick="event.stopPropagation()">
+            <span class="icon">�️</span>
+            <span>Ver Detalles</span>
+          </button>
+        </div>
+      </div>
+    `;
   }
 
   /**
-   * Renders a subject button for graph view (clean, professional version)
+   * Renders a subject button for graph view
    */
   renderSubjectButton(subject, status = 'available', profileData = null) {
     const noteClass = getSubjectNoteClass(this.currentProfile, subject.codigo);

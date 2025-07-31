@@ -7,11 +7,13 @@ import { dataManager } from './data-manager.js';
 import { UIManager } from './ui.js';
 import { SubjectFilter } from './filters.js';
 import { getProfileConfig } from './config.js';
+import { EnhancedPrerequisiteManager } from './prerequisites.js';
 
 class ListApp {
   constructor() {
     this.uiManager = new UIManager();
     this.subjectFilter = new SubjectFilter();
+    this.prerequisiteManager = new EnhancedPrerequisiteManager();
     this.allSubjects = [];
     this.filteredSubjects = [];
     this.currentProfile = null;
@@ -54,6 +56,10 @@ class ListApp {
   async loadSubjectsData() {
     try {
       this.allSubjects = await dataManager.loadSubjects();
+      
+      // Initialize prerequisite manager with subjects data
+      this.prerequisiteManager.init(this.allSubjects);
+      
       console.log(`Loaded ${this.allSubjects.length} subjects`);
     } catch (error) {
       console.error('Error loading subjects:', error);
@@ -365,7 +371,12 @@ class ListApp {
    * Show subject details modal or similar
    */
   showSubjectDetails(subject) {
-    // Create a simple modal or use existing modal system
+    // Get prerequisite information using the prerequisite manager
+    const isAvailable = this.prerequisiteManager.isSubjectAvailable(subject.codigo);
+    const prereqExplanation = this.prerequisiteManager.getUnavailabilityExplanation(subject.codigo);
+    const prereqFormatted = this.uiManager.formatPrerequisites(subject.prerequisites);
+    
+    // Create a detailed modal
     const modal = document.createElement('div');
     modal.className = 'subject-modal';
     modal.innerHTML = `
@@ -376,14 +387,51 @@ class ListApp {
         </div>
         <div class="modal-body">
           <div class="subject-details">
-            <p><strong>Créditos:</strong> ${subject.creditos}</p>
-            <p><strong>Semestre:</strong> ${subject.semestre}</p>
-            <p><strong>Dictado:</strong> ${this.uiManager.formatDictationSemester(subject.dictation_semester)}</p>
-            ${subject.exam_only ? '<p><strong>Modalidad:</strong> Solo examen</p>' : ''}
-            ${subject.prerequisites && subject.prerequisites.length > 0 ? 
-              `<p><strong>Prerequisitos:</strong> ${subject.prerequisites.length} requisitos</p>` : 
-              '<p><strong>Prerequisitos:</strong> Ninguno</p>'
-            }
+            <div class="detail-section">
+              <h3>Información General</h3>
+              <div class="info-grid">
+                <div class="info-item">
+                  <span class="info-label">Créditos:</span>
+                  <span class="info-value">${subject.creditos}</span>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">Dictado:</span>
+                  <span class="info-value">${this.uiManager.formatDictationSemester(subject.dictation_semester)}</span>
+                </div>
+                ${subject.exam_only ? `
+                  <div class="info-item">
+                    <span class="info-label">Modalidad:</span>
+                    <span class="info-value">Solo examen</span>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+            
+            <div class="detail-section">
+              <h3>Requisitos</h3>
+              ${subject.prerequisites && subject.prerequisites.length > 0 ? `
+                <div class="prereq-status ${isAvailable ? 'available' : 'unavailable'}">
+                  <div class="status-indicator">
+                    <span class="status-icon">${isAvailable ? 'Disponible' : 'No disponible'}</span>
+                    <span class="status-text">${isAvailable ? 'Puedes cursar esta materia' : 'No puedes cursar esta materia aún'}</span>
+                  </div>
+                </div>
+                <div class="prereq-summary">
+                  <div class="prereq-quick">
+                    <strong>Resumen:</strong> ${prereqFormatted}
+                  </div>
+                </div>
+                <div class="prereq-detailed">
+                  <h4>¿Qué necesitas para cursar esta materia?</h4>
+                  <div class="prereq-explanation">${prereqExplanation.replace(/\n/g, '<br>')}</div>
+                </div>
+              ` : `
+                <div class="no-prereq-message">
+                  <span class="status-available">Disponible</span>
+                  <p>Esta materia no tiene requisitos previos. Puedes cursarla directamente.</p>
+                </div>
+              `}
+            </div>
           </div>
         </div>
       </div>
@@ -397,6 +445,15 @@ class ListApp {
         modal.remove();
       }
     });
+    
+    // Close modal on Escape key
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        modal.remove();
+        document.removeEventListener('keydown', handleEscape);
+      }
+    };
+    document.addEventListener('keydown', handleEscape);
   }
 
   /**
