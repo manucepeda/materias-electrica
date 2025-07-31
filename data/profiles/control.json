@@ -10,10 +10,10 @@
     "3": ["CVec", "PyE", "F3", "MecNewt", "FExp1"],
     "4": ["EcuDif", "ElecMag", "FExp2", "TeoCirc", "DisLog"],
     "5": ["FVC", "SyS", "Micro", "PIE", "ElecFund"],
-    "6": ["MetNum", "SyC", "TFourier"],
-    "7": ["Medel", "Elepot"],
-    "8": ["InsInd", "IntroPLC", "PROYDIS"],
-    "9": ["SCTD", "FRI", "Electro"],
-    "10": ["iiee", "CNL", "FRA"]
+    "6": ["MetNum", "SyC", "TFourier","SyM","Redes1"],
+    "7": ["Medel", "Electro","InsInd","Sisem"],
+    "8": ["Pasantía", "iiee","CLP","OpCon","FTerm"],
+    "9": ["ProyFin10", "OpInd", "OpCon","OpCon"],
+    "10": ["ProyFin25", "LRI", "Ec","OpIyS","OpCon"]
   }
 }
