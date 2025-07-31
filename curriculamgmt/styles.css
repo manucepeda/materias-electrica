@@ -278,16 +278,7 @@ body::before {
     align-items: center;
     justify-content: center;
 }
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    cursor: pointer;
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    transition: all var(--transition-fast);
-    border-bottom: 3px solid transparent;
-    position: relative;
-}
+/* Duplicate rules removed to consolidate styles for .nav-tab */
 
 .nav-tab:hover {
     color: var(--primary-600);
