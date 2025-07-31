@@ -1,98 +1,201 @@
-# Materias de Ingeniería Eléctrica y Biomédica - Visualizador de Planes de Estudio
+# Materias Ingeniería Eléctrica 📚⚡
 
-Esta aplicación web permite visualizar, explorar y filtrar las materias de los planes de estudio de Ingeniería Eléctrica y Biomédica de la FING, UdelaR. Incluye vistas por perfil, énfasis, listado y tabla recomendada, con filtros avanzados y navegación intuitiva.
+Sistema web interactivo para visualizar y explorar el plan de estudios de Ingeniería Eléctrica de la FING, UdelaR.
 
----
+## 🌟 Características Principales
 
-## 🚀 ¿Qué hace esta aplicación?
+- **Grafo Interactivo**: Visualización gráfica de prerrequisitos y relaciones entre materias
+- **Listado Filtrable**: Búsqueda avanzada y exploración detallada de materias
+- **Vista de Tabla**: Plan de estudios organizado por semestres
+- **Perfiles Especializados**: Filtrado por perfiles de Control, Potencia, Electrónica, etc.
+- **Diseño Responsive**: Optimizado para desktop, tablet y móvil
 
-- **Visualiza el plan de estudios** de Ingeniería Eléctrica y Biomédica, mostrando materias organizadas por semestre, perfil y énfasis.
-- **Permite filtrar materias** por créditos, semestre de dictado, modalidad (libre/curso), etc.
-- **Muestra el plan recomendado** para cada perfil y énfasis, tanto en formato de grafo como en tabla.
-- **Navegación entre vistas**: listado, grafo interactivo y tabla recomendada.
-- **Carga dinámica de perfiles** y énfasis desde archivos JSON.
-- **Sin dependencias externas**: solo JavaScript, HTML y CSS.
+## 🚀 Acceso Rápido
 
----
+### Vistas Disponibles
+- **[Grafo Interactivo](index.html)** - Página principal con visualización de red
+- **[Exploración de Materias](subjects.html)** - Búsqueda detallada con filtros
 
-## 📁 Estructura del Proyecto
+### Filtros Disponibles
+- 🔍 Búsqueda por nombre o código
+- 📊 Filtro por créditos
+- 🎯 Filtro por perfil de especialización
+- 📅 Filtro por semestre de dictado
+
+## 📖 Guía de Uso
+
+### Navegación por Teclado
+- **`/`** - Enfocar campo de búsqueda
+- **`Esc`** - Limpiar búsqueda
+- **`Tab`** - Navegar entre elementos
+
+### Estados de Materias (Grafo)
+- 🟢 **Verde** - Materia disponible para cursar
+- 🔴 **Rojo** - Prerrequisitos no cumplidos
+- 🟡 **Amarillo** - Curso aprobado
+- 🔵 **Azul** - Materia exonerada
+- ⚪ **Gris** - No relevante para filtros actuales
+
+### Filtros de Perfil
+- **Biomédica** - Ingeniería biomédica y dispositivos médicos
+- **Control** - Sistemas de control automático
+- **Electrónica** - Sistemas electrónicos y microelectrónica
+- **Potencia** - Sistemas de energía y alta tensión
+- **Señales** - Procesamiento de señales y comunicaciones
+
+## 🛠️ Tecnologías Utilizadas
+
+- **HTML5** - Estructura semántica
+- **CSS3** - Diseño modular con custom properties
+- **JavaScript ES6+** - Lógica de aplicación con modules
+- **JSON** - Almacenamiento de datos
+- **SVG** - Gráficos escalables para el grafo
+
+## 🏗️ Arquitectura del Proyecto
 
 ```
-materias-electrica/
-├── index.html                # Vista principal (grafo por perfil/énfasis)
-├── listado.html              # Listado filtrable de materias
-├── table-view.html           # Vista de tabla recomendada por énfasis
-├── table-view.js             # Lógica de la tabla recomendada
-├── styles.css                # Estilos principales
-├── table-styles.css          # Estilos para la tabla recomendada
+├── css/
+│   ├── main.css              # Archivo principal de estilos
+│   ├── base/                 # Reset, tipografía, variables
+│   ├── componentes/          # Elementos reutilizables
+│   ├── utilidades/          # Clases auxiliares
+│   └── vistas/              # Variaciones de visualización
 ├── data/
-│   ├── ucs.json              # Materias y sus datos
-│   └── profiles/
-│       ├── biomedica.json    # Perfil Ingeniería Biomédica
-│       ├── electronica.json  # Perfil Electrónica
-│       ├── control.json      # Perfil Control
-│       ├── potencia.json     # Perfil Potencia
-│       └── senales.json      # Perfil Señales
-└── js/
-    ├── app-tree.js           # Lógica de grafo interactivo
-    ├── ...                   # Otros módulos JS (según arquitectura modular)
+│   ├── ucs-migrated.json    # Datos de materias
+│   └── profiles/            # Configuraciones de perfiles
+├── js/
+│   ├── graph.js             # Aplicación de grafo interactivo
+│   ├── subjects.js          # Aplicación de exploración de materias
+│   ├── config.js            # Configuración global
+│   ├── profiles.js          # Gestión de perfiles
+│   ├── ui.js                # Gestión de interfaz
+│   ├── filters.js           # Filtrado de materias
+│   └── *.js                 # Módulos especializados
+├── curriculamgmt/           # Herramienta independiente de gestión
+├── index.html               # Página principal (grafo interactivo)
+└── subjects.html            # Vista de exploración de materias
 ```
 
+## 🎯 Funcionalidades por Vista
+
+### Grafo Interactivo (index.html)
+- Visualización de red de prerrequisitos
+- Simulación de progreso académico
+- Filtros por perfil y características
+- Estados visuales de materias
+- Zoom y navegación del grafo
+
+### Exploración de Materias (subjects.html)
+- Tarjetas detalladas de materias
+- Búsqueda en tiempo real
+- Filtros múltiples combinables
+- Información completa de prerrequisitos
+- Clasificación por perfiles
+
+## � Diseño Responsive
+
+El sistema está optimizado para múltiples dispositivos:
+
+- **Desktop** (1200px+) - Experiencia completa
+- **Tablet** (768px-1199px) - Navegación adaptada
+- **Mobile** (320px-767px) - Interfaz optimizada
+
+## 🔧 Instalación Local
+
+### Requisitos
+- Servidor web (necesario para ES6 modules)
+- Navegador moderno (Chrome 90+, Firefox 88+, Safari 14+)
+
+### Opciones de Servidor
+
+#### Python
+```bash
+python -m http.server 8000
+```
+
+#### Node.js
+```bash
+npx serve .
+```
+
+#### PHP
+```bash
+php -S localhost:8000
+```
+
+Luego acceder a `http://localhost:8000`
+
+## 🗃️ Estructura de Datos
+
+### Formato de Materias
+Cada materia incluye:
+- Código único y nombre
+- Créditos y semestre sugerido
+- Prerrequisitos con condiciones específicas
+- Información de dictado
+- Clasificación por perfiles
+
+### Prerrequisitos Complejos
+El sistema maneja:
+- **Prerrequisitos simples**: Una materia específica
+- **Condiciones OR**: Cualquiera de varias opciones
+- **Tipos de aprobación**: Curso, examen, exoneración
+
+## 🎨 Personalización
+
+### Variables CSS
+El sistema utiliza custom properties para fácil personalización:
+```css
+:root {
+  --color-primary: #003366;
+  --color-secondary: #0066cc;
+  --space-unit: 0.5rem;
+  --font-family-main: system-ui, sans-serif;
+}
+```
+
+### Themes
+- Soporte para modo claro/oscuro
+- Colores personalizables por perfil
+- Adaptación automática según preferencias del sistema
+
+## 🤝 Contribución
+
+### Cómo Contribuir
+1. Fork del repositorio
+2. Crear rama para nueva funcionalidad
+3. Implementar cambios siguiendo convenciones
+4. Enviar pull request
+
+### Convenciones de Código
+- **CSS**: Metodología BEM, mobile-first
+- **JavaScript**: ES6+, módulos, comentarios en español
+- **HTML**: Semántico, accesible
+
+## � Soporte
+
+Para reportar problemas o sugerir mejoras:
+- Abrir issue en el repositorio
+- Incluir pasos para reproducir
+- Especificar navegador y dispositivo
+
+## 📊 Datos del Plan de Estudios
+
+Los datos están basados en:
+- Plan de estudios oficial de Ingeniería Eléctrica FING
+- Información actualizada de prerrequisitos
+- Perfiles de especialización definidos por la facultad
+
 ---
 
-## 🎯 Funcionalidades principales
+## 📄 Información Adicional
 
-- **Vista de grafo**: muestra materias por semestre, con colores según estado (aprobada, exonerada, disponible, etc.).
-- **Vista de tabla**: plan recomendado por énfasis, con créditos por semestre y acumulados.
-- **Listado filtrable**: búsqueda y filtros por créditos, semestre, modalidad, etc.
-- **Perfiles y énfasis**: selección dinámica, cada uno con su plan y materias específicas.
-- **Leyendas y ayudas visuales**: para interpretar colores, estados y tipos de materias.
-- **Navegación rápida** entre vistas (listado, grafo, tabla).
+**Universidad**: Universidad de la República (UdelaR)  
+**Facultad**: Facultad de Ingeniería (FING)  
+**Carrera**: Ingeniería Eléctrica  
+**Última actualización**: 2024
 
 ---
 
-## 🛠️ ¿Cómo usar?
-
-1. **Abrir `index.html`** para ver el grafo interactivo por perfil/énfasis.
-2. **Abrir `listado.html`** para buscar y filtrar materias.
-3. **Abrir `table-view.html`** para ver el plan recomendado en formato tabla (por énfasis).
-4. Usar los enlaces de navegación para cambiar entre vistas.
-5. Filtrar, buscar y explorar según tus intereses.
-
----
-
-## 📦 Datos y Perfiles
-
-- Los datos de materias están en `data/ucs.json`.
-- Cada perfil (y sus énfasis) tiene su archivo en `data/profiles/`.
-- Los planes recomendados se definen por semestre y código de materia.
-- Puedes agregar nuevos perfiles/énfasis creando un archivo JSON y enlazándolo en la configuración JS.
-
----
-
-## 💡 Lógica y arquitectura
-
-- **Carga dinámica**: Los datos se cargan vía `fetch` desde los archivos JSON.
-- **Renderizado flexible**: Las vistas se generan dinámicamente según el perfil/énfasis seleccionado.
-- **Filtros avanzados**: Se aplican en el frontend, sin recargar la página.
-- **Código modular**: Separación clara entre lógica de datos, UI y estilos.
-- **Accesibilidad**: Navegación sencilla y responsive.
-
----
-
-## 👩‍💻 Para desarrolladores
-
-- **Agregar un perfil nuevo**: crea un JSON en `data/profiles/` siguiendo el formato de los existentes.
-- **Actualizar la lógica**: modifica los módulos JS según sea necesario.
-- **Personalizar estilos**: edita `styles.css` y `table-styles.css`.
-
----
-
-## 📄 Licencia
-
-MIT. Uso libre para fines educativos y de mejora del software académico.
-
----
-
-**Desarrollado para la comunidad de Ingeniería Eléctrica y Biomédica de la FING, UdelaR.**
+*"Las nubes pasan, el azul queda" - 💙*
 

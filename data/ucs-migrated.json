@@ -1,0 +1,2079 @@
+[
+  {
+    "codigo": "CDIV",
+    "nombre": "Cálculo dif. e integral en una variable",
+    "creditos": 13,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "GAL1",
+    "nombre": "GAL 1",
+    "creditos": 9,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "F1",
+    "nombre": "Física 1",
+    "creditos": 10,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "Tallerine",
+    "nombre": "Tallerine",
+    "creditos": 10,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "MI",
+    "nombre": "Matemática inicial",
+    "creditos": 4,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "CDIVV",
+    "nombre": "Cálculo dif. e integral en varias variables",
+    "creditos": 13,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "cdivv_req_1",
+        "description": "Salvar curso CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "GAL2",
+    "nombre": "GAL 2",
+    "creditos": 9,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "gal2_req_1",
+        "description": "Salvar curso GAL1",
+        "tipo": "SIMPLE",
+        "codigo": "GAL1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "F2",
+    "nombre": "Física 2",
+    "creditos": 10,
+    "semestre": 2,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "f2_req_1",
+        "description": "Salvar curso F1",
+        "tipo": "SIMPLE",
+        "codigo": "F1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "f2_req_2",
+        "description": "Salvar curso CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "P1",
+    "nombre": "Programación 1",
+    "creditos": 10,
+    "semestre": 1,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "CVec",
+    "nombre": "Cálculo Vectorial",
+    "creditos": 10,
+    "semestre": 3,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "simple_1753798533916_ngo4uer45",
+        "description": "Salvar curso CDIVV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "simple_1753798533916_3sbvvxq8f",
+        "description": "Salvar curso CDIV y Exonerar CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "PyE",
+    "nombre": "Probabilidad y Estadística",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "pye_req_1",
+        "description": "Salvar curso CDIVV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "pye_req_2",
+        "description": "Salvar curso GAL1 y Exonerar GAL1",
+        "tipo": "SIMPLE",
+        "codigo": "GAL1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "pye_req_3",
+        "description": "Salvar curso CDIV y Exonerar CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "F3",
+    "nombre": "Física 3",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "f3_req_1",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "f3_opt_1",
+            "description": "Salvar curso F2 y Salvar curso F1",
+            "tipo": "AND",
+            "condiciones": [
+              {
+                "codigo": "F2",
+                "requiere_curso": true,
+                "requiere_exoneracion": false,
+                "description": "Salvar curso F2"
+              },
+              {
+                "codigo": "F1",
+                "requiere_curso": true,
+                "requiere_exoneracion": false,
+                "description": "Salvar curso F1"
+              }
+            ]
+          },
+          {
+            "opcion_id": "f3_opt_2",
+            "description": "Salvar curso F1 y Exonerar F1",
+            "tipo": "SIMPLE",
+            "codigo": "F1",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          }
+        ]
+      },
+      {
+        "requirement_id": "f3_req_2",
+        "description": "Salvar curso CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "MecNewt",
+    "nombre": "Mecánica Newtoniana",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "mecnewt_req_1",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "mecnewt_opt_1",
+            "description": "Salvar curso F2",
+            "tipo": "SIMPLE",
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "opcion_id": "mecnewt_opt_2",
+            "description": "Salvar curso F3",
+            "tipo": "SIMPLE",
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
+      },
+      {
+        "requirement_id": "mecnewt_req_2",
+        "description": "Salvar curso CDIVV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "mecnewt_req_3",
+        "description": "Salvar curso F1 y Exonerar F1",
+        "tipo": "SIMPLE",
+        "codigo": "F1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "mecnewt_req_4",
+        "description": "Salvar curso GAL1 y Exonerar GAL1",
+        "tipo": "SIMPLE",
+        "codigo": "GAL1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "mecnewt_req_5",
+        "description": "Salvar curso CDIV y Exonerar CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "FExp1",
+    "nombre": "Física Experimental 1",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "fexp1_req_1",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "fexp1_opt_1",
+            "description": "Salvar curso F1 y Exonerar F1",
+            "tipo": "SIMPLE",
+            "codigo": "F1",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          },
+          {
+            "opcion_id": "fexp1_opt_2",
+            "description": "Salvar curso F2",
+            "tipo": "SIMPLE",
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "codigo": "EcuDif",
+    "nombre": "Ecuaciones Diferenciales",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "ecudif_req_1",
+        "description": "Salvar curso CDIV y Exonerar CDIV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "ecudif_req_2",
+        "description": "Salvar curso CDIVV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "ecudif_req_3",
+        "description": "Salvar curso GAL1 y Exonerar GAL1",
+        "tipo": "SIMPLE",
+        "codigo": "GAL1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "ecudif_req_4",
+        "description": "Salvar curso GAL2 y Exonerar GAL2",
+        "tipo": "SIMPLE",
+        "codigo": "GAL2",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "ELECMAG",
+    "nombre": "Electromagnetismo",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "group_1753798352268_gdp04flp6",
+        "description": "Grupo AND",
+        "tipo": "AND",
+        "condiciones": [
+          {
+            "codigo": "F1",
+            "description": "Condición F1",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          },
+          {
+            "codigo": "CDIVV",
+            "description": "Condición CDIVV",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          },
+          {
+            "codigo": "GAL1",
+            "description": "Condición GAL1",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          }
+        ]
+      },
+      {
+        "requirement_id": "group_1753798352268_t16ul6w8h",
+        "description": "Grupo OR",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "option_1753798352268_if00m74og",
+            "description": "Opción F2",
+            "tipo": "SIMPLE",
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "opcion_id": "option_1753798352268_n5wllbtgc",
+            "description": "Opción F3",
+            "tipo": "SIMPLE",
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "codigo": "FExp2",
+    "nombre": "Física Experimental 2",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "fexp2_req_1",
+        "description": "Salvar curso FExp1 y Exonerar FExp1",
+        "tipo": "SIMPLE",
+        "codigo": "FExp1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "fexp2_req_2",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "fexp2_opt_1",
+            "description": "Salvar curso F2",
+            "tipo": "SIMPLE",
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "opcion_id": "fexp2_opt_2",
+            "description": "Salvar curso F3",
+            "tipo": "SIMPLE",
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "codigo": "TeoCirc",
+    "nombre": "Teoría de Circuitos",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "teocirc_req_1",
+        "description": "Salvar curso CVec",
+        "tipo": "SIMPLE",
+        "codigo": "CVec",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "teocirc_req_2",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "teocirc_opt_1",
+            "description": "Salvar curso F2",
+            "tipo": "SIMPLE",
+            "codigo": "F2",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          },
+          {
+            "opcion_id": "teocirc_opt_2",
+            "description": "Salvar curso F3",
+            "tipo": "SIMPLE",
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "codigo": "DisLog",
+    "nombre": "Diseño Lógico",
+    "creditos": 12,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "dislog_req_1",
+        "description": "Salvar curso P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FVC",
+    "nombre": "Funciones de Variable Compleja",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "fvc_req_1",
+        "description": "Salvar curso EcuDif",
+        "tipo": "SIMPLE",
+        "codigo": "EcuDif",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SyS",
+    "nombre": "Señales y Sistemas",
+    "creditos": 11,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "sys_req_1",
+        "description": "Salvar curso TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "sys_req_2",
+        "description": "Salvar curso EcuDif",
+        "tipo": "SIMPLE",
+        "codigo": "EcuDif",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Micro",
+    "nombre": "Intro. A los Microcesadores",
+    "creditos": 11,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "micro_req_1",
+        "description": "Salvar curso DisLog",
+        "tipo": "SIMPLE",
+        "codigo": "DisLog",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "PIE",
+    "nombre": "Programación para Ingeniería Eléctrica",
+    "creditos": 7,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "pie_req_1",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "ElecFund",
+    "nombre": "Electrónica Fundamental",
+    "creditos": 11,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "elecfund_req_1",
+        "description": "Salvar curso TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "elecfund_req_2",
+        "description": "Salvar curso F3",
+        "tipo": "SIMPLE",
+        "codigo": "F3",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "MetNum",
+    "nombre": "Métodos numéricos",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "metnum_req_1",
+        "description": "Salvar curso CDIVV y Exonerar CDIVV",
+        "tipo": "SIMPLE",
+        "codigo": "CDIVV",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "metnum_req_2",
+        "description": "Salvar curso GAL2 y Exonerar GAL2",
+        "tipo": "SIMPLE",
+        "codigo": "GAL2",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "metnum_req_3",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "SyC",
+    "nombre": "Sistemas y Control",
+    "creditos": 12,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "syc_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "syc_req_2",
+        "description": "Salvar curso FVC",
+        "tipo": "SIMPLE",
+        "codigo": "FVC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TFourier",
+    "nombre": "Taller Fourier",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tfourier_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SyM",
+    "nombre": "Señales aleatorias y Modulación",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "sym_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "sym_req_2",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Redes1",
+    "nombre": "Redes de Datos I",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "redes1_req_1",
+        "description": "Salvar curso Micro",
+        "tipo": "SIMPLE",
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "redes1_req_2",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "EA1",
+    "nombre": "Electrónica Avanzada 1",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "ea1_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Medel",
+    "nombre": "Medidas Eléctricas",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "medel_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "medel_req_2",
+        "description": "Salvar curso TeoCirc y Exonerar TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "CD",
+    "nombre": "Comunicaciones Digitales",
+    "creditos": 11,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "cd_req_1",
+        "description": "Salvar curso SyM",
+        "tipo": "SIMPLE",
+        "codigo": "SyM",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "AntYProp",
+    "nombre": "Antenas y Propagación",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "antyprop_req_1",
+        "description": "Salvar curso ElecMag",
+        "tipo": "SIMPLE",
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "antyprop_req_2",
+        "description": "Salvar curso SyM",
+        "tipo": "SIMPLE",
+        "codigo": "SyM",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Electro",
+    "nombre": "Electrotécnica",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "electro_req_1",
+        "description": "Salvar curso TeoCirc y Exonerar TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "electro_req_2",
+        "description": "Salvar curso ElecMag",
+        "tipo": "SIMPLE",
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Maquel",
+    "nombre": "Máquinas Eléctricas",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "maquel_req_1",
+        "description": "Salvar curso TeoCirc y Exonerar TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "maquel_req_2",
+        "description": "Salvar curso ElecMag",
+        "tipo": "SIMPLE",
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Elepot",
+    "nombre": "Electrónica de Potencia",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "elepot_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "elepot_req_2",
+        "description": "Salvar curso TeoCirc y Exonerar TeoCirc",
+        "tipo": "SIMPLE",
+        "codigo": "TeoCirc",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "EA2",
+    "nombre": "Electrónica Avanzada 2",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "ea2_req_1",
+        "description": "Salvar curso EA1",
+        "tipo": "SIMPLE",
+        "codigo": "EA1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "PROYDIS",
+    "nombre": "Proyecto y Diseño",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "TIB1",
+    "nombre": "Taller Ing. Biológica 1",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tib1_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "tib1_req_2",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TIB2",
+    "nombre": "Taller Ing. Biológica 2",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tib2_req_1",
+        "description": "Salvar curso TIB1 y Exonerar TIB1",
+        "tipo": "SIMPLE",
+        "codigo": "TIB1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "InsInd",
+    "nombre": "Instrumentación industrial",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "insind_req_1",
+        "description": "Salvar curso Medel",
+        "tipo": "SIMPLE",
+        "codigo": "Medel",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "insind_req_2",
+        "description": "Salvar curso SyC",
+        "tipo": "SIMPLE",
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "IntroPLC",
+    "nombre": "Introducción a los PLC",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "introplc_req_1",
+        "description": "Salvar curso Micro",
+        "tipo": "SIMPLE",
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "introplc_req_2",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SCTD",
+    "nombre": "Control en tiempo discreto",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "sctd_req_1",
+        "description": "Salvar curso SyC",
+        "tipo": "SIMPLE",
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FRI",
+    "nombre": "Fundamentos de robótica industrial",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "fri_req_1",
+        "description": "Salvar curso SyC",
+        "tipo": "SIMPLE",
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "CNL",
+    "nombre": "Análisis y control de sistemas no lineales",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "cnl_req_1",
+        "description": "Salvar curso SyC",
+        "tipo": "SIMPLE",
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FRA",
+    "nombre": "Fundamentos de robótica autónoma",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "fra_req_1",
+        "description": "Salvar curso SyC",
+        "tipo": "SIMPLE",
+        "codigo": "SyC",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "iiee",
+    "nombre": "Instalaciones Eléctricas",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "iiee_req_1",
+        "description": "Salvar curso Electro",
+        "tipo": "SIMPLE",
+        "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "EPST",
+    "nombre": "Estimación y Predicción en Series Temporales",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "epst_req_1",
+        "description": "Salvar curso PyE y Exonerar PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "epst_req_2",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TIC",
+    "nombre": "Tratamiento de Imágenes por Computadora",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "tic_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "tic_req_2",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioInf",
+    "nombre": "Informática en Biología y Medicina",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "bioinf_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "bioinf_req_2",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "SO",
+    "nombre": "Sistemas Operativos",
+    "creditos": 12,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "so_req_1",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "so_req_2",
+        "description": "Salvar curso Micro",
+        "tipo": "SIMPLE",
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioElec2",
+    "nombre": "Bioelectrónica II",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "bioelec2_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioElec3",
+    "nombre": "Bioelectrónica III",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "bioelec3_req_1",
+        "description": "Salvar curso BioElec2 y Exonerar BioElec2",
+        "tipo": "SIMPLE",
+        "codigo": "BioElec2",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "BioSen",
+    "nombre": "Sensores Biomédicos",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "biosen_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "biosen_req_2",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "BioMat",
+    "nombre": "Biomateriales",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "BioMed",
+    "nombre": "Biomedicina",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "BioElec",
+    "nombre": "Bioelectrónica",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "bioelec_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Sisem",
+    "nombre": "Sistemas Embedidos para tiempo Real ",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "sisem_req_1",
+        "description": "Salvar curso Micro y Exonerar Micro",
+        "tipo": "SIMPLE",
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "FCuant",
+    "nombre": "Fisiología Cuantitativa",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "SemBio",
+    "nombre": "Seminario de Ingeniería Biomédica",
+    "creditos": 4,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "Pas",
+    "nombre": "Pasantía",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "IngBio",
+    "nombre": "Ingeniería Biomédica",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "ingbio_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "AIMDs",
+    "nombre": "Diseño de Sistemas Médicos Implantables Activos",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "aimds_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "aimds_req_2",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Proy15",
+    "nombre": "Proyecto",
+    "creditos": 15,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "ProyFin10",
+    "nombre": "Proyecto Fin de Carrera",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "ProyFin25",
+    "nombre": "Proyecto Fin de Carrera",
+    "creditos": 25,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "RSI",
+    "nombre": "Redes de Sensores Inalámbricos",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "rsi_req_1",
+        "description": "Salvar curso Redes1",
+        "tipo": "SIMPLE",
+        "codigo": "Redes1",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "rsi_req_2",
+        "description": "Salvar curso Micro y Exonerar Micro",
+        "tipo": "SIMPLE",
+        "codigo": "Micro",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "RedesEl",
+    "nombre": "Redes Eléctricas",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "redesel_req_1",
+        "description": "Salvar curso Maquel",
+        "tipo": "SIMPLE",
+        "codigo": "Maquel",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "redesel_req_2",
+        "description": "Salvar curso Electro",
+        "tipo": "SIMPLE",
+        "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "Proy20",
+    "nombre": "Proyecto",
+    "creditos": 20,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "IPRL",
+    "nombre": "Introducción a la Prevención de Riesgos Laborales",
+    "creditos": 6,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "IM",
+    "nombre": "Imágenes Médicas",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "im_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "IMed",
+    "nombre": "Informática Médica",
+    "creditos": 5,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "imed_req_1",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "IC",
+    "nombre": "Ingeniería Clínica",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "LRI",
+    "nombre": "Legislación y Relaciones Industriales",
+    "creditos": 6,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "CTS",
+    "nombre": "Ciencia, Tecnología y Sociedad",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "Ec",
+    "nombre": "Economía",
+    "creditos": 7,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "IIO",
+    "nombre": "Introducción a la Investigación de Operaciones",
+    "creditos": 10,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "iio_req_1",
+        "description": "Salvar curso GAL2 y Exonerar GAL2",
+        "tipo": "SIMPLE",
+        "codigo": "GAL2",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "iio_req_2",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "DisLog2",
+    "nombre": "Diseño Lógico 2",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "dislog2_req_1",
+        "description": "Salvar curso DisLog y Exonerar DisLog",
+        "tipo": "SIMPLE",
+        "codigo": "DisLog",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "OB1",
+    "nombre": "Optativa Básica",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OpComp",
+    "nombre": "Optativa Computación",
+    "creditos": 12,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OpTelecom",
+    "nombre": "Optativa Telecomunicaciones/Señales",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OpInd",
+    "nombre": "Optativa Industrial",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OP8",
+    "nombre": "Opcional Perfil 8",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OP4",
+    "nombre": "Opcional Perfil 4",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": true,
+    "prerequisites": []
+  },
+  {
+    "codigo": "FAA",
+    "nombre": "Fundamentos de Aprendizaje Automático",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "faa_req_1",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "faa_req_2",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "CircRF",
+    "nombre": "Circuitos de Radiofrecuencia",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "circrf_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "circrf_req_2",
+        "description": "Salvar curso ElecMag",
+        "tipo": "SIMPLE",
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "DCI",
+    "nombre": "Diseño de Circuitos Integrados",
+    "creditos": 9,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": true,
+    "prerequisites": [
+      {
+        "requirement_id": "dci_req_1",
+        "description": "Salvar curso DisLog2",
+        "tipo": "SIMPLE",
+        "codigo": "DisLog2",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "dci_req_2",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "TMaq",
+    "nombre": "Taller de Máquinas",
+    "creditos": 4,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tmaq_req_1",
+        "description": "Salvar curso Maquel y Exonerar Maquel",
+        "tipo": "SIMPLE",
+        "codigo": "Maquel",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "TEE",
+    "nombre": "Transporte de Energía Eléctrica",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tee_req_1",
+        "description": "Salvar curso Electro",
+        "tipo": "SIMPLE",
+        "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "tee_req_2",
+        "description": "Salvar curso ElecMag y Exonerar ElecMag",
+        "tipo": "SIMPLE",
+        "codigo": "ElecMag",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "TEP",
+    "nombre": "Taller de Electrónica de Potencia",
+    "creditos": 4,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "tep_req_1",
+        "description": "Salvar curso ElecFund y Exonerar ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "tep_req_2",
+        "description": "Salvar curso Elepot",
+        "tipo": "SIMPLE",
+        "codigo": "Elepot",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "SMT",
+    "nombre": "Subestaciones de Media Tensión",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "2",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "smt_req_1",
+        "description": "Salvar curso Electro",
+        "tipo": "SIMPLE",
+        "codigo": "Electro",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "smt_req_2",
+        "description": "Salvar curso Maquel",
+        "tipo": "SIMPLE",
+        "codigo": "Maquel",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "FAAPRP",
+    "nombre": "Fundamentos de Aprendizaje Automático y Reconocimiento de Patrones",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "faaprp_req_1",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "faaprp_req_2",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "SalMod",
+    "nombre": "Señales aleatorias y Modulación",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "1",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "salmod_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "salmod_req_2",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpAA",
+    "nombre": "Opcional Aprendizaje Automático",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opaa_req_1",
+        "description": "Salvar curso FAAPRP",
+        "tipo": "SIMPLE",
+        "codigo": "FAAPRP",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpSenales",
+    "nombre": "Opcional Señales",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opsenales_req_1",
+        "description": "Salvar curso SyS y Exonerar SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "OpTelec",
+    "nombre": "Opcional Telecomunicaciones",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "optelec_req_1",
+        "description": "Salvar curso SyM",
+        "tipo": "SIMPLE",
+        "codigo": "SyM",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpInf",
+    "nombre": "Opcional Informática",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opinf_req_1",
+        "description": "Salvar curso P1 y Exonerar P1",
+        "tipo": "SIMPLE",
+        "codigo": "P1",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "OpElectro",
+    "nombre": "Opcional Electrónica",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opelectro_req_1",
+        "description": "Salvar curso ElecFund",
+        "tipo": "SIMPLE",
+        "codigo": "ElecFund",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpDigit",
+    "nombre": "Opcional Sistemas Digitales",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opdigit_req_1",
+        "description": "Salvar curso DisLog y Exonerar DisLog",
+        "tipo": "SIMPLE",
+        "codigo": "DisLog",
+        "requiere_curso": true,
+        "requiere_exoneracion": true
+      }
+    ]
+  },
+  {
+    "codigo": "OpBasica",
+    "nombre": "Opcional Básica",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  },
+  {
+    "codigo": "OpSenalesAA",
+    "nombre": "Opcional Señales o Aprendizaje Automático",
+    "creditos": 8,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": [
+      {
+        "requirement_id": "opsenalesaa_req_1",
+        "description": "Salvar curso SyS",
+        "tipo": "SIMPLE",
+        "codigo": "SyS",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      },
+      {
+        "requirement_id": "opsenalesaa_req_2",
+        "description": "Salvar curso PyE",
+        "tipo": "SIMPLE",
+        "codigo": "PyE",
+        "requiere_curso": true,
+        "requiere_exoneracion": false
+      }
+    ]
+  },
+  {
+    "codigo": "OpIyS",
+    "nombre": "Opcional Ingeniería y sociedad",
+    "creditos": 0,
+    "semestre": 8,
+    "dictation_semester": "both",
+    "exam_only": false,
+    "prerequisites": []
+  }
+]
