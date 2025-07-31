@@ -266,6 +266,9 @@ export class GraphManager {
     // Render subjects grouped by semester
     html += this.renderSubjectsBySemester(subjectsBySemester);
     
+    // Add profile notes if available
+    html += this.renderProfileNotes();
+    
     container.innerHTML = html;
     
     // Show and update status panel
@@ -467,6 +470,130 @@ export class GraphManager {
         </div>
       `;
     }).join('');
+  }
+
+  /**
+   * Render profile notes section
+   */
+  renderProfileNotes() {
+    if (!this.currentProfile || !this.profiles[this.currentProfile]) {
+      return '';
+    }
+
+    const profileData = this.profiles[this.currentProfile];
+    
+    // Check if current emphasis has notes, otherwise use profile notes
+    let notesToShow = [];
+    
+    if (this.currentEmphasis && profileData.emphasis) {
+      const emphasisData = profileData.emphasis.find(e => e.nombre === this.currentEmphasis);
+      if (emphasisData && emphasisData.notas_importantes) {
+        notesToShow = emphasisData.notas_importantes;
+      }
+    }
+    
+    // Fallback to profile notes if no emphasis notes
+    if (notesToShow.length === 0 && profileData.notas_importantes) {
+      notesToShow = profileData.notas_importantes;
+    }
+
+    if (!notesToShow || notesToShow.length === 0) {
+      return '';
+    }
+
+    const profileTitle = this.currentEmphasis 
+      ? `${this.currentProfile} - ${this.currentEmphasis}`
+      : this.currentProfile;
+
+    return `
+      <section class="profile-notes">
+        <div class="profile-notes-header">
+          <h3 class="profile-notes-title">Notas Importantes</h3>
+          <p class="profile-notes-subtitle">${profileTitle}</p>
+        </div>
+        
+        <div class="notes-grid">
+          ${notesToShow.map(note => this.renderNoteCard(note)).join('')}
+        </div>
+      </section>
+    `;
+  }
+
+  /**
+   * Render individual note card
+   */
+  renderNoteCard(note) {
+    // Handle different note structures
+    if (typeof note === 'string') {
+      // Simple string note
+      return `
+        <div class="note-card" data-category="info">
+          <div class="note-card-header">
+            <div class="note-card-icon">i</div>
+            <h4 class="note-card-title">Información Importante</h4>
+          </div>
+          <p class="note-card-description">${note}</p>
+        </div>
+      `;
+    }
+
+    // Object note with potential missing fields
+    const titulo = note.titulo || note.title || 'Información Importante';
+    const descripcion = note.descripcion || note.description || '';
+    
+    if (!descripcion) {
+      return ''; // Skip empty notes
+    }
+
+    // Determine note category for styling
+    const category = this.determineNoteCategory(note);
+    const icon = this.getNoteIcon(category);
+    
+    return `
+      <div class="note-card" data-category="${category}">
+        <div class="note-card-header">
+          <div class="note-card-icon">${icon}</div>
+          <h4 class="note-card-title">${titulo}</h4>
+        </div>
+        <p class="note-card-description">${descripcion}</p>
+      </div>
+    `;
+  }
+
+  /**
+   * Determine note category based on content
+   */
+  determineNoteCategory(note) {
+    if (typeof note === 'string') {
+      return 'info';
+    }
+    
+    const titulo = (note.titulo || note.title || '').toLowerCase();
+    const descripcion = (note.descripcion || note.description || '').toLowerCase();
+    
+    if (titulo.includes('obligatori') || descripcion.includes('deben') || descripcion.includes('debe')) {
+      return 'requirement';
+    }
+    if (titulo.includes('recomend') || descripcion.includes('recomend') || titulo.includes('fuertemente')) {
+      return 'recommendation';
+    }
+    if (titulo.includes('opcional') || descripcion.includes('opcional') || titulo.includes('opciones')) {
+      return 'optional';
+    }
+    return 'info';
+  }
+
+  /**
+   * Get icon for note category
+   */
+  getNoteIcon(category) {
+    const icons = {
+      requirement: '!',
+      recommendation: 'i',
+      optional: '?',
+      info: '✓'
+    };
+    return icons[category] || 'i';
   }
 
   /**

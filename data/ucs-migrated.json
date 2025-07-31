@@ -236,59 +236,59 @@
     "exam_only": true,
     "prerequisites": [
       {
-        "requirement_id": "mecnewt_req_1",
-        "description": "Una de las siguientes opciones",
-        "tipo": "OR",
-        "opciones": [
-          {
-            "opcion_id": "mecnewt_opt_1",
-            "description": "Salvar curso F2",
-            "tipo": "SIMPLE",
-            "codigo": "F2",
-            "requiere_curso": true,
-            "requiere_exoneracion": false
-          },
-          {
-            "opcion_id": "mecnewt_opt_2",
-            "description": "Salvar curso F3",
-            "tipo": "SIMPLE",
-            "codigo": "F3",
-            "requiere_curso": true,
-            "requiere_exoneracion": false
-          }
-        ]
-      },
-      {
-        "requirement_id": "mecnewt_req_2",
-        "description": "Salvar curso CDIVV",
+        "requirement_id": "simple_1753986291518_88vlqfpd4",
+        "description": "Salvar curso Cálculo dif. e integral en varias variables",
         "tipo": "SIMPLE",
         "codigo": "CDIVV",
         "requiere_curso": true,
         "requiere_exoneracion": false
       },
       {
-        "requirement_id": "mecnewt_req_3",
-        "description": "Salvar curso F1 y Exonerar F1",
+        "requirement_id": "simple_1753986291518_pitziq4o2",
+        "description": "Salvar curso Física 1 y Exonerar Física 1",
         "tipo": "SIMPLE",
         "codigo": "F1",
         "requiere_curso": true,
         "requiere_exoneracion": true
       },
       {
-        "requirement_id": "mecnewt_req_4",
-        "description": "Salvar curso GAL1 y Exonerar GAL1",
+        "requirement_id": "simple_1753986291518_iuvlxy1lc",
+        "description": "Salvar curso GAL 1 y Exonerar GAL 1",
         "tipo": "SIMPLE",
         "codigo": "GAL1",
         "requiere_curso": true,
         "requiere_exoneracion": true
       },
       {
-        "requirement_id": "mecnewt_req_5",
-        "description": "Salvar curso CDIV y Exonerar CDIV",
+        "requirement_id": "simple_1753986291518_6o27q5qpk",
+        "description": "Salvar curso Cálculo dif. e integral en una variable y Exonerar Cálculo dif. e integral en una variable",
         "tipo": "SIMPLE",
         "codigo": "CDIV",
         "requiere_curso": true,
         "requiere_exoneracion": true
+      },
+      {
+        "requirement_id": "group_1753986291518_kx710bvuq",
+        "description": "Una de las siguientes opciones",
+        "tipo": "OR",
+        "opciones": [
+          {
+            "opcion_id": "option_1753986291518_lsegmerme",
+            "description": "Salvar curso Matemática inicial y Exonerar Matemática inicial",
+            "tipo": "SIMPLE",
+            "codigo": "MI",
+            "requiere_curso": true,
+            "requiere_exoneracion": true
+          },
+          {
+            "opcion_id": "option_1753986291518_7w1aakjl2",
+            "description": "Salvar curso Física 3",
+            "tipo": "SIMPLE",
+            "codigo": "F3",
+            "requiere_curso": true,
+            "requiere_exoneracion": false
+          }
+        ]
       }
     ]
   },

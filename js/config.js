@@ -9,12 +9,12 @@ export const PROFILE_CONFIG = {
     file: 'data/profiles/electronica.json',
     hasEmphasis: true,
     emphasis: ['Electrónica Biomédica', 'Sistemas Embebidos', 'Circuitos y Sistemas Electrónicos'],
-    hasNotes: false
+    hasNotes: true
   },
   'Control': {
     file: 'data/profiles/control.json',
     hasEmphasis: false,
-    hasNotes: false
+    hasNotes: true
   },
   'Sistemas Eléctricos de Potencia': {
     file: 'data/profiles/potencia.json',
@@ -25,7 +25,7 @@ export const PROFILE_CONFIG = {
     file: 'data/profiles/biomedica.json',
     hasEmphasis: true,
     emphasis: ['Electrónica', 'Ingeniería Clínica', 'Señales', 'Informática'],
-    hasNotes: false
+    hasNotes: true
   },
   'Señales y Aprendizaje Automático': {
     file: 'data/profiles/senales.json',
