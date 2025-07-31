@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Ingeniería Eléctrica - Listado de Materias</title>
+    <meta name="description" content="Búsqueda y exploración detallada de materias de Ingeniería Eléctrica">
+    <link rel="stylesheet" href="css/consolidated.css">
+</head>
+<body>
+    <header>
+        <h1>Materias Eléctrica</h1>
+        <h2>Exploración de Materias</h2>
+        
+        <div class="nav-links">
+            <a href="index.html" class="link">Ver Grafo Interactivo</a>
+        </div>
+        
+        <div class="search-section">
+            <div class="main-search">
+                <div class="search-input-wrapper">
+                    <input type="text" id="search" placeholder="Buscar por nombre o código de materia..." autocomplete="off">
+                    <button id="clear-search" class="clear-btn" style="display: none;">&times;</button>
+                </div>
+                <div class="search-help">
+                    <small>Presiona "/" para enfocar la búsqueda | Esc para limpiar</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="creditos">Créditos:</label>
+                <select id="creditos">
+                    <option value="">Todos</option>
+                    <option value="5">5 créditos</option>
+                    <option value="6">6 créditos</option>
+                    <option value="7">7 créditos</option>
+                    <option value="8">8 créditos</option>
+                    <option value="9">9 créditos</option>
+                    <option value="10">10 créditos</option>
+                    <option value="12">12 créditos</option>
+                    <option value="15">15 créditos</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="semestre">Semestre:</label>
+                <select id="semestre">
+                    <option value="">Todos</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="perfil">Perfil:</label>
+                <select id="perfil">
+                    <option value="">Todos los perfiles</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="dictationSemester">Semestre de dictado:</label>
+                <select id="dictationSemester">
+                    <option value="all">Todos</option>
+                    <option value="1">Semestres impares</option>
+                    <option value="2">Semestres pares</option>
+                    <option value="both">Ambos semestres</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="results-info">
+            <span id="results-count">Cargando...</span>
+        </div>
+        <div id="subjects-container" class="subjects-container">
+            <!-- Subject cards will be rendered here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>Datos según plan de estudios Ingeniería Eléctrica FING UdelaR</p>
+        <p>"Las nubes pasan, el azul queda" - 💙</p>
+    </footer>
+
+    <script type="module" src="js/list-app.js"></script>
+</body>
+</html>

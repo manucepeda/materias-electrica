@@ -9,32 +9,27 @@ export const PROFILE_CONFIG = {
     file: 'data/profiles/electronica.json',
     hasEmphasis: true,
     emphasis: ['Electrónica Biomédica', 'Sistemas Embebidos', 'Circuitos y Sistemas Electrónicos'],
-    hasTableView: false,
     hasNotes: false
   },
   'Control': {
     file: 'data/profiles/control.json',
     hasEmphasis: false,
-    hasTableView: false,
     hasNotes: false
   },
   'Sistemas Eléctricos de Potencia': {
     file: 'data/profiles/potencia.json',
     hasEmphasis: false,
-    hasTableView: false,
     hasNotes: true
   },
   'Ingeniería Biomédica': {
     file: 'data/profiles/biomedica.json',
     hasEmphasis: true,
     emphasis: ['Electrónica', 'Ingeniería Clínica', 'Señales', 'Informática'],
-    hasTableView: true,
     hasNotes: false
   },
   'Señales y Aprendizaje Automático': {
     file: 'data/profiles/senales.json',
     hasEmphasis: false,
-    hasTableView: false,
     hasNotes: true
   }
 };
@@ -55,22 +50,32 @@ export function profileHasEmphasis(profileName) {
   return config ? config.hasEmphasis : false;
 }
 
-// Get emphasis options for a profile
+// Get profile emphasis options
 export function getProfileEmphasis(profileName) {
   const config = getProfileConfig(profileName);
-  return config && config.hasEmphasis ? config.emphasis : [];
+  return config && config.emphasis ? config.emphasis : [];
 }
 
-// Check if profile supports table view
-export function profileHasTableView(profileName) {
-  const config = getProfileConfig(profileName);
-  return config ? config.hasTableView : false;
-}
-
-// Check if profile has special notes
+// Check if profile has notes
 export function profileHasNotes(profileName) {
   const config = getProfileConfig(profileName);
   return config ? config.hasNotes : false;
+}
+
+
+
+// API endpoints configuration
+export const API_CONFIG = {
+  BASE_URL: '',
+  ENDPOINTS: {
+    SUBJECTS: '/api/subjects',
+    SUBJECTS_SAVE: '/api/subjects/save'
+  }
+}
+
+// Utility function to get API URL
+export function getApiUrl(endpoint) {
+  return API_CONFIG.BASE_URL + API_CONFIG.ENDPOINTS[endpoint];
 }
 
 // Get file path for profile
@@ -141,23 +146,3 @@ export function getSubjectNoteClass(profileName, subjectCode) {
   return mapping && mapping[subjectCode] ? `subject-note-${mapping[subjectCode]}` : '';
 }
 
-// Validation function for new profiles
-export function validateProfileData(profileData) {
-  const requiredFields = ['nombre', 'descripcion', 'materias_core', 'materias_optativas'];
-  
-  for (const field of requiredFields) {
-    if (!profileData.hasOwnProperty(field)) {
-      throw new Error(`Missing required field: ${field}`);
-    }
-  }
-  
-  if (!Array.isArray(profileData.materias_core)) {
-    throw new Error('materias_core must be an array');
-  }
-  
-  if (!Array.isArray(profileData.materias_optativas)) {
-    throw new Error('materias_optativas must be an array');
-  }
-  
-  return true;
-}

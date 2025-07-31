@@ -105,7 +105,6 @@ export const PROFILE_CONFIG = {
     file: 'data/profiles/profile-name.json',
     hasEmphasis: true,           // false si no tiene énfasis
     emphasis: ['Nombre del Énfasis'], // Lista de nombres de énfasis
-    hasTableView: false,         // true si necesita vista de tabla
     hasNotes: true               // true si tiene notas especiales
   }
 };
@@ -251,8 +250,8 @@ Lógica hardcodeada → Basado en configuración
 ```
 
 ### Archivos a usar ahora
-- ✅ `index.html` (actualizado para usar los nuevos módulos)
-- ✅ `graph.html` (actualizado para usar los nuevos módulos)
+- ✅ `index.html` (aplicación principal de grafo interactivo)
+- ✅ `subjects.html` (aplicación de exploración de materias)
 - ✅ Todos los archivos en el directorio `js/`
 - ✅ JSONs de perfiles en `data/profiles/`
 
