@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Malla Curricular Ingeniería Eléctrica - Plan de Estudio Recomendado</title>
-    <link rel="stylesheet" href="css/main.css">
+    <title>Malla Curricular Ingeniería Eléctrica - Grafo Interactivo</title>
+    <meta name="description" content="Visualización interactiva del plan de estudios de Ingeniería Eléctrica">
+    <link rel="stylesheet" href="css/consolidated.css">
 </head>
 <body>
     <header>
-        <h1>Plan de Estudio Recomendado</h1>
+        <h1>Malla Curricular</h1>
         <h2>Ingeniería Eléctrica - Por Perfil</h2>
         
         <div class="nav-links">
-            <a href="listado.html" class="link">Ver Listado de Materias</a>
-            <span id="table-view-link" style="display: none;">
-                <a href="table-view.html" class="link">Ver Plan Recomendado en tabla</a>
-            </span>
+            <a href="subjects.html" class="link">Ver Listado de Materias</a>
         </div>
         
         <div class="filters">
@@ -32,10 +30,7 @@
                     <option value="">Seleccione un perfil primero</option>
                 </select>
             </div>
-        </div>
-        
-        <div class="filters additional-filters">
-            <div class="filter-group">
+                        <div class="filter-group">
                 <label for="dictationSemester">Semestre de dictado:</label>
                 <select id="dictationSemester">
                     <option value="all">Todos</option>
@@ -49,26 +44,11 @@
                 <label for="creditFilter">Créditos:</label>
                 <select id="creditFilter">
                     <option value="all">Todos</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                    <option value="13">13</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
+                    <option value="1-5">1-5 créditos</option>
+                    <option value="6-10">6-10 créditos</option>
+                    <option value="11-15">11-15 créditos</option>
+                    <option value="16+">16+ créditos</option>
                 </select>
-            </div>
-            
-            <div class="filter-group">
-                <label>
-                    <input type="checkbox" id="examOnlyFilter">
-                    Mostrar solo materias libres
-                </label>
             </div>
         </div>
         
@@ -90,30 +70,41 @@
                 <div>Exonerada</div>
             </div>
         </div>
-        <div class="status-panel">
-            <div class="status-item">
-                <span>Materias aprobadas: </span>
-                <span id="approvedSubjects">0</span>
-            </div>
-            <div class="status-item">
-                <span>Materias exoneradas: </span>
-                <span id="exoneratedSubjects">0</span>
-            </div>
-            <div class="status-item">
-                <span>Créditos totales: </span>
-                <span id="totalCredits">0</span>
-            </div>
-        </div>
     </header>
+    
     <main>
-        <div id="tree" class="tree-container"></div>
+        <div class="content-wrapper">
+            <div class="main-content">
+                <div id="tree" class="tree-container"></div>
+            </div>
+            <aside class="status-panel">
+                <h4>Estado del Plan</h4>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="label">Materias aprobadas:</span>
+                        <span class="value" id="approvedCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Materias exoneradas:</span>
+                        <span class="value" id="exoneratedCount">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Créditos totales:</span>
+                        <span class="value" id="totalCreditsStatus">0</span>
+                    </div>
+                    <div class="stat">
+                        <span class="label">Progreso del plan:</span>
+                        <span class="value" id="planProgress">0%</span>
+                    </div>
+                </div>
+            </aside>
+        </div>
     </main>
 
     <footer>
         <p>Datos según plan de estudios Ingeniería Eléctrica FING UdelaR</p>
-        <p>"Las nubes pasan, el azul queda" -  💙</p>
     </footer>
 
-    <script type="module" src="js/app-tree.js"></script>
+    <!-- Removed reference to js/graph-app.js to prevent 404 error -->
 </body>
 </html>

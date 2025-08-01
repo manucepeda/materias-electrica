@@ -74,5 +74,52 @@
         "10": ["Proy20", "LRI", "CTS", "Ec", "iiee"]
       }
     }
+  ],
+  "notas_importantes": [
+    {
+      "id": "fisica_matematicas",
+      "titulo": "Asignaturas de Física y Matemáticas",
+      "descripcion": "Prácticamente todas las asignaturas de las materias Física y Matemáticas pueden cursarse en Facultad de Ciencias, en el marco de las Licenciaturas de Física y Matemática. Existen algunas reválidas automáticas aprobadas por la Facultad."
+    },
+    {
+      "id": "matematica_inicial",
+      "titulo": "Matemática Inicial",
+      "descripcion": "Curso fuertemente recomendado al comienzo de la carrera en función del resultado de la Prueba Diagnóstica al Ingreso."
+    },
+    {
+      "id": "tallerine",
+      "titulo": "Taller de Introducción a la Ingeniería Eléctrica",
+      "descripcion": "Sin ser obligatorio, el TallerInE es fuertemente recomendado en el semestre de ingreso. Se dicta en ambos semestres. Alternativas: Taller de Diseño, Comunicación y Representación Gráfica, Módulos de Extensión o Módulos de Taller."
+    },
+    {
+      "id": "formacion_basica",
+      "titulo": "Formación Básica",
+      "descripcion": "Se deben cubrir al menos 160 créditos en áreas de formación básica (Física + Matemática + Química). Opcionales: Física Térmica, Vibraciones y Ondas, Óptica, Principios de Química General, Introducción a la Física Moderna, Matemática Discreta."
+    },
+    {
+      "id": "pasantia",
+      "titulo": "Pasantía",
+      "descripcion": "La Pasantía es una actividad fuertemente recomendada para todos los alumnos y puede ser realizada en cualquier semestre, incluso fuera del periodo de clases."
+    },
+    {
+      "id": "ingenieria_industrial",
+      "titulo": "Ingeniería Industrial",
+      "descripcion": "Se debe cubrir un mínimo de 5 créditos en el área de Ingeniería Industrial. Opciones: Administración General para Ingenieros, Control de Calidad, Costos para Ingeniería, Introducción a la Ingeniería Industrial, Investigación de Operaciones, Prevención de Riesgos Laborales, Práctica de Administración."
+    },
+    {
+      "id": "ingenieria_sociedad",
+      "titulo": "Ingeniería y Sociedad",
+      "descripcion": "Se deben cubrir al menos 5 créditos en el área de Ingeniería y Sociedad. Opciones: Ciencia, Tecnología y Sociedad, Cooperativismo, Historia del Uruguay Contemporáneo, Módulos de Extensión."
+    },
+    {
+      "id": "biomedica_especializacion",
+      "titulo": "Especialización Biomédica",
+      "descripcion": "El perfil de Ingeniería Biomédica requiere seleccionar un énfasis específico: Electrónica (dispositivos médicos), Ingeniería Clínica (gestión tecnológica hospitalaria), Señales (procesamiento biomédico), o Informática (sistemas de salud)."
+    },
+    {
+      "id": "opcionales_biomedica",
+      "titulo": "Opcionales Biomédicas",
+      "descripcion": "Opcionales recomendadas: Biomateriales, Biomecánica, Fisiología Cuantitativa, Seminario de Bioingeniería, Imágenes Médicas, Tecnologías de la Información Biomédica, Introducción a la Investigación en Bioingeniería."
+    }
   ]
 }

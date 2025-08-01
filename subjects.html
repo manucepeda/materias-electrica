@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malla Curricular Ingeniería Eléctrica - Listado de Materias</title>
+    <meta name="description" content="Búsqueda y exploración detallada de materias de Ingeniería Eléctrica">
+    <link rel="stylesheet" href="css/consolidated.css">
+</head>
+<body>
+    <header>
+        <h1>Materias Eléctrica</h1>
+        <h2>Exploración de Materias</h2>
+        
+        <div class="nav-links">
+            <a href="index.html" class="link">Ver Grafo Interactivo</a>
+        </div>
+        
+        <div class="search-section">
+            <div class="main-search">
+                <div class="search-input-wrapper">
+                    <input type="text" id="search" placeholder="Buscar por nombre o código de materia..." autocomplete="off">
+                    <button id="clear-search" class="clear-btn" style="display: none;">&times;</button>
+                </div>
+                <div class="search-help">
+                    <small>Presiona "/" para buscar | Esc para limpiar | Haz clic en una materia para ver sus previas</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="filters">
+            <div class="filter-group">
+                <label for="creditos">Créditos:</label>
+                <select id="creditos">
+                    <option value="">Todos</option>
+                    <option value="1-5">1-5 créditos</option>
+                    <option value="6-10">6-10 créditos</option>
+                    <option value="11-15">11-15 créditos</option>
+                    <option value="16+">16+ créditos</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="perfil">Perfil:</label>
+                <select id="perfil">
+                    <option value="">Todos los perfiles</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="emphasis">Énfasis:</label>
+                <select id="emphasis" disabled>
+                    <option value="">Seleccione un perfil primero</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="dictationSemester">Dictado:</label>
+                <select id="dictationSemester">
+                    <option value="all">Todos</option>
+                    <option value="1">Semestres impares</option>
+                    <option value="2">Semestres pares</option>
+                    <option value="both">Ambos semestres</option>
+                </select>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="results-info">
+            <span id="results-count">Cargando...</span>
+        </div>
+        <div id="subjects-container" class="subjects-container">
+            <!-- Subject cards will be rendered here -->
+        </div>
+    </main>
+
+    <footer>
+        <p>Datos según plan de estudios Ingeniería Eléctrica FING UdelaR</p>
+    </footer>
+
+    <script type="module" src="js/list-app.js"></script>
+</body>
+</html>
