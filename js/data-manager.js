@@ -32,10 +32,21 @@ export class DataManager {
    */
   async testBackendConnection() {
     try {
-      const response = await fetch(getApiUrl('SUBJECTS'), {
-        method: 'HEAD',
-        timeout: 2000
-      });
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2000);
+      try {
+        const response = await fetch(getApiUrl('SUBJECTS'), {
+          method: 'HEAD',
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        this.isBackendAvailable = response.ok;
+        return this.isBackendAvailable;
+      } catch (error) {
+        clearTimeout(timeoutId);
+        this.isBackendAvailable = false;
+        return false;
+      }
       this.isBackendAvailable = response.ok;
       return this.isBackendAvailable;
     } catch (error) {
