@@ -66,7 +66,7 @@ export function profileHasNotes(profileName) {
 
 // API endpoints configuration
 export const API_CONFIG = {
-  BASE_URL: '',
+  BASE_URL: '/', // Default base URL. Update this value to match your API's base path or domain.
   ENDPOINTS: {
     SUBJECTS: '/api/subjects',
     SUBJECTS_SAVE: '/api/subjects/save'
