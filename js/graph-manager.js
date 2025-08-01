@@ -708,98 +708,84 @@ export class GraphManager {
    */
   showPrerequisitesModal(subject) {
     const isAvailable = this.prerequisiteManager.isSubjectAvailable(subject.codigo);
-    const explanation = this.prerequisiteManager.getUnavailabilityExplanation(subject.codigo);
+    const missingPrereqs = this.prerequisiteManager.getMissingPrerequisites(subject.codigo);
     const recommendedPath = this.prerequisiteManager.getRecommendedPath(subject.codigo);
     
     let modalContent = `
       <div class="modal-overlay" onclick="this.remove()">
         <div class="modal-content prerequisite-modal" onclick="event.stopPropagation()">
           <div class="modal-header">
-            <h3>${subject.codigo} - ${subject.nombre}</h3>
-            <button class="modal-close" onclick="this.closest('.modal-overlay').remove()">&times;</button>
+            <h3>${subject.codigo}</h3>
+            <button class="modal-close" onclick="this.closest('.modal-overlay').remove()" aria-label="Cerrar">&times;</button>
           </div>
-          <div class="modal-body">
-            <div class="subject-info-section">
-              <div class="subject-credits">
-                <strong>Créditos:</strong> ${subject.creditos}
-              </div>
-              <div class="subject-dictation">
-                <strong>Dictado:</strong> ${this.uiManager.formatDictationSemester(subject.dictation_semester)}
-              </div>
-            </div>
-            
-            <div class="availability-status ${isAvailable ? 'available' : 'unavailable'}">
-              <div class="status-indicator">
-                <span class="status-icon">${isAvailable ? 'Disponible' : 'No disponible'}</span>
-                <span class="status-text">
-                  ${isAvailable ? 'Esta materia está disponible para cursar' : 'No puedes cursar esta materia aún'}
-                </span>
-              </div>
-            </div>`;
+          <div class="modal-body">`;
 
-    if (!isAvailable) {
-      const missingPrereqs = this.prerequisiteManager.getMissingPrerequisites(subject.codigo);
-      
+    if (isAvailable) {
       modalContent += `
-            <div class="requirements-section">
-              <h4>¿Qué necesitas para cursar esta materia?</h4>
-              <div class="explanation-text">${explanation.replace(/\n/g, '<br>')}</div>
-            </div>
-            
-            <div class="missing-prereqs-section">
-              <h5>Materias que debes completar primero:</h5>
-              <ul class="prereq-list">`;
+            <div class="availability-status available">
+              ✅ Disponible para cursar
+            </div>`;
+    } else {
+      modalContent += `
+            <div class="availability-status unavailable">
+              ⚠️ Faltan ${missingPrereqs.length} materia${missingPrereqs.length > 1 ? 's' : ''}
+            </div>`;
       
-      missingPrereqs.forEach(prereqCode => {
-        const prereqSubject = this.allSubjects.find(s => s.codigo === prereqCode);
-        if (prereqSubject) {
-          const prereqAvailable = this.prerequisiteManager.isSubjectAvailable(prereqCode);
+      if (missingPrereqs.length > 0) {
+        modalContent += `
+            <div class="missing-prereqs-section">
+              <h5>Te falta:</h5>
+              <ul class="prereq-list">`;
+        
+        missingPrereqs.slice(0, 4).forEach(prereqCode => {
+          const prereqSubject = this.allSubjects.find(s => s.codigo === prereqCode);
+          if (prereqSubject) {
+            const prereqAvailable = this.prerequisiteManager.isSubjectAvailable(prereqCode);
+            const status = this.approvedSubjects.has(prereqCode) ? 'aprobada' : 
+                          this.exoneratedSubjects.has(prereqCode) ? 'exonerada' : 
+                          (prereqAvailable ? 'disponible' : 'bloqueada');
+            modalContent += `
+                <li class="prereq-item">
+                  <span>${prereqCode}</span>
+                  <span>${status}</span>
+                </li>`;
+          }
+        });
+        
+        if (missingPrereqs.length > 4) {
           modalContent += `
-                <li class="prereq-item ${prereqAvailable ? 'available' : 'unavailable'}">
-                  <div class="prereq-info">
-                    <span class="prereq-code">${prereqCode}</span>
-                    <span class="prereq-name">${prereqSubject.nombre}</span>
-                    <span class="prereq-credits">${prereqSubject.creditos} cr.</span>
-                  </div>
-                  <span class="prereq-status">
-                    ${prereqAvailable ? 'Disponible ahora' : 'Bloqueada'}
-                  </span>
+                <li class="prereq-item">
+                  <span>...y ${missingPrereqs.length - 4} más</span>
+                  <span></span>
                 </li>`;
         }
-      });
-      
-      modalContent += `
-              </ul>
-            </div>`;
+        
+        modalContent += `</ul></div>`;
+      }
 
-      // Show what you can do now
       if (recommendedPath.availableNow.length > 0) {
         modalContent += `
             <div class="actionable-section">
-              <h5>Puedes cursar ahora (para avanzar hacia esta materia):</h5>
+              <h5>Puedes cursar ahora:</h5>
               <ul class="available-list">`;
         
-        recommendedPath.availableNow.forEach(availSubject => {
+        recommendedPath.availableNow.slice(0, 3).forEach(availSubject => {
           modalContent += `
                 <li class="available-item">
-                  <span class="available-code">${availSubject.codigo}</span>
-                  <span class="available-name">${availSubject.nombre}</span>
-                  <span class="available-credits">${availSubject.creditos} cr.</span>
+                  <span>${availSubject.codigo}</span>
                 </li>`;
         });
         
-        modalContent += `
-              </ul>
-            </div>`;
+        modalContent += `</ul></div>`;
       }
     }
     
     modalContent += `
-            <div class="modal-footer">
-              <button class="btn-primary" onclick="this.closest('.modal-overlay').remove()">
-                Entendido
-              </button>
-            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-primary" onclick="this.closest('.modal-overlay').remove()">
+              Cerrar
+            </button>
           </div>
         </div>
       </div>
@@ -807,6 +793,19 @@ export class GraphManager {
     
     // Add modal to DOM
     document.body.insertAdjacentHTML('beforeend', modalContent);
+    
+    // Add keyboard event listener for escape key
+    const modal = document.querySelector('.modal-overlay:last-child');
+    const escapeHandler = (e) => {
+      if (e.key === 'Escape') {
+        modal.remove();
+        document.removeEventListener('keydown', escapeHandler);
+      }
+    };
+    document.addEventListener('keydown', escapeHandler);
+    
+    // Focus management for accessibility
+    modal.querySelector('.modal-close').focus();
   }
 
   /**

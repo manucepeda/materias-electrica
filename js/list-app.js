@@ -368,70 +368,63 @@ class ListApp {
   }
 
   /**
-   * Show subject details modal or similar
+   * Show subject details modal - shows official university prerequisites
    */
   showSubjectDetails(subject) {
-    // Get prerequisite information using the prerequisite manager
-    const isAvailable = this.prerequisiteManager.isSubjectAvailable(subject.codigo);
-    const prereqExplanation = this.prerequisiteManager.getUnavailabilityExplanation(subject.codigo);
+    // Format official prerequisites (not user-specific)
     const prereqFormatted = this.uiManager.formatPrerequisites(subject.prerequisites);
     
-    // Create a detailed modal
+    // Create a detailed modal focusing on official requirements
     const modal = document.createElement('div');
-    modal.className = 'subject-modal';
+    modal.className = 'modal-overlay';
     modal.innerHTML = `
-      <div class="modal-content">
+      <div class="modal-content prerequisite-modal" onclick="event.stopPropagation()">
         <div class="modal-header">
-          <h2>${subject.codigo} - ${subject.nombre}</h2>
-          <button class="close-modal" onclick="this.parentElement.parentElement.parentElement.remove()">&times;</button>
+          <h3>${subject.codigo} - ${subject.nombre}</h3>
+          <button class="modal-close" onclick="this.parentElement.parentElement.parentElement.remove()" aria-label="Cerrar">&times;</button>
         </div>
         <div class="modal-body">
-          <div class="subject-details">
-            <div class="detail-section">
-              <h3>Información General</h3>
-              <div class="info-grid">
-                <div class="info-item">
-                  <span class="info-label">Créditos:</span>
-                  <span class="info-value">${subject.creditos}</span>
-                </div>
-                <div class="info-item">
-                  <span class="info-label">Dictado:</span>
-                  <span class="info-value">${this.uiManager.formatDictationSemester(subject.dictation_semester)}</span>
-                </div>
-                ${subject.exam_only ? `
-                  <div class="info-item">
-                    <span class="info-label">Modalidad:</span>
-                    <span class="info-value">Solo examen</span>
-                  </div>
-                ` : ''}
+          <div class="subject-info-section">
+            <div>
+              <strong>Créditos</strong>
+              <span>${subject.creditos}</span>
+            </div>
+            <div>
+              <strong>Dictado</strong>
+              <span>${this.uiManager.formatDictationSemester(subject.dictation_semester)}</span>
+            </div>
+            ${subject.exam_only ? `
+              <div>
+                <strong>Modalidad</strong>
+                <span>Solo examen</span>
               </div>
-            </div>
-            
-            <div class="detail-section">
-              <h3>Requisitos</h3>
-              ${subject.prerequisites && subject.prerequisites.length > 0 ? `
-                <div class="prereq-status ${isAvailable ? 'available' : 'unavailable'}">
-                  <div class="status-indicator">
-                    <span class="status-icon">${isAvailable ? 'Disponible' : 'No disponible'}</span>
-                    <span class="status-text">${isAvailable ? 'Puedes cursar esta materia' : 'No puedes cursar esta materia aún'}</span>
-                  </div>
-                </div>
-                <div class="prereq-summary">
-                  <div class="prereq-quick">
-                    <strong>Resumen:</strong> ${prereqFormatted}
-                  </div>
-                </div>
-                <div class="prereq-detailed">
-                  <h4>¿Qué necesitas para cursar esta materia?</h4>
-                  <div class="prereq-explanation">${prereqExplanation.replace(/\n/g, '<br>')}</div>
-                </div>
-              ` : `
-                <div class="no-prereq-message">
-                  <span class="status-available">Disponible</span>
-                  <p>Esta materia no tiene requisitos previos. Puedes cursarla directamente.</p>
-                </div>
-              `}
-            </div>
+            ` : ''}
+            ${subject.semestre ? `
+              <div>
+                <strong>Semestre sugerido</strong>
+                <span>Sem. ${subject.semestre}</span>
+              </div>
+            ` : ''}
+          </div>
+          
+          <div class="official-requirements-section">
+            <h4>Requisitos oficiales de la universidad</h4>
+            ${subject.prerequisites && subject.prerequisites.length > 0 ? `
+              <div class="prereq-official">
+                <div class="prereq-formatted">${prereqFormatted}</div>
+              </div>
+              ${this.renderDetailedPrerequisites(subject.prerequisites)}
+            ` : `
+              <div class="no-prereq-message">
+                <p>Esta materia no tiene requisitos previos según el plan de estudios.</p>
+              </div>
+            `}
+          </div>
+          
+          <div class="modal-footer">
+            <button class="btn-primary" onclick="this.parentElement.parentElement.parentElement.remove()">
+              Cerrar
+            </button>
           </div>
         </div>
       </div>
@@ -454,6 +447,75 @@ class ListApp {
       }
     };
     document.addEventListener('keydown', handleEscape);
+  }
+
+  /**
+   * Render detailed breakdown of prerequisites
+   */
+  renderDetailedPrerequisites(prerequisites) {
+    if (!prerequisites || prerequisites.length === 0) return '';
+    
+    let html = '<div class="prereq-breakdown"><h5>Desglose detallado</h5><ul class="prereq-detailed-list">';
+    
+    prerequisites.forEach((req, index) => {
+      html += `<li class="prereq-detail-item">`;
+      html += `<strong>Requisito ${index + 1}:</strong> `;
+      html += this.renderSinglePrerequisiteDetail(req);
+      html += `</li>`;
+    });
+    
+    html += '</ul></div>';
+    return html;
+  }
+
+  /**
+   * Render single prerequisite detail
+   */
+  renderSinglePrerequisiteDetail(requirement) {
+    switch (requirement.tipo) {
+      case 'SIMPLE':
+        return this.renderSimplePrerequisiteDetail(requirement);
+      
+      case 'OR':
+        if (requirement.opciones && requirement.opciones.length > 0) {
+          const options = requirement.opciones.map(opt => this.renderSinglePrerequisiteDetail(opt));
+          return `Una de las siguientes opciones: ${options.join(' <em>o</em> ')}`;
+        }
+        return requirement.description || 'Requisito OR';
+      
+      case 'AND':
+        if (requirement.condiciones && requirement.condiciones.length > 0) {
+          const conditions = requirement.condiciones.map(cond => this.renderSimplePrerequisiteDetail(cond));
+          return `Todas las siguientes: ${conditions.join(' <em>y</em> ')}`;
+        }
+        return requirement.description || 'Requisito AND';
+      
+      default:
+        return requirement.description || 'Requisito no especificado';
+    }
+  }
+
+  /**
+   * Render simple prerequisite detail
+   */
+  renderSimplePrerequisiteDetail(requirement) {
+    if (!requirement.codigo) {
+      return requirement.description || 'Requisito inválido';
+    }
+
+    const subject = this.allSubjects.find(s => s.codigo === requirement.codigo);
+    const subjectName = subject ? subject.nombre : requirement.codigo;
+    
+    let typeText = '';
+    if (requirement.requiere_curso && requirement.requiere_exoneracion) {
+      typeText = ' (aprobar curso y exonerar)';
+    } else if (requirement.requiere_exoneracion && !requirement.requiere_curso) {
+      typeText = ' (solo exonerar)';
+    } else {
+      typeText = ' (aprobar curso)';
+    }
+
+    return `<span class="prereq-subject">${requirement.codigo}</span> - ${subjectName}${typeText}`;
   }
 
   /**
